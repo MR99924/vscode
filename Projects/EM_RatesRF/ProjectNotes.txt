@@ -1,0 +1,44 @@
+Project construction notes:
+
+Looking to build a rate direction predictor. Decompose the various areas into factors these will be listed under:
+
+Inflation factor
+Currency factor
+Global rates factor
+Activity factor
+External factor
+Fiscal factor
+
+Each of these factors is built from a PCA of a series of data points, the end-goal is to have a single series that builds from:
+
+Inflation: Headline & core inflation, alongside PPI. (this is done) - we might bring in inflation expectations in some way (either via BBG consensus or surveys) at a later stage if it's tractable.
+Currency: Currency level (ToT adjusted) and its volatility. (this is done)
+Global rates: You'd want the Fed rates in there, alongside the rates of all adjacent/proximate currencies. (this is done)
+Activity: The PCA of the series of data points on qoq activity, teathered to GDP - you'll also want to include historical GDP metrics and unemployment, this will broaden out the survey and enable a more comprehensive analysis
+External: You'd want the current account and reserves as well (by some share of efficacy) (this is done).
+Fiscal: Want the fiscal balance in there, maybe also the primary balance (adjusted for interest payments) and credit spread (this is done)
+
+One all this data is imported (see data_pull) we will be moving towards a PCA to condence the various data associated with these into the "factors" that will be going into the model.
+
+There must be a PCA for an:
+Inflation factor
+Currency factor
+Global rates factor
+Activity factor
+External factor
+Fiscal factor
+
+We want to start with unweighted PCAs - we can then test the effects of weighting them on the outputs of the model. We also want the PCAs to still have values even in cases where all the data is not there.
+Note: For the Fed's role in the rates factor, we need to account for the Fed's leadership role in other central banks. This warrents a higher weighting of the Fed among the other central bank choices in the factor.
+
+For the RF training itself, we would have to:
+Find some historical data on the decisions themselves, when were there historical decisions on which we can train (rates up, down, stay the same) - this will not be the same date for each country
+Make the decision (or compare) to either separate the models by country (reflecting a national decision rule) or keep them as a homogeneus entity (reflecting a generalised 'EM' rule).
+Find a way to make sure it runs really easily/readily. I'd like it so that it's one block of code that I can press the button on the morning of a central bank decision and say "this is the direction the model says".
+Contrast and compare the output of the model on the training versus the out-of-sample data
+
+
+
+For other country-specific models, it might be worth weighting neighbouring countries more as they'll have a greater influence on the central bank cycle.
+
+
