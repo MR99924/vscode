@@ -1,0 +1,8 @@
+{
+    "country": "South Africa",
+    "tenor": "yld_10yr",
+    "model_type": "elasticnet",
+    "data_points": 308,
+    "features": 7,
+    "date_range": "1999-11-30 to 2025-06-30"
+}

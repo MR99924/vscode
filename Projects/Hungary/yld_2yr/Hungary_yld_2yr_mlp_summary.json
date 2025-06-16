@@ -1,0 +1,8 @@
+{
+    "country": "Hungary",
+    "tenor": "yld_2yr",
+    "model_type": "mlp",
+    "data_points": 220,
+    "features": 6,
+    "date_range": "2007-03-31 to 2025-06-30"
+}

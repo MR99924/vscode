@@ -17,7 +17,7 @@ logger = logging.getLogger(__name__)
 
 
 def prepare_data(country, tenor_name, country_code_mapping, tenor, pol_rat, cpi_inf, act_track, iip_gdp,
-                 risk_rating, historical_forecasts, unemployment_rate, predicted_yields=None,
+                 risk_rating, historical_forecasts, unemployment_rate, predicted_yields,
                  forward_fill=True, enhance_features=False, handle_missing='ffill', feature_selection=None,
                  mb_client=None, label_encoder=None):
     """

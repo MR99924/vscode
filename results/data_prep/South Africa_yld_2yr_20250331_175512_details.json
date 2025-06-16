@@ -1,0 +1,201 @@
+{
+  "country": "South Africa",
+  "tenor": "yld_2yr",
+  "feature_sources": [
+    "policy_rates",
+    "inflation",
+    "activity",
+    "unemployment_rate"
+  ],
+  "date_ranges": {
+    "target": {
+      "start": "1999-11-30",
+      "end": "2025-03-31",
+      "count": 305
+    },
+    "policy_rates": {
+      "start": "1990-01-31",
+      "end": "2025-03-31",
+      "count": 423,
+      "columns": [
+        "pol_rat_za",
+        "pol_rat_us"
+      ]
+    },
+    "inflation": {
+      "start": "1947-01-31",
+      "end": "2025-03-31",
+      "count": 939,
+      "columns": [
+        "cpi_inf_za"
+      ]
+    },
+    "activity": {
+      "start": "1990-01-31",
+      "end": "2025-03-31",
+      "count": 423,
+      "columns": [
+        "act_track_za"
+      ]
+    },
+    "unemployment_rate": {
+      "start": "1948-01-31",
+      "end": "2025-03-31",
+      "count": 927,
+      "columns": [
+        "u_rat_za"
+      ]
+    }
+  },
+  "feature_counts": {
+    "policy_rates": 2,
+    "inflation": 1,
+    "activity": 1,
+    "unemployment_rate": 1
+  },
+  "data_quality": {
+    "historical_forecasts_2": {
+      "missing_pct": 0.0,
+      "date_range": "1990-01-31 to 2025-03-31",
+      "columns": [
+        "gdp_forecast_2yr_za",
+        "cpi_forecast_2yr_za"
+      ]
+    },
+    "target": {
+      "missing_pct": 27.895981087470446,
+      "date_range": "1999-11-30 to 2025-03-31",
+      "count": 305
+    },
+    "missing_stats": {
+      "missing_count": {
+        "act_track_za": 685,
+        "u_rat_za": 566,
+        "gdp_forecast_2yr_za": 516,
+        "cpi_forecast_2yr_za": 516,
+        "pol_rat_us_influence": 516,
+        "pol_rat_za": 516,
+        "pol_rat_us": 516,
+        "cpi_inf_za": 408
+      },
+      "missing_pct": {
+        "act_track_za": 72.94994675186368,
+        "u_rat_za": 60.27689030883919,
+        "gdp_forecast_2yr_za": 54.9520766773163,
+        "cpi_forecast_2yr_za": 54.9520766773163,
+        "pol_rat_us_influence": 54.9520766773163,
+        "pol_rat_za": 54.9520766773163,
+        "pol_rat_us": 54.9520766773163,
+        "cpi_inf_za": 43.45047923322684
+      },
+      "missing_before": {
+        "act_track_za": 685,
+        "u_rat_za": 566,
+        "gdp_forecast_2yr_za": 516,
+        "cpi_forecast_2yr_za": 516,
+        "pol_rat_us_influence": 516,
+        "pol_rat_za": 516,
+        "pol_rat_us": 516,
+        "cpi_inf_za": 408
+      },
+      "missing_after": {
+        "act_track_za": 0,
+        "u_rat_za": 0,
+        "gdp_forecast_2yr_za": 0,
+        "cpi_forecast_2yr_za": 0,
+        "pol_rat_us_influence": 0,
+        "pol_rat_za": 0,
+        "pol_rat_us": 0,
+        "cpi_inf_za": 0
+      }
+    },
+    "total_missing_before": 4239,
+    "total_missing_after": 0,
+    "rows_before": 939,
+    "rows_after": 939
+  },
+  "feature_engineering": {
+    "count": 8,
+    "types": {
+      "yield_curve": 0
+    },
+    "calendar_features": [
+      "quarter",
+      "year",
+      "day_of_month",
+      "is_month_end",
+      "is_quarter_end",
+      "is_year_end",
+      "month_sin",
+      "month_cos",
+      "day_of_week_sin",
+      "day_of_week_cos"
+    ]
+  },
+  "target_column": "yld_2yr_za",
+  "total_features": 8,
+  "feature_columns": [
+    "gdp_forecast_2yr_za",
+    "cpi_forecast_2yr_za",
+    "pol_rat_us_influence",
+    "pol_rat_za",
+    "pol_rat_us",
+    "cpi_inf_za",
+    "act_track_za",
+    "u_rat_za"
+  ],
+  "combined_date_range": {
+    "start": "1947-01-31",
+    "end": "2025-03-31",
+    "count": 939
+  },
+  "clean_date_range": {
+    "start": "1947-01-31",
+    "end": "2025-03-31",
+    "count": 939
+  },
+  "enhanced_features": [
+    "gdp_forecast_2yr_za",
+    "cpi_forecast_2yr_za",
+    "pol_rat_us_influence",
+    "pol_rat_za",
+    "pol_rat_us",
+    "cpi_inf_za",
+    "act_track_za",
+    "u_rat_za"
+  ],
+  "feature_correlations": {
+    "pol_rat_za": 0.8432,
+    "u_rat_za": 0.4429,
+    "pol_rat_us_influence": 0.3998,
+    "pol_rat_us": 0.3998,
+    "cpi_forecast_2yr_za": 0.3282,
+    "cpi_inf_za": 0.2781,
+    "act_track_za": 0.2609,
+    "gdp_forecast_2yr_za": 0.198
+  },
+  "overlap_diagnosis": {
+    "target_earliest": "1999-11-30",
+    "target_latest": "2025-03-31",
+    "features_earliest": "1947-01-31",
+    "features_latest": "2025-03-31",
+    "overlapping_earliest": "1999-11-30",
+    "overlapping_latest": "2025-03-31",
+    "target_count": 305,
+    "features_count": 939,
+    "common_count": 305,
+    "issue": "None"
+  },
+  "feature_quality": {
+    "low_variance_features": []
+  },
+  "target_stats": {
+    "min": 4.175733333333333,
+    "max": 13.223999999999993,
+    "mean": 7.474312600069969,
+    "median": 7.072000000000002,
+    "std": 1.9284778086194256,
+    "skew": 0.752515487912216,
+    "kurt": -0.2350276028888434
+  }
+}

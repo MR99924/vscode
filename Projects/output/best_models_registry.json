@@ -1,0 +1,178 @@
+{
+    "United States_yld_2yr": {
+        "model_type": "mlp",
+        "model_path": "c:\\Users\\MR99924\\workspace\\vscode\\Projects\\output\\models\\United States\\United States_yld_2yr_best_model.pkl"
+    },
+    "United States_yld_5yr": {
+        "model_type": "mlp",
+        "model_path": "c:\\Users\\MR99924\\workspace\\vscode\\Projects\\output\\models\\United States\\United States_yld_5yr_best_model.pkl"
+    },
+    "United States_yld_10yr": {
+        "model_type": "mlp",
+        "model_path": "c:\\Users\\MR99924\\workspace\\vscode\\Projects\\output\\models\\United States\\United States_yld_10yr_best_model.pkl"
+    },
+    "United States_yld_30yr": {
+        "model_type": "mlp",
+        "model_path": "c:\\Users\\MR99924\\workspace\\vscode\\Projects\\output\\models\\United States\\United States_yld_30yr_best_model.pkl"
+    },
+    "United Kingdom_yld_2yr": {
+        "model_type": "mlp",
+        "model_path": "c:\\Users\\MR99924\\workspace\\vscode\\Projects\\output\\models\\United Kingdom\\United Kingdom_yld_2yr_best_model.pkl"
+    },
+    "United Kingdom_yld_5yr": {
+        "model_type": "mlp",
+        "model_path": "c:\\Users\\MR99924\\workspace\\vscode\\Projects\\output\\models\\United Kingdom\\United Kingdom_yld_5yr_best_model.pkl"
+    },
+    "United Kingdom_yld_10yr": {
+        "model_type": "mlp",
+        "model_path": "c:\\Users\\MR99924\\workspace\\vscode\\Projects\\output\\models\\United Kingdom\\United Kingdom_yld_10yr_best_model.pkl"
+    },
+    "United Kingdom_yld_30yr": {
+        "model_type": "mlp",
+        "model_path": "c:\\Users\\MR99924\\workspace\\vscode\\Projects\\output\\models\\United Kingdom\\United Kingdom_yld_30yr_best_model.pkl"
+    },
+    "France_yld_2yr": {
+        "model_type": "mlp",
+        "model_path": "c:\\Users\\MR99924\\workspace\\vscode\\Projects\\output\\models\\France\\France_yld_2yr_best_model.pkl"
+    },
+    "France_yld_5yr": {
+        "model_type": "mlp",
+        "model_path": "c:\\Users\\MR99924\\workspace\\vscode\\Projects\\output\\models\\France\\France_yld_5yr_best_model.pkl"
+    },
+    "France_yld_10yr": {
+        "model_type": "mlp",
+        "model_path": "c:\\Users\\MR99924\\workspace\\vscode\\Projects\\output\\models\\France\\France_yld_10yr_best_model.pkl"
+    },
+    "France_yld_30yr": {
+        "model_type": "mlp",
+        "model_path": "c:\\Users\\MR99924\\workspace\\vscode\\Projects\\output\\models\\France\\France_yld_30yr_best_model.pkl"
+    },
+    "Germany_yld_2yr": {
+        "model_type": "mlp",
+        "model_path": "c:\\Users\\MR99924\\workspace\\vscode\\Projects\\output\\models\\Germany\\Germany_yld_2yr_best_model.pkl"
+    },
+    "Germany_yld_5yr": {
+        "model_type": "mlp",
+        "model_path": "c:\\Users\\MR99924\\workspace\\vscode\\Projects\\output\\models\\Germany\\Germany_yld_5yr_best_model.pkl"
+    },
+    "Germany_yld_10yr": {
+        "model_type": "mlp",
+        "model_path": "c:\\Users\\MR99924\\workspace\\vscode\\Projects\\output\\models\\Germany\\Germany_yld_10yr_best_model.pkl"
+    },
+    "Germany_yld_30yr": {
+        "model_type": "mlp",
+        "model_path": "c:\\Users\\MR99924\\workspace\\vscode\\Projects\\output\\models\\Germany\\Germany_yld_30yr_best_model.pkl"
+    },
+    "Italy_yld_2yr": {
+        "model_type": "mlp",
+        "model_path": "c:\\Users\\MR99924\\workspace\\vscode\\Projects\\output\\models\\Italy\\Italy_yld_2yr_best_model.pkl"
+    },
+    "Italy_yld_5yr": {
+        "model_type": "mlp",
+        "model_path": "c:\\Users\\MR99924\\workspace\\vscode\\Projects\\output\\models\\Italy\\Italy_yld_5yr_best_model.pkl"
+    },
+    "Italy_yld_10yr": {
+        "model_type": "mlp",
+        "model_path": "c:\\Users\\MR99924\\workspace\\vscode\\Projects\\output\\models\\Italy\\Italy_yld_10yr_best_model.pkl"
+    },
+    "Italy_yld_30yr": {
+        "model_type": "mlp",
+        "model_path": "c:\\Users\\MR99924\\workspace\\vscode\\Projects\\output\\models\\Italy\\Italy_yld_30yr_best_model.pkl"
+    },
+    "Poland_yld_2yr": {
+        "model_type": "mlp",
+        "model_path": "c:\\Users\\MR99924\\workspace\\vscode\\Projects\\output\\models\\Poland\\Poland_yld_2yr_best_model.pkl"
+    },
+    "Poland_yld_5yr": {
+        "model_type": "mlp",
+        "model_path": "c:\\Users\\MR99924\\workspace\\vscode\\Projects\\output\\models\\Poland\\Poland_yld_5yr_best_model.pkl"
+    },
+    "Poland_yld_10yr": {
+        "model_type": "mlp",
+        "model_path": "c:\\Users\\MR99924\\workspace\\vscode\\Projects\\output\\models\\Poland\\Poland_yld_10yr_best_model.pkl"
+    },
+    "Hungary_yld_2yr": {
+        "model_type": "mlp",
+        "model_path": "c:\\Users\\MR99924\\workspace\\vscode\\Projects\\output\\models\\Hungary\\Hungary_yld_2yr_best_model.pkl"
+    },
+    "Hungary_yld_5yr": {
+        "model_type": "mlp",
+        "model_path": "c:\\Users\\MR99924\\workspace\\vscode\\Projects\\output\\models\\Hungary\\Hungary_yld_5yr_best_model.pkl"
+    },
+    "Hungary_yld_10yr": {
+        "model_type": "mlp",
+        "model_path": "c:\\Users\\MR99924\\workspace\\vscode\\Projects\\output\\models\\Hungary\\Hungary_yld_10yr_best_model.pkl"
+    },
+    "Czechia_yld_2yr": {
+        "model_type": "mlp",
+        "model_path": "c:\\Users\\MR99924\\workspace\\vscode\\Projects\\output\\models\\Czechia\\Czechia_yld_2yr_best_model.pkl"
+    },
+    "Czechia_yld_5yr": {
+        "model_type": "mlp",
+        "model_path": "c:\\Users\\MR99924\\workspace\\vscode\\Projects\\output\\models\\Czechia\\Czechia_yld_5yr_best_model.pkl"
+    },
+    "Czechia_yld_10yr": {
+        "model_type": "mlp",
+        "model_path": "c:\\Users\\MR99924\\workspace\\vscode\\Projects\\output\\models\\Czechia\\Czechia_yld_10yr_best_model.pkl"
+    },
+    "South Africa_yld_2yr": {
+        "model_type": "mlp",
+        "model_path": "c:\\Users\\MR99924\\workspace\\vscode\\Projects\\output\\models\\South Africa\\South Africa_yld_2yr_best_model.pkl"
+    },
+    "South Africa_yld_5yr": {
+        "model_type": "mlp",
+        "model_path": "c:\\Users\\MR99924\\workspace\\vscode\\Projects\\output\\models\\South Africa\\South Africa_yld_5yr_best_model.pkl"
+    },
+    "South Africa_yld_10yr": {
+        "model_type": "mlp",
+        "model_path": "c:\\Users\\MR99924\\workspace\\vscode\\Projects\\output\\models\\South Africa\\South Africa_yld_10yr_best_model.pkl"
+    },
+    "Canada_yld_2yr": {
+        "model_type": "mlp",
+        "model_path": "c:\\Users\\MR99924\\workspace\\vscode\\Projects\\output\\models\\Canada\\Canada_yld_2yr_best_model.pkl"
+    },
+    "Canada_yld_5yr": {
+        "model_type": "mlp",
+        "model_path": "c:\\Users\\MR99924\\workspace\\vscode\\Projects\\output\\models\\Canada\\Canada_yld_5yr_best_model.pkl"
+    },
+    "Canada_yld_10yr": {
+        "model_type": "mlp",
+        "model_path": "c:\\Users\\MR99924\\workspace\\vscode\\Projects\\output\\models\\Canada\\Canada_yld_10yr_best_model.pkl"
+    },
+    "Canada_yld_30yr": {
+        "model_type": "mlp",
+        "model_path": "c:\\Users\\MR99924\\workspace\\vscode\\Projects\\output\\models\\Canada\\Canada_yld_30yr_best_model.pkl"
+    },
+    "Australia_yld_2yr": {
+        "model_type": "mlp",
+        "model_path": "c:\\Users\\MR99924\\workspace\\vscode\\Projects\\output\\models\\Australia\\Australia_yld_2yr_best_model.pkl"
+    },
+    "Australia_yld_5yr": {
+        "model_type": "mlp",
+        "model_path": "c:\\Users\\MR99924\\workspace\\vscode\\Projects\\output\\models\\Australia\\Australia_yld_5yr_best_model.pkl"
+    },
+    "Australia_yld_10yr": {
+        "model_type": "mlp",
+        "model_path": "c:\\Users\\MR99924\\workspace\\vscode\\Projects\\output\\models\\Australia\\Australia_yld_10yr_best_model.pkl"
+    },
+    "Australia_yld_30yr": {
+        "model_type": "mlp",
+        "model_path": "c:\\Users\\MR99924\\workspace\\vscode\\Projects\\output\\models\\Australia\\Australia_yld_30yr_best_model.pkl"
+    },
+    "South Korea_yld_2yr": {
+        "model_type": "mlp",
+        "model_path": "c:\\Users\\MR99924\\workspace\\vscode\\Projects\\output\\models\\South Korea\\South Korea_yld_2yr_best_model.pkl"
+    },
+    "South Korea_yld_5yr": {
+        "model_type": "mlp",
+        "model_path": "c:\\Users\\MR99924\\workspace\\vscode\\Projects\\output\\models\\South Korea\\South Korea_yld_5yr_best_model.pkl"
+    },
+    "South Korea_yld_10yr": {
+        "model_type": "mlp",
+        "model_path": "c:\\Users\\MR99924\\workspace\\vscode\\Projects\\output\\models\\South Korea\\South Korea_yld_10yr_best_model.pkl"
+    },
+    "South Korea_yld_30yr": {
+        "model_type": "mlp",
+        "model_path": "c:\\Users\\MR99924\\workspace\\vscode\\Projects\\output\\models\\South Korea\\South Korea_yld_30yr_best_model.pkl"
+    }
+}

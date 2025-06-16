@@ -1,0 +1,203 @@
+{
+  "country": "United States",
+  "tenor": "yld_10yr",
+  "feature_sources": [
+    "policy_rates",
+    "inflation",
+    "activity",
+    "risk_rating",
+    "unemployment_rate"
+  ],
+  "date_ranges": {
+    "target": {
+      "start": "1990-01-31",
+      "end": "2025-03-31",
+      "count": 423
+    },
+    "policy_rates": {
+      "start": "1990-01-31",
+      "end": "2025-03-31",
+      "count": 423,
+      "columns": [
+        "pol_rat_us"
+      ]
+    },
+    "inflation": {
+      "start": "1947-01-31",
+      "end": "2025-03-31",
+      "count": 939,
+      "columns": [
+        "cpi_inf_us"
+      ]
+    },
+    "activity": {
+      "start": "1990-01-31",
+      "end": "2025-03-31",
+      "count": 423,
+      "columns": [
+        "act_track_us"
+      ]
+    },
+    "risk_rating": {
+      "start": "1986-01-31",
+      "end": "2025-03-31",
+      "count": 471,
+      "columns": [
+        "rating_us"
+      ]
+    },
+    "unemployment_rate": {
+      "start": "1948-01-31",
+      "end": "2025-03-31",
+      "count": 927,
+      "columns": [
+        "u_rat_us"
+      ]
+    }
+  },
+  "feature_counts": {
+    "policy_rates": 1,
+    "inflation": 1,
+    "activity": 1,
+    "risk_rating": 1,
+    "unemployment_rate": 1
+  },
+  "data_quality": {
+    "historical_forecasts_10": {
+      "missing_pct": 0.0,
+      "date_range": "1990-01-31 to 2025-03-31",
+      "columns": [
+        "gdp_forecast_10yr_us",
+        "cpi_forecast_10yr_us"
+      ]
+    },
+    "target": {
+      "missing_pct": 0.0,
+      "date_range": "1990-01-31 to 2025-03-31",
+      "count": 423
+    },
+    "missing_stats": {
+      "missing_count": {
+        "gdp_forecast_10yr_us": 516,
+        "cpi_forecast_10yr_us": 516,
+        "pol_rat_us": 516,
+        "act_track_us": 516,
+        "rating_us": 468,
+        "cpi_inf_us": 12,
+        "u_rat_us": 12
+      },
+      "missing_pct": {
+        "gdp_forecast_10yr_us": 54.9520766773163,
+        "cpi_forecast_10yr_us": 54.9520766773163,
+        "pol_rat_us": 54.9520766773163,
+        "act_track_us": 54.9520766773163,
+        "rating_us": 49.84025559105431,
+        "cpi_inf_us": 1.2779552715654952,
+        "u_rat_us": 1.2779552715654952
+      },
+      "missing_before": {
+        "gdp_forecast_10yr_us": 516,
+        "cpi_forecast_10yr_us": 516,
+        "pol_rat_us": 516,
+        "act_track_us": 516,
+        "rating_us": 468,
+        "cpi_inf_us": 12,
+        "u_rat_us": 12
+      },
+      "missing_after": {
+        "gdp_forecast_10yr_us": 0,
+        "cpi_forecast_10yr_us": 0,
+        "pol_rat_us": 0,
+        "act_track_us": 0,
+        "rating_us": 0,
+        "cpi_inf_us": 0,
+        "u_rat_us": 0
+      }
+    },
+    "total_missing_before": 2556,
+    "total_missing_after": 0,
+    "rows_before": 939,
+    "rows_after": 939
+  },
+  "feature_engineering": {
+    "count": 7,
+    "types": {
+      "yield_curve": 0
+    },
+    "calendar_features": [
+      "quarter",
+      "year",
+      "day_of_month",
+      "is_month_end",
+      "is_quarter_end",
+      "is_year_end",
+      "month_sin",
+      "month_cos",
+      "day_of_week_sin",
+      "day_of_week_cos"
+    ]
+  },
+  "target_column": "yld_10yr_us",
+  "total_features": 7,
+  "feature_columns": [
+    "gdp_forecast_10yr_us",
+    "cpi_forecast_10yr_us",
+    "pol_rat_us",
+    "cpi_inf_us",
+    "act_track_us",
+    "rating_us",
+    "u_rat_us"
+  ],
+  "combined_date_range": {
+    "start": "1947-01-31",
+    "end": "2025-03-31",
+    "count": 939
+  },
+  "clean_date_range": {
+    "start": "1947-01-31",
+    "end": "2025-03-31",
+    "count": 939
+  },
+  "enhanced_features": [
+    "gdp_forecast_10yr_us",
+    "cpi_forecast_10yr_us",
+    "pol_rat_us",
+    "cpi_inf_us",
+    "act_track_us",
+    "rating_us",
+    "u_rat_us"
+  ],
+  "feature_correlations": {
+    "pol_rat_us": 0.8279,
+    "rating_us": 0.6051,
+    "cpi_forecast_10yr_us": 0.4788,
+    "gdp_forecast_10yr_us": 0.2991,
+    "cpi_inf_us": 0.2855,
+    "u_rat_us": 0.1161,
+    "act_track_us": 0.0756
+  },
+  "overlap_diagnosis": {
+    "target_earliest": "1990-01-31",
+    "target_latest": "2025-03-31",
+    "features_earliest": "1947-01-31",
+    "features_latest": "2025-03-31",
+    "overlapping_earliest": "1990-01-31",
+    "overlapping_latest": "2025-03-31",
+    "target_count": 423,
+    "features_count": 939,
+    "common_count": 423,
+    "issue": "None"
+  },
+  "feature_quality": {
+    "low_variance_features": []
+  },
+  "target_stats": {
+    "min": 0.6207387096774193,
+    "max": 8.869333333333334,
+    "mean": 4.2398314968161674,
+    "median": 4.149073333333335,
+    "std": 1.9582064590016917,
+    "skew": 0.32318359666183116,
+    "kurt": -0.7092826808025081
+  }
+}

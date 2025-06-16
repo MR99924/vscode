@@ -1,0 +1,315 @@
+Sensitivity Analysis Summary
+==========================
+
+Total Models: 44
+Analyzed Models: 44
+
+Top Features by Absolute Impact
+
+Australia_yld_10yr:
+  pol_rat_au: -145.1554 (±77.5888)
+  rating_au: -55.3663 (±29.5946)
+  cpi_forecast_10yr_au: 21.7084 (±11.6036)
+  gdp_forecast_10yr_au: -19.4626 (±10.4032)
+  u_rat_au: 15.7595 (±8.4238)
+
+Australia_yld_2yr:
+  pol_rat_au: -173.9719 (±92.9919)
+  u_rat_au: -25.2308 (±13.4865)
+  gdp_forecast_2yr_au: -9.2083 (±4.9220)
+  act_track_au: -6.6574 (±3.5585)
+  pol_rat_us: -5.1261 (±2.7400)
+
+Australia_yld_30yr:
+  u_rat_au: 29.8182 (±15.9385)
+  pol_rat_au: -28.6236 (±15.3000)
+  pol_rat_us: -2.7823 (±1.4872)
+  gdp_forecast_30yr_au: -0.0000 (±0.0000)
+  cpi_forecast_30yr_au: -0.0000 (±0.0000)
+
+Australia_yld_5yr:
+  cpi_inf_au: -0.0413 (±0.0013)
+  pol_rat_us: -0.0053 (±0.0000)
+  rating_au: -0.0036 (±0.0000)
+  pol_rat_au: 0.0030 (±0.0000)
+  gdp_forecast_5yr_au: 0.0000 (±0.0000)
+
+Canada_yld_10yr:
+  cpi_forecast_10yr_ca: 428.8494 (±229.2297)
+  rating_ca: 118.4373 (±68.1660)
+  gdp_forecast_10yr_ca: 117.9593 (±71.1412)
+  u_rat_ca: -59.6401 (±34.9560)
+  pol_rat_us: 46.3943 (±24.8167)
+
+Canada_yld_2yr:
+  pol_rat_ca: -86.4090 (±46.1876)
+  u_rat_ca: -62.2727 (±33.2862)
+  pol_rat_us: -44.7514 (±23.9206)
+  gdp_forecast_2yr_ca: -1.9094 (±1.0206)
+  cpi_forecast_2yr_ca: 0.0000 (±0.0000)
+
+Canada_yld_30yr:
+  pol_rat_ca: -0.1730 (±0.0000)
+  pol_rat_us: 0.0989 (±0.0000)
+  act_track_ca: 0.0759 (±0.0076)
+  cpi_inf_ca: -0.0134 (±0.0006)
+  rating_ca: 0.0066 (±0.0000)
+
+Canada_yld_5yr:
+  u_rat_ca: -159.4633 (±85.2367)
+  pol_rat_ca: -129.6785 (±69.3161)
+  rating_ca: -55.3823 (±29.6031)
+  gdp_forecast_5yr_ca: -20.6751 (±11.0513)
+  cpi_forecast_5yr_ca: -6.5196 (±3.4849)
+
+Czechia_yld_10yr:
+  cpi_inf_cz: -0.3564 (±0.0013)
+  act_track_cz: -0.1755 (±0.0078)
+  pol_rat_cz: -0.1112 (±0.0066)
+  gdp_forecast_10yr_cz: 0.0147 (±0.0000)
+  cpi_forecast_10yr_cz: 0.0000 (±0.0000)
+
+Czechia_yld_2yr:
+  pol_rat_cz: -71.8295 (±38.3945)
+  u_rat_cz: -54.4276 (±29.0928)
+  gdp_forecast_2yr_cz: -8.0974 (±4.3283)
+  cpi_forecast_2yr_cz: 6.5849 (±3.5198)
+  pol_rat_us: -3.1006 (±1.6574)
+
+Czechia_yld_5yr:
+  rating_cz: -273.7872 (±146.3454)
+  pol_rat_cz: -82.6662 (±44.1869)
+  u_rat_cz: -30.6371 (±16.3762)
+  gdp_forecast_5yr_cz: -20.3354 (±10.8697)
+  pol_rat_us: 8.3744 (±4.4763)
+
+France_yld_10yr:
+  cpi_inf_fr: 0.3708 (±0.0094)
+  pol_rat_fr: -0.3601 (±0.0000)
+  rating_fr: 0.1274 (±0.0000)
+  act_track_fr: 0.0050 (±0.0003)
+  pol_rat_us: 0.0019 (±0.0000)
+
+France_yld_2yr:
+  pol_rat_fr: -0.4424 (±0.0000)
+  cpi_inf_fr: 0.2776 (±0.0044)
+  gdp_forecast_2yr_fr: 0.0764 (±0.0004)
+  cpi_forecast_2yr_fr: -0.0415 (±0.0026)
+  pol_rat_us: -0.0356 (±0.0000)
+
+France_yld_30yr:
+  cpi_inf_fr: 0.2520 (±0.0037)
+  pol_rat_fr: -0.1278 (±0.0000)
+  rating_fr: 0.1101 (±0.0012)
+  act_track_fr: 0.0287 (±0.0000)
+  pol_rat_us: -0.0092 (±0.0000)
+
+France_yld_5yr:
+  pol_rat_fr: -0.5500 (±0.0000)
+  cpi_inf_fr: 0.4393 (±0.0087)
+  pol_rat_us: -0.0285 (±0.0000)
+  rating_fr: 0.0149 (±0.0000)
+  gdp_forecast_5yr_fr: 0.0050 (±0.0000)
+
+Germany_yld_10yr:
+  pol_rat_de: -0.6721 (±0.0000)
+  cpi_inf_de: 0.1703 (±0.0021)
+  act_track_de: -0.1478 (±0.0000)
+  gdp_forecast_10yr_de: -0.0501 (±0.0000)
+  cpi_forecast_10yr_de: 0.0000 (±0.0000)
+
+Germany_yld_2yr:
+  u_rat_de: 34.9934 (±18.9221)
+  pol_rat_de: -30.3670 (±17.6528)
+  cpi_inf_de: 19.4963 (±11.5053)
+  pol_rat_us: 15.9364 (±9.8511)
+  cpi_forecast_2yr_de: 4.4170 (±2.9692)
+
+Germany_yld_30yr:
+  pol_rat_de: -0.7454 (±0.0000)
+  act_track_de: -0.1073 (±0.0012)
+  cpi_inf_de: -0.0284 (±0.0030)
+  pol_rat_us: -0.0259 (±0.0000)
+  gdp_forecast_30yr_de: 0.0000 (±0.0000)
+
+Germany_yld_5yr:
+  pol_rat_de: -0.5060 (±0.0000)
+  cpi_inf_de: 0.4451 (±0.0129)
+  gdp_forecast_5yr_de: -0.0057 (±0.0000)
+  pol_rat_us: -0.0006 (±0.0000)
+  cpi_forecast_5yr_de: 0.0000 (±0.0000)
+
+Hungary_yld_10yr:
+  pol_rat_hu: -149.9286 (±80.1402)
+  rating_hu: 114.2087 (±61.0471)
+  u_rat_hu: -74.4748 (±39.8084)
+  cpi_forecast_10yr_hu: -43.7687 (±23.3953)
+  pol_rat_us: 11.4187 (±6.1035)
+
+Hungary_yld_2yr:
+  cpi_forecast_2yr_hu: -0.3710 (±0.0000)
+  pol_rat_hu: -0.1754 (±0.0000)
+  act_track_hu: 0.0607 (±0.0005)
+  gdp_forecast_2yr_hu: -0.0423 (±0.0012)
+  pol_rat_us: 0.0232 (±0.0000)
+
+Hungary_yld_5yr:
+  rating_hu: 243.0206 (±129.9000)
+  pol_rat_hu: -189.4121 (±101.2450)
+  u_rat_hu: -67.2091 (±35.9248)
+  cpi_forecast_5yr_hu: -24.8579 (±13.2871)
+  pol_rat_us: 15.6154 (±8.3468)
+
+Italy_yld_10yr:
+  rating_it: 139.1520 (±75.3363)
+  gdp_forecast_10yr_it: 68.0197 (±38.5553)
+  pol_rat_us: 30.1342 (±17.2706)
+  cpi_forecast_10yr_it: 29.4191 (±16.1455)
+  u_rat_it: -12.2378 (±7.4146)
+
+Italy_yld_2yr:
+  u_rat_it: 173.3133 (±92.6878)
+  pol_rat_us: 41.3186 (±23.3892)
+  cpi_forecast_2yr_it: -38.7895 (±20.0944)
+  pol_rat_it: -18.2463 (±8.5636)
+  gdp_forecast_2yr_it: -8.9078 (±4.7234)
+
+Italy_yld_30yr:
+  u_rat_it: -118.6192 (±63.4046)
+  cpi_forecast_30yr_it: -116.6020 (±62.3264)
+  rating_it: 107.5083 (±57.4656)
+  gdp_forecast_30yr_it: 45.6120 (±24.3806)
+  pol_rat_it: -30.3265 (±16.2102)
+
+Italy_yld_5yr:
+  u_rat_it: 198.4961 (±106.2895)
+  rating_it: 190.0123 (±102.3550)
+  pol_rat_us: 48.6890 (±29.4320)
+  pol_rat_it: 30.5137 (±18.6968)
+  cpi_forecast_5yr_it: -29.5601 (±15.1638)
+
+Poland_yld_10yr:
+  pol_rat_pl: -165.0633 (±88.2301)
+  u_rat_pl: -73.2490 (±39.1532)
+  rating_pl: -52.8552 (±28.2523)
+  gdp_forecast_10yr_pl: 35.7416 (±19.1047)
+  cpi_forecast_10yr_pl: 24.7746 (±13.2426)
+
+Poland_yld_2yr:
+  pol_rat_pl: -249.5305 (±133.3797)
+  u_rat_pl: -56.5989 (±30.2534)
+  act_track_pl: -20.5045 (±10.9601)
+  cpi_inf_pl: -12.3995 (±6.6278)
+  gdp_forecast_2yr_pl: 6.6859 (±3.5738)
+
+Poland_yld_5yr:
+  rating_pl: 252.5872 (±135.0135)
+  pol_rat_pl: -195.8201 (±104.6702)
+  u_rat_pl: -76.9148 (±41.1127)
+  gdp_forecast_5yr_pl: 38.7490 (±20.7122)
+  cpi_forecast_5yr_pl: -11.1273 (±5.9478)
+
+South Africa_yld_10yr:
+  rating_za: -328.6298 (±175.6600)
+  pol_rat_za: -204.9554 (±109.5533)
+  u_rat_za: -91.4657 (±48.8905)
+  gdp_forecast_10yr_za: -63.3874 (±33.8820)
+  cpi_inf_za: 19.4276 (±10.3845)
+
+South Africa_yld_2yr:
+  cpi_inf_za: 0.3969 (±0.0000)
+  pol_rat_us_influence: -0.1119 (±0.0000)
+  pol_rat_us: -0.0515 (±0.0002)
+  act_track_za: 0.0105 (±0.0025)
+  cpi_forecast_2yr_za: -0.0017 (±0.0000)
+
+South Africa_yld_5yr:
+  gdp_forecast_5yr_za: -0.0759 (±0.0000)
+  pol_rat_us_influence: -0.0239 (±0.0000)
+  cpi_inf_za: 0.0205 (±0.0000)
+  pol_rat_us: -0.0110 (±0.0006)
+  cpi_forecast_5yr_za: 0.0000 (±0.0000)
+
+South Korea_yld_10yr:
+  pol_rat_kr: -0.0471 (±0.0000)
+  gdp_forecast_10yr_kr: -0.0338 (±0.0000)
+  pol_rat_us: -0.0225 (±0.0004)
+  act_track_kr: -0.0093 (±0.0000)
+  cpi_inf_kr: 0.0084 (±0.0022)
+
+South Korea_yld_2yr:
+  pol_rat_kr: -53.0750 (±28.1122)
+  pol_rat_us_influence: 41.4134 (±22.5547)
+  pol_rat_us: 23.6471 (±12.6144)
+  cpi_inf_kr: 21.2012 (±11.9614)
+  gdp_forecast_2yr_kr: 19.2903 (±10.4202)
+
+South Korea_yld_30yr:
+  rating_kr: -168.9037 (±90.2828)
+  gdp_forecast_30yr_kr: 59.0869 (±31.5833)
+  cpi_forecast_30yr_kr: -41.4470 (±22.1544)
+  pol_rat_kr: -36.5921 (±19.5593)
+  cpi_inf_kr: 7.5067 (±4.0125)
+
+South Korea_yld_5yr:
+  rating_kr: -215.6392 (±115.2640)
+  pol_rat_kr: -35.0364 (±18.7277)
+  u_rat_kr: -27.7119 (±14.8127)
+  pol_rat_us: -12.3804 (±6.6176)
+  cpi_forecast_5yr_kr: -11.8763 (±6.3481)
+
+United Kingdom_yld_10yr:
+  pol_rat_gb: -0.0814 (±0.0000)
+  cpi_inf_gb: 0.0279 (±0.0003)
+  rating_gb: -0.0068 (±0.0011)
+  act_track_gb: -0.0014 (±0.0000)
+  gdp_forecast_10yr_gb: 0.0000 (±0.0000)
+
+United Kingdom_yld_2yr:
+  pol_rat_gb: -106.2377 (±54.8797)
+  pol_rat_us: 59.0653 (±30.9478)
+  u_rat_gb: -13.3931 (±5.2119)
+  cpi_forecast_2yr_gb: 8.0380 (±3.9770)
+  gdp_forecast_2yr_gb: 5.0677 (±4.0587)
+
+United Kingdom_yld_30yr:
+  cpi_forecast_30yr_gb: -235.9684 (±126.1304)
+  u_rat_gb: -154.9116 (±82.8037)
+  pol_rat_gb: -110.2926 (±58.9539)
+  gdp_forecast_30yr_gb: 40.1581 (±21.4654)
+  pol_rat_us: 19.7355 (±10.5491)
+
+United Kingdom_yld_5yr:
+  pol_rat_gb: -0.3122 (±0.0000)
+  cpi_inf_gb: 0.1300 (±0.0094)
+  gdp_forecast_5yr_gb: 0.0049 (±0.0000)
+  rating_gb: -0.0031 (±0.0006)
+  pol_rat_us: 0.0005 (±0.0000)
+
+United States_yld_10yr:
+  act_track_us: -0.3446 (±0.0018)
+  cpi_inf_us: 0.0537 (±0.0030)
+  pol_rat_us: -0.0172 (±0.0000)
+  rating_us: -0.0155 (±0.0000)
+  gdp_forecast_10yr_us: 0.0000 (±0.0000)
+
+United States_yld_2yr:
+  pol_rat_us: -142.1022 (±75.9568)
+  cpi_forecast_2yr_us: -10.8097 (±5.7780)
+  gdp_forecast_2yr_us: -9.2364 (±4.9370)
+  u_rat_us: -9.1354 (±4.8831)
+  act_track_us: -2.2360 (±1.1952)
+
+United States_yld_30yr:
+  rating_us: 188.2625 (±100.6305)
+  cpi_forecast_30yr_us: -169.9126 (±90.8221)
+  u_rat_us: -89.2884 (±47.7267)
+  pol_rat_us: -86.2599 (±46.1079)
+  gdp_forecast_30yr_us: -64.2964 (±34.3679)
+
+United States_yld_5yr:
+  cpi_inf_us: 0.2059 (±0.0127)
+  gdp_forecast_5yr_us: 0.1453 (±0.0000)
+  pol_rat_us: -0.0862 (±0.0000)
+  cpi_forecast_5yr_us: 0.0000 (±0.0000)
+  rating_us: 0.0000 (±0.0000)

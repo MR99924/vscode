@@ -1,0 +1,8 @@
+{
+    "country": "South Africa",
+    "tenor": "yld_5yr",
+    "model_type": "mlp",
+    "data_points": 308,
+    "features": 6,
+    "date_range": "1999-11-30 to 2025-06-30"
+}

@@ -21,7 +21,7 @@ from sklearn.model_selection import TimeSeriesSplit, GridSearchCV, RandomizedSea
 from sklearn.metrics import mean_squared_error, r2_score, mean_absolute_error
 from sklearn.preprocessing import StandardScaler
 from sklearn.neural_network import MLPRegressor
-from sklearn.ensemble import GradientBoostingRegressor, RandomForestRegressor
+from sklearn.ensemble import GradientBoostingRegressor
 from sklearn.linear_model import ElasticNet
 import xgboost as xgb
 import joblib

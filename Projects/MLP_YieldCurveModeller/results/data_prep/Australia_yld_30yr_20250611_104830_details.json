@@ -1,0 +1,151 @@
+{
+  "country": "Australia",
+  "tenor": "yld_30yr",
+  "feature_sources": [
+    "policy_rates",
+    "inflation",
+    "activity",
+    "risk_rating",
+    "unemployment_rate"
+  ],
+  "date_ranges": {
+    "target": {
+      "start": "2016-10-31",
+      "end": "2025-06-30",
+      "count": 105
+    },
+    "policy_rates": {
+      "start": "1990-01-31",
+      "end": "2025-06-30",
+      "count": 426,
+      "columns": [
+        "pol_rat_au",
+        "pol_rat_us"
+      ]
+    },
+    "activity": {
+      "start": "1990-01-31",
+      "end": "2025-06-30",
+      "count": 426,
+      "columns": [
+        "act_track_au"
+      ]
+    },
+    "risk_rating": {
+      "start": "1986-01-31",
+      "end": "2025-05-31",
+      "count": 473,
+      "columns": [
+        "rating_au"
+      ]
+    },
+    "unemployment_rate": {
+      "start": "1948-01-31",
+      "end": "2025-05-31",
+      "count": 929,
+      "columns": [
+        "u_rat_au"
+      ]
+    }
+  },
+  "feature_counts": {
+    "policy_rates": 2,
+    "activity": 1,
+    "risk_rating": 1,
+    "unemployment_rate": 1
+  },
+  "data_quality": {
+    "target": {
+      "missing_pct": 75.35211267605634,
+      "date_range": "2016-10-31 to 2025-06-30",
+      "count": 105
+    },
+    "missing_stats": {
+      "missing_count": {
+        "act_track_au": 590,
+        "pol_rat_au": 504,
+        "pol_rat_us": 504,
+        "rating_au": 457,
+        "u_rat_au": 362
+      },
+      "missing_pct": {
+        "act_track_au": 63.44086021505376,
+        "pol_rat_au": 54.19354838709678,
+        "pol_rat_us": 54.19354838709678,
+        "rating_au": 49.13978494623656,
+        "u_rat_au": 38.924731182795696
+      },
+      "missing_before": {
+        "act_track_au": 590,
+        "pol_rat_au": 504,
+        "pol_rat_us": 504,
+        "rating_au": 457,
+        "u_rat_au": 362
+      },
+      "missing_after": {
+        "act_track_au": 0,
+        "pol_rat_au": 0,
+        "pol_rat_us": 0,
+        "rating_au": 0,
+        "u_rat_au": 0
+      }
+    },
+    "total_missing_before": 2417,
+    "total_missing_after": 0,
+    "rows_before": 930,
+    "rows_after": 930
+  },
+  "feature_engineering": {},
+  "target_column": "yld_30yr_au",
+  "total_features": 5,
+  "feature_columns": [
+    "pol_rat_au",
+    "pol_rat_us",
+    "act_track_au",
+    "rating_au",
+    "u_rat_au"
+  ],
+  "combined_date_range": {
+    "start": "1948-01-31",
+    "end": "2025-06-30",
+    "count": 930
+  },
+  "clean_date_range": {
+    "start": "2016-10-31",
+    "end": "2025-06-30",
+    "count": 105
+  },
+  "overlap_diagnosis": {
+    "target_earliest": "2016-10-31",
+    "target_latest": "2025-06-30",
+    "features_earliest": "1948-01-31",
+    "features_latest": "2025-06-30",
+    "overlapping_earliest": "2016-10-31",
+    "overlapping_latest": "2025-06-30",
+    "target_count": 105,
+    "features_count": 930,
+    "common_count": 105,
+    "issue": "None"
+  },
+  "feature_correlations": {
+    "pol_rat_au": 0.8774,
+    "pol_rat_us": 0.7686,
+    "u_rat_au": 0.6786,
+    "act_track_au": 0.0249,
+    "rating_au": 0.0
+  },
+  "feature_quality": {
+    "low_variance_features": [
+      "rating_au"
+    ]
+  },
+  "target_stats": {
+    "min": 1.5782,
+    "max": 5.016272727272727,
+    "mean": 3.3037553506224624,
+    "median": 3.3399090909090905,
+    "std": 1.057653040819881,
+    "skew": -0.05347916687439453,
+    "kurt": -1.1645159543148482
+  }
+}

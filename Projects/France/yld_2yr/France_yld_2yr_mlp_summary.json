@@ -1,0 +1,8 @@
+{
+    "country": "France",
+    "tenor": "yld_2yr",
+    "model_type": "mlp",
+    "data_points": 419,
+    "features": 5,
+    "date_range": "1990-08-31 to 2025-06-30"
+}

@@ -33,60 +33,55 @@ model_predictions = {}
 all_fitted_values = {}
 
 def get_bloomberg_date(bbg_client, tickers, date_from, date_to, field="PX_LAST", periodicity="DAILY"):
-    """
-    Fetch data from Bloomberg for the given tickers and date range.
-    
-    Parameters:
-        bbg_client: Bloomberg client instance
-        tickers: list - List of Bloomberg tickers
-        date_from: datetime.date - Start date for data
-        date_to: datetime.date - End date for data
-        field: str - Bloomberg field (default: "PX_LAST")
-        periodicity: str - Data frequency (default: "DAILY")
-        
-    Returns:
-        DataFrame: Data for requested tickers and date range
-    """
+    """ Fetch data from Bloomberg with pandas 2.0+ compatibility. """
     try:
+        print(bbg_client)
+
         if bbg_client is None:
             logger.error("Bloomberg client is None")
             return pd.DataFrame(index=pd.date_range(date_from, date_to))
-        
-        df = bbg_client.historicalRequest(tickers,
-                                field,
-                                date_from,
-                                date_to,
-                                periodicitySelection=periodicity,
-                                nonTradingDayFillOption="ALL_CALENDAR_DAYS",
-                                nonTradingDayFillMethod="PREVIOUS_VALUE",
-                                )
-        
-        # Pivot the data to get a clean dataframe with dates as index
-        df = pd.pivot_table(df,
-                        values='bbergvalue',
-                        index=['bbergdate'],
-                        columns=['bbergsymbol'],
-                        aggfunc=np.max,
-                        )
-        
-        # Ensure all requested tickers are in the final DataFrame
+
+        # Temporarily suppress the append warning/error
+        import warnings
+        with warnings.catch_warnings():
+            warnings.simplefilter("ignore")
+
+            # Try the Bloomberg request
+                       
+            df = bbg_client.historicalRequest(
+                tickers,
+                field,
+                date_from,
+                date_to,
+                periodicitySelection=periodicity
+            )
+
+            print(df)
+
+        # Process the returned data
+        if hasattr(df, 'pivot_table'):
+            df = pd.pivot_table(df, values='bbergvalue', index=['bbergdate'], columns=['bbergsymbol'], aggfunc='first', # Changed from np.max
+            )
+
+        # Rest of your existing code...
         for ticker in tickers:
             if ticker not in df.columns:
                 logger.warning(f"Ticker {ticker} not found in Bloomberg data")
-        
-        # Keep only the requested tickers that were found
+
         existing_tickers = [t for t in tickers if t in df.columns]
         if existing_tickers:
             df = df[existing_tickers]
         else:
             logger.warning("None of the requested tickers were found")
             df = pd.DataFrame(index=pd.date_range(date_from, date_to))
-        
+
         return df
-    
+
     except Exception as e:
         logger.error(f"Error fetching Bloomberg data: {e}")
+        # Return empty DataFrame with proper date index as fallback
         return pd.DataFrame(index=pd.date_range(date_from, date_to))
+    
 
 def show_popup_alert(title, message):
     """
@@ -469,7 +464,7 @@ def safe_r2_score(y_true, y_pred, fallback_value=0.0):
         return fallback_value
     
 
-def train_evaluate_model(bbg_client, mb_client, country, tenor_name, country_code_mapping, tenor_data, pol_rat, cpi_inf, iip_gdp,
+def train_evaluate_model(country, tenor_name, country_code_mapping, tenor_data, pol_rat, cpi_inf, iip_gdp,
                         act_track, risk_rating, historical_forecasts, unemployment_rate, model_type, 
                         predicted_yields=None, use_advanced_training=True, compare_models=False, 
                         optimize_params=True, output_dir=None, use_yield_curve_models=True):
@@ -862,7 +857,7 @@ def handle_model_comparison(results, x, y, model_type, country, tenor_name):
         
         # Add GP model if data size is reasonable (GP can be slow with large datasets)
         if len(x) < 1000:
-            models_to_train.append('gp')
+            models_to_train.concat('gp')
         
         # Make sure we're not duplicating the current model
         if model_type in models_to_train:
@@ -1452,7 +1447,7 @@ def fetch_yield_data(bbg_client, dt_from, dt_to):
         periodicity=config.BLOOMBERG_DAILY_PERIODICITY
     )
     yld_2yr = yld_2yr.rename(columns=config.COLUMN_MAPPINGS['bond_yield_2yr'])
-    yld_2yr_ann = yld_2yr.resample('M').mean()
+    yld_2yr_ann = yld_2yr.resample('ME').mean()
     yield_data['yld_2yr'] = yld_2yr
     yield_data['yld_2yr_ann'] = yld_2yr_ann
     
@@ -1464,7 +1459,7 @@ def fetch_yield_data(bbg_client, dt_from, dt_to):
         periodicity=config.BLOOMBERG_DAILY_PERIODICITY
     )
     yld_5yr = yld_5yr.rename(columns=config.COLUMN_MAPPINGS['bond_yield_5yr'])
-    yld_5yr_ann = yld_5yr.resample('M').mean()
+    yld_5yr_ann = yld_5yr.resample('ME').mean()
     yield_data['yld_5yr'] = yld_5yr
     yield_data['yld_5yr_ann'] = yld_5yr_ann
     
@@ -1476,7 +1471,7 @@ def fetch_yield_data(bbg_client, dt_from, dt_to):
         periodicity=config.BLOOMBERG_DAILY_PERIODICITY
     )
     yld_10yr = yld_10yr.rename(columns=config.COLUMN_MAPPINGS['bond_yield_10yr'])
-    yld_10yr_ann = yld_10yr.resample('M').mean()
+    yld_10yr_ann = yld_10yr.resample('ME').mean()
     yield_data['yld_10yr'] = yld_10yr
     yield_data['yld_10yr_ann'] = yld_10yr_ann
     
@@ -1488,7 +1483,7 @@ def fetch_yield_data(bbg_client, dt_from, dt_to):
         periodicity=config.BLOOMBERG_DAILY_PERIODICITY
     )
     yld_30yr = yld_30yr.rename(columns=config.COLUMN_MAPPINGS['bond_yield_30yr'])
-    yld_30yr_ann = yld_30yr.resample('M').mean()
+    yld_30yr_ann = yld_30yr.resample('ME').mean()
     yield_data['yld_30yr'] = yld_30yr
     yield_data['yld_30yr_ann'] = yld_30yr_ann
     
@@ -1503,7 +1498,7 @@ def fetch_policy_rate_data(bbg_client, dt_from, dt_to):
         periodicity=config.BLOOMBERG_DAILY_PERIODICITY
     )
     pol_rat = pol_rat.rename(columns=config.COLUMN_MAPPINGS['policy_rates'])
-    pol_rat = pol_rat.resample('M').mean()
+    pol_rat = pol_rat.resample('ME').mean()
     return pol_rat
 
 def fetch_activity_data(bbg_client, dt_from, dt_to):
@@ -1517,7 +1512,7 @@ def fetch_activity_data(bbg_client, dt_from, dt_to):
     act_track = act_track.rename(columns=config.COLUMN_MAPPINGS['activity'])
     if not act_track.empty:
         act_track.index = act_track.index.to_period("M").to_timestamp("M")
-        act_track = act_track.resample('M').first().ffill()
+        act_track = act_track.resample('ME').first().ffill()
         act_track.index = pd.DatetimeIndex(act_track.index.strftime('%Y-%m-%d'))
     return act_track
 
@@ -1529,8 +1524,8 @@ def fetch_inflation_data(mb_client):
             return pd.DataFrame()
         
         cpi_inf = mb_client.FetchSeries(list(config.cpi_inf_tickers.keys()))
-        cpi_inf = cpi_inf.rename(columns=config.COLUMN_MAPPINGS['cpi_forecast'])
-        cpi_inf = cpi_inf.resample('M').mean()
+        cpi_inf = cpi_inf.rename(columns=config.COLUMN_MAPPINGS['cpi_inf'])
+        cpi_inf = cpi_inf.resample('ME').mean()
         cpi_inf = cpi_inf.pct_change(periods=12) * 100  # Convert to year-over-year percentage change
         return cpi_inf
     except Exception as e:
@@ -1546,7 +1541,7 @@ def fetch_unemployment_data(mb_client):
         
         unemployment_rate = mb_client.FetchSeries(list(config.unemployment_tickers.keys()))
         unemployment_rate = unemployment_rate.rename(columns=config.COLUMN_MAPPINGS['unemployment_rate'])
-        unemployment_rate = unemployment_rate.resample('M').mean()
+        unemployment_rate = unemployment_rate.resample('ME').mean()
         return unemployment_rate
     except Exception as e:
         logger.error(f"Error fetching unemployment data: {e}")
@@ -1559,9 +1554,14 @@ def fetch_iip_gdp_data(mb_client):
             logger.error("Macrobond client is None")
             return pd.DataFrame()
         
+        logger.info(f"config.iip_gdp_tickers exists: {hasattr(config, 'iip_gdp_tickers')}")
+        if hasattr(config, 'iip_gdp_tickers'):
+            logger.info(f"config.iip_gdp_tickers type: {type(config.iip_gdp_tickers)}")
+            logger.info(f"config.iip_gdp_tickers value: {config.iip_gdp_tickers}")
+        
         iip_gdp = mb_client.FetchSeries(list(config.iip_gdp_tickers.keys()))
         iip_gdp = iip_gdp.rename(columns=config.COLUMN_MAPPINGS['iip_gdp'])
-        iip_gdp = iip_gdp.resample('M').mean()
+        iip_gdp = iip_gdp.resample('ME').mean()
         return iip_gdp
     except Exception as e:
         logger.error(f"Error fetching IIP/GDP data: {e}")
@@ -1578,17 +1578,17 @@ def fetch_risk_rating_data(mb_client):
         m_rating = mb_client.FetchSeries(list(config.moodys_rating_tickers.keys()))
         m_rating.index.name = "Date"
         m_rating = m_rating.rename(columns=config.COLUMN_MAPPINGS['moody_ratings'])
-        m_rating = m_rating.resample('M').mean()
+        m_rating = m_rating.resample('ME').mean()
         
         f_rating = mb_client.FetchSeries(list(config.fitch_rating_tickers.keys()))
         f_rating.index.name = "Date"
         f_rating = f_rating.rename(columns=config.COLUMN_MAPPINGS['fitch_ratings'])
-        f_rating = f_rating.resample('M').mean()
+        f_rating = f_rating.resample('ME').mean()
         
         s_rating = mb_client.FetchSeries(list(config.sp_rating_tickers.keys()))
         s_rating.index.name = "Date"
         s_rating = s_rating.rename(columns=config.COLUMN_MAPPINGS['sp_ratings'])
-        s_rating = s_rating.resample('M').mean()
+        s_rating = s_rating.resample('ME').mean()
         
         # Calculate consolidated risk rating
         if not m_rating.empty and not s_rating.empty and not f_rating.empty:
@@ -1613,13 +1613,13 @@ def fetch_risk_rating_data(mb_client):
         logger.error(f"Error fetching credit rating data: {e}")
         return pd.DataFrame()
 
-def forward_fill_to_current_date(df, freq='M'):
+def forward_fill_to_current_date(df, freq='ME'):
     """
     Forward-fill a DataFrame to the current date
     
     Parameters:
         df: DataFrame - DataFrame to forward-fill
-        freq: str - Frequency for date_range ('M' for monthly, 'D' for daily)
+        freq: str - Frequency for date_range ('ME' for monthly, 'D' for daily)
         
     Returns:
         DataFrame: Forward-filled DataFrame
@@ -1718,13 +1718,13 @@ def calculate_model_scores(successful_models):
         'elasticnet': 1,    # Linear models are simplest
         'ridge': 1,
         'lasso': 1,
-        'nelson_siegel': 2, # Domain-specific models
-        'gbm': 3,           # Tree-based models
-        'randomforest': 3,
-        'xgboost': 3,
-        'mlp': 4,           # Neural networks
-        'gp': 4,            # Gaussian Process
-        'ensemble': 5       # Ensemble methods most complex
+        'nelson_siegel': 1, # Domain-specific models
+        'gbm': 1,           # Tree-based models
+        'randomforest': 1,
+        'xgboost': 1,
+        'mlp': 1,           # Neural networks
+        'gp': 1,            # Gaussian Process
+        'ensemble': 1       # Ensemble methods most complex
     }
     
     model_scores = {}

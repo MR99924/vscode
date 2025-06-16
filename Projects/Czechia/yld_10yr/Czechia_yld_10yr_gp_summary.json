@@ -1,0 +1,12 @@
+{
+    "country": "Czechia",
+    "tenor": "yld_10yr",
+    "model_type": "gp",
+    "data_points": 220,
+    "features": 7,
+    "date_range": "2007-03-31 to 2025-06-30",
+    "train_rmse": null,
+    "train_r2": null,
+    "test_rmse": null,
+    "test_r2": null
+}

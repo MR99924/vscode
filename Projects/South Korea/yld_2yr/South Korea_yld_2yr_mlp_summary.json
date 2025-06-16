@@ -1,0 +1,8 @@
+{
+    "country": "South Korea",
+    "tenor": "yld_2yr",
+    "model_type": "mlp",
+    "data_points": 309,
+    "features": 6,
+    "date_range": "1999-10-31 to 2025-06-30"
+}

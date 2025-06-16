@@ -1,0 +1,8 @@
+{
+    "country": "Italy",
+    "tenor": "yld_2yr",
+    "model_type": "gbm",
+    "data_points": 308,
+    "features": 5,
+    "date_range": "1999-11-30 to 2025-06-30"
+}

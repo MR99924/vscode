@@ -1,0 +1,174 @@
+{
+  "country": "United States",
+  "tenor": "yld_5yr",
+  "feature_sources": [
+    "policy_rates",
+    "inflation",
+    "risk_rating",
+    "unemployment_rate"
+  ],
+  "date_ranges": {
+    "target": {
+      "start": "1990-01-31",
+      "end": "2025-04-30",
+      "count": 424
+    },
+    "policy_rates": {
+      "start": "1990-01-31",
+      "end": "2025-04-30",
+      "count": 424,
+      "columns": [
+        "pol_rat_us"
+      ]
+    },
+    "inflation": {
+      "start": "1947-01-31",
+      "end": "2025-03-31",
+      "count": 939,
+      "columns": [
+        "cpi_inf_us"
+      ]
+    },
+    "risk_rating": {
+      "start": "1986-01-31",
+      "end": "2025-03-31",
+      "count": 471,
+      "columns": [
+        "rating_us"
+      ]
+    },
+    "unemployment_rate": {
+      "start": "1948-01-31",
+      "end": "2025-03-31",
+      "count": 927,
+      "columns": [
+        "u_rat_us"
+      ]
+    }
+  },
+  "feature_counts": {
+    "policy_rates": 1,
+    "inflation": 1,
+    "risk_rating": 1,
+    "unemployment_rate": 1
+  },
+  "data_quality": {
+    "historical_forecasts_5": {
+      "missing_pct": 0.0,
+      "date_range": "1990-01-31 to 2025-03-31",
+      "columns": [
+        "gdp_forecast_5yr_us",
+        "cpi_forecast_5yr_us"
+      ]
+    },
+    "target": {
+      "missing_pct": 0.0,
+      "date_range": "1990-01-31 to 2025-04-30",
+      "count": 424
+    },
+    "missing_stats": {
+      "missing_count": {
+        "gdp_forecast_5yr_us": 517,
+        "cpi_forecast_5yr_us": 517,
+        "pol_rat_us": 516,
+        "rating_us": 469,
+        "cpi_inf_us": 13,
+        "u_rat_us": 13
+      },
+      "missing_pct": {
+        "gdp_forecast_5yr_us": 55.00000000000001,
+        "cpi_forecast_5yr_us": 55.00000000000001,
+        "pol_rat_us": 54.8936170212766,
+        "rating_us": 49.8936170212766,
+        "cpi_inf_us": 1.3829787234042552,
+        "u_rat_us": 1.3829787234042552
+      },
+      "missing_before": {
+        "gdp_forecast_5yr_us": 517,
+        "cpi_forecast_5yr_us": 517,
+        "pol_rat_us": 516,
+        "rating_us": 469,
+        "cpi_inf_us": 13,
+        "u_rat_us": 13
+      },
+      "missing_after": {
+        "gdp_forecast_5yr_us": 0,
+        "cpi_forecast_5yr_us": 0,
+        "pol_rat_us": 0,
+        "rating_us": 0,
+        "cpi_inf_us": 0,
+        "u_rat_us": 0
+      }
+    },
+    "total_missing_before": 2045,
+    "total_missing_after": 0,
+    "rows_before": 940,
+    "rows_after": 940
+  },
+  "feature_engineering": {
+    "count": 6,
+    "types": {
+      "yield_curve": 0
+    }
+  },
+  "target_column": "yld_5yr_us",
+  "total_features": 6,
+  "feature_columns": [
+    "gdp_forecast_5yr_us",
+    "cpi_forecast_5yr_us",
+    "pol_rat_us",
+    "cpi_inf_us",
+    "rating_us",
+    "u_rat_us"
+  ],
+  "combined_date_range": {
+    "start": "1947-01-31",
+    "end": "2025-04-30",
+    "count": 940
+  },
+  "clean_date_range": {
+    "start": "1947-01-31",
+    "end": "2025-04-30",
+    "count": 940
+  },
+  "enhanced_features": [
+    "gdp_forecast_5yr_us",
+    "cpi_forecast_5yr_us",
+    "pol_rat_us",
+    "cpi_inf_us",
+    "rating_us",
+    "u_rat_us"
+  ],
+  "feature_correlations": {
+    "pol_rat_us": 0.8985,
+    "rating_us": 0.526,
+    "cpi_forecast_5yr_us": 0.4411,
+    "cpi_inf_us": 0.3344,
+    "gdp_forecast_5yr_us": 0.2697,
+    "u_rat_us": 0.2546
+  },
+  "overlap_diagnosis": {
+    "target_earliest": "1990-01-31",
+    "target_latest": "2025-04-30",
+    "features_earliest": "1947-01-31",
+    "features_latest": "2025-04-30",
+    "overlapping_earliest": "1990-01-31",
+    "overlapping_latest": "2025-04-30",
+    "target_count": 424,
+    "features_count": 940,
+    "common_count": 424,
+    "issue": "None"
+  },
+  "feature_quality": {
+    "low_variance_features": []
+  },
+  "target_stats": {
+    "min": 0.2622096774193549,
+    "max": 8.744866666666667,
+    "mean": 3.7481143385464,
+    "median": 3.7234467741935484,
+    "std": 2.1252477144834128,
+    "skew": 0.2868978392370552,
+    "kurt": -0.9000986900975425
+  }
+}

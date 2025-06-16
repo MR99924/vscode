@@ -1,0 +1,199 @@
+{
+  "country": "Canada",
+  "tenor": "yld_30yr",
+  "feature_sources": [
+    "policy_rates",
+    "inflation",
+    "activity",
+    "risk_rating",
+    "unemployment_rate"
+  ],
+  "date_ranges": {
+    "target": {
+      "start": "1990-12-31",
+      "end": "2025-04-30",
+      "count": 413
+    },
+    "policy_rates": {
+      "start": "1990-01-31",
+      "end": "2025-04-30",
+      "count": 424,
+      "columns": [
+        "pol_rat_ca",
+        "pol_rat_us"
+      ]
+    },
+    "inflation": {
+      "start": "1947-01-31",
+      "end": "2025-03-31",
+      "count": 939,
+      "columns": [
+        "cpi_inf_ca"
+      ]
+    },
+    "activity": {
+      "start": "1990-01-31",
+      "end": "2025-04-30",
+      "count": 424,
+      "columns": [
+        "act_track_ca"
+      ]
+    },
+    "risk_rating": {
+      "start": "1986-01-31",
+      "end": "2025-03-31",
+      "count": 471,
+      "columns": [
+        "rating_ca"
+      ]
+    },
+    "unemployment_rate": {
+      "start": "1948-01-31",
+      "end": "2025-03-31",
+      "count": 927,
+      "columns": [
+        "u_rat_ca"
+      ]
+    }
+  },
+  "feature_counts": {
+    "policy_rates": 2,
+    "inflation": 1,
+    "activity": 1,
+    "risk_rating": 1,
+    "unemployment_rate": 1
+  },
+  "data_quality": {
+    "historical_forecasts_30": {
+      "missing_pct": 0.0,
+      "date_range": "1990-01-31 to 2025-03-31",
+      "columns": [
+        "gdp_forecast_30yr_ca",
+        "cpi_forecast_30yr_ca"
+      ]
+    },
+    "target": {
+      "missing_pct": 2.594339622641506,
+      "date_range": "1990-12-31 to 2025-04-30",
+      "count": 413
+    },
+    "missing_stats": {
+      "missing_count": {
+        "act_track_ca": 601,
+        "cpi_inf_ca": 553,
+        "gdp_forecast_30yr_ca": 517,
+        "cpi_forecast_30yr_ca": 517,
+        "pol_rat_ca": 516,
+        "pol_rat_us": 516,
+        "rating_ca": 469,
+        "u_rat_ca": 229
+      },
+      "missing_pct": {
+        "act_track_ca": 63.93617021276595,
+        "cpi_inf_ca": 58.829787234042556,
+        "gdp_forecast_30yr_ca": 55.00000000000001,
+        "cpi_forecast_30yr_ca": 55.00000000000001,
+        "pol_rat_ca": 54.8936170212766,
+        "pol_rat_us": 54.8936170212766,
+        "rating_ca": 49.8936170212766,
+        "u_rat_ca": 24.361702127659573
+      },
+      "missing_before": {
+        "act_track_ca": 601,
+        "cpi_inf_ca": 553,
+        "gdp_forecast_30yr_ca": 517,
+        "cpi_forecast_30yr_ca": 517,
+        "pol_rat_ca": 516,
+        "pol_rat_us": 516,
+        "rating_ca": 469,
+        "u_rat_ca": 229
+      },
+      "missing_after": {
+        "act_track_ca": 0,
+        "cpi_inf_ca": 0,
+        "gdp_forecast_30yr_ca": 0,
+        "cpi_forecast_30yr_ca": 0,
+        "pol_rat_ca": 0,
+        "pol_rat_us": 0,
+        "rating_ca": 0,
+        "u_rat_ca": 0
+      }
+    },
+    "total_missing_before": 3918,
+    "total_missing_after": 0,
+    "rows_before": 940,
+    "rows_after": 940
+  },
+  "feature_engineering": {
+    "count": 8,
+    "types": {
+      "yield_curve": 0
+    }
+  },
+  "target_column": "yld_30yr_ca",
+  "total_features": 8,
+  "feature_columns": [
+    "gdp_forecast_30yr_ca",
+    "cpi_forecast_30yr_ca",
+    "pol_rat_ca",
+    "pol_rat_us",
+    "cpi_inf_ca",
+    "act_track_ca",
+    "rating_ca",
+    "u_rat_ca"
+  ],
+  "combined_date_range": {
+    "start": "1947-01-31",
+    "end": "2025-04-30",
+    "count": 940
+  },
+  "clean_date_range": {
+    "start": "1947-01-31",
+    "end": "2025-04-30",
+    "count": 940
+  },
+  "enhanced_features": [
+    "gdp_forecast_30yr_ca",
+    "cpi_forecast_30yr_ca",
+    "pol_rat_ca",
+    "pol_rat_us",
+    "cpi_inf_ca",
+    "act_track_ca",
+    "rating_ca",
+    "u_rat_ca"
+  ],
+  "feature_correlations": {
+    "pol_rat_ca": 0.8283,
+    "u_rat_ca": 0.664,
+    "pol_rat_us": 0.6382,
+    "rating_ca": 0.5115,
+    "act_track_ca": 0.1624,
+    "cpi_forecast_30yr_ca": 0.1391,
+    "gdp_forecast_30yr_ca": 0.1082,
+    "cpi_inf_ca": 0.1025
+  },
+  "overlap_diagnosis": {
+    "target_earliest": "1990-12-31",
+    "target_latest": "2025-04-30",
+    "features_earliest": "1947-01-31",
+    "features_latest": "2025-04-30",
+    "overlapping_earliest": "1990-12-31",
+    "overlapping_latest": "2025-04-30",
+    "target_count": 413,
+    "features_count": 940,
+    "common_count": 413,
+    "issue": "None"
+  },
+  "feature_quality": {
+    "low_variance_features": []
+  },
+  "target_stats": {
+    "min": 1.0039999999999996,
+    "max": 10.264727272727274,
+    "mean": 4.594300499816378,
+    "median": 4.129419354838709,
+    "std": 2.3287771619772926,
+    "skew": 0.653927869508616,
+    "kurt": -0.5291038916819852
+  }
+}

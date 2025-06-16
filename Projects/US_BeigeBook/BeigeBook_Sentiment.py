@@ -1,7 +1,8 @@
-import os 
+import os
 from collections import Counter
 import pandas as pd
 import matplotlib.pyplot as plt
+from textblob import TextBlob
 
 # Define inflationary and expansionary keywords
 inflationary_keywords = ["shutdowns", "shutdown", "tie-up", "tie-ups", "disruptions", "disruption", "pressure", "shortage", "cost-push", "controls", "backlogs", 
@@ -20,7 +21,6 @@ deflationary_keywords = ["overstocked", "restrictive", "falling", "deflation", "
 recessionary_keywords = ["hesitant", "layoffs", "layoff", "resistance", "unemployment", "shortfall", "recession", "recessionary", "unsettled", "cautious", "fear", "concern", "declining", "falling", "lockdown", "COVID",
                          "weak", "deterorating", "worsening", "worsen", "downturn", "depressed", "depression", "depressing", "cutbacks", "delinquencies", "deteriorated"]
 
-
 # Helper function to calculate keyword scores
 def calculate_keyword_score(text, keywords):
     # Convert text to lowercase and split into words
@@ -31,7 +31,7 @@ def calculate_keyword_score(text, keywords):
     return keyword_count / len(words) if len(words) > 0 else 0
 
 # Path to folder containing text files
-folder_path = r"C:\Users\MR99924\.spyder-py3\workspace\Projects\US_BeigeBook\Text_files(1974-Present)"
+folder_path = r"C:\Users\MR99924\workspace\vscode\Projects\US_BeigeBook\Text_files(1974-Present)"
 
 # Initialize list to store results
 report_data = []
@@ -51,6 +51,9 @@ for filename in sorted(os.listdir(folder_path)):
         deflationary_score = calculate_keyword_score(text, deflationary_keywords)
         recessionary_score = calculate_keyword_score(text, recessionary_keywords)
         
+        # Perform sentiment analysis using TextBlob
+        blob = TextBlob(text)
+        sentiment_score = blob.sentiment.polarity
         
         # Extract and parse the date from filename (e.g., 'DDMMYY.txt')
         try:
@@ -68,6 +71,7 @@ for filename in sorted(os.listdir(folder_path)):
         except ValueError as e:
             print(f"Error parsing date for filename {filename}: {e}")
             continue
+        
         # Append results to list
         report_data.append({
             "Date": date,
@@ -75,6 +79,7 @@ for filename in sorted(os.listdir(folder_path)):
             "Expansionary Score": expansionary_score,
             "Deflationary Score": deflationary_score,
             "Recessionary Score": recessionary_score,
+            "Sentiment Score": sentiment_score,
             "Text": text
         })
 
@@ -87,6 +92,7 @@ df = df.sort_values("Date")  # Sort by date
 plt.figure(figsize=(12, 6))
 plt.plot(df["Date"], df["Inflationary Score"], marker="o", label="Inflationary Score", color="red")
 plt.plot(df["Date"], df["Expansionary Score"], marker="o", label="Expansionary Score", color="green")
+plt.plot(df["Date"], df["Sentiment Score"], marker="o", label="Sentiment Score", color="blue")
 #plt.plot(df["Date"], df["Deflationary Score"], marker="o", label="Deflationary Score", color="blue")
 #plt.plot(df["Date"], df["Recessionary Score"], marker="o", label="Recessionary Score", color="black")
 plt.title("Macro Score Sentiment Over Time")
@@ -97,8 +103,8 @@ plt.grid()
 plt.show()
 
 # Save results to a CSV file for reference
-output_file = r"C:\Users\MR99924\.spyder-py3\workspace\Projects\US_BeigeBook\macroeconomic_sentiment_analysis_dateutil.csv"
-df[["Date", "Inflationary Score", "Expansionary Score", "Deflationary Score", "Recessionary Score"]].to_csv(output_file, index=False)
+output_file = r"C:\Users\MR99924\workspace\vscode\Projects\US_BeigeBook\macroeconomic_sentiment_analysis_dateutil.csv"
+df[["Date", "Inflationary Score", "Expansionary Score", "Deflationary Score", "Recessionary Score", "Sentiment Score"]].to_csv(output_file, index=False)
 print(f"Analysis results saved to {output_file}")
 
 # Optional: Analyze frequent inflationary and expansionary words

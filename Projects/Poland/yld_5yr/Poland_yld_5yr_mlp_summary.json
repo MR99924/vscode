@@ -1,0 +1,8 @@
+{
+    "country": "Poland",
+    "tenor": "yld_5yr",
+    "model_type": "mlp",
+    "data_points": 320,
+    "features": 6,
+    "date_range": "1998-11-30 to 2025-06-30"
+}

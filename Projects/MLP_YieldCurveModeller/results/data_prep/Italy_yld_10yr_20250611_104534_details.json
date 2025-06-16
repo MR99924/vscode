@@ -1,0 +1,149 @@
+{
+  "country": "Italy",
+  "tenor": "yld_10yr",
+  "feature_sources": [
+    "policy_rates",
+    "inflation",
+    "activity",
+    "risk_rating",
+    "unemployment_rate"
+  ],
+  "date_ranges": {
+    "target": {
+      "start": "1999-11-30",
+      "end": "2025-06-30",
+      "count": 308
+    },
+    "policy_rates": {
+      "start": "1990-01-31",
+      "end": "2025-06-30",
+      "count": 426,
+      "columns": [
+        "pol_rat_it",
+        "pol_rat_us"
+      ]
+    },
+    "activity": {
+      "start": "1990-01-31",
+      "end": "2025-06-30",
+      "count": 426,
+      "columns": [
+        "act_track_it"
+      ]
+    },
+    "risk_rating": {
+      "start": "1986-01-31",
+      "end": "2025-05-31",
+      "count": 473,
+      "columns": [
+        "rating_it"
+      ]
+    },
+    "unemployment_rate": {
+      "start": "1948-01-31",
+      "end": "2025-05-31",
+      "count": 929,
+      "columns": [
+        "u_rat_it"
+      ]
+    }
+  },
+  "feature_counts": {
+    "policy_rates": 2,
+    "activity": 1,
+    "risk_rating": 1,
+    "unemployment_rate": 1
+  },
+  "data_quality": {
+    "target": {
+      "missing_pct": 27.699530516431924,
+      "date_range": "1999-11-30 to 2025-06-30",
+      "count": 308
+    },
+    "missing_stats": {
+      "missing_count": {
+        "act_track_it": 673,
+        "pol_rat_it": 611,
+        "pol_rat_us": 504,
+        "rating_it": 467,
+        "u_rat_it": 421
+      },
+      "missing_pct": {
+        "act_track_it": 72.36559139784946,
+        "pol_rat_it": 65.6989247311828,
+        "pol_rat_us": 54.19354838709678,
+        "rating_it": 50.215053763440864,
+        "u_rat_it": 45.26881720430108
+      },
+      "missing_before": {
+        "act_track_it": 673,
+        "pol_rat_it": 611,
+        "pol_rat_us": 504,
+        "rating_it": 467,
+        "u_rat_it": 421
+      },
+      "missing_after": {
+        "act_track_it": 0,
+        "pol_rat_it": 0,
+        "pol_rat_us": 0,
+        "rating_it": 0,
+        "u_rat_it": 0
+      }
+    },
+    "total_missing_before": 2676,
+    "total_missing_after": 0,
+    "rows_before": 930,
+    "rows_after": 930
+  },
+  "feature_engineering": {},
+  "target_column": "yld_10yr_it",
+  "total_features": 5,
+  "feature_columns": [
+    "pol_rat_it",
+    "pol_rat_us",
+    "act_track_it",
+    "rating_it",
+    "u_rat_it"
+  ],
+  "combined_date_range": {
+    "start": "1948-01-31",
+    "end": "2025-06-30",
+    "count": 930
+  },
+  "clean_date_range": {
+    "start": "1999-11-30",
+    "end": "2025-06-30",
+    "count": 308
+  },
+  "overlap_diagnosis": {
+    "target_earliest": "1999-11-30",
+    "target_latest": "2025-06-30",
+    "features_earliest": "1948-01-31",
+    "features_latest": "2025-06-30",
+    "overlapping_earliest": "1999-11-30",
+    "overlapping_latest": "2025-06-30",
+    "target_count": 308,
+    "features_count": 930,
+    "common_count": 308,
+    "issue": "None"
+  },
+  "feature_correlations": {
+    "rating_it": 0.6757,
+    "pol_rat_it": 0.6205,
+    "pol_rat_us": 0.3731,
+    "u_rat_it": 0.3478,
+    "act_track_it": 0.1135
+  },
+  "feature_quality": {
+    "low_variance_features": []
+  },
+  "target_stats": {
+    "min": 0.5722173913043478,
+    "max": 6.779863636363637,
+    "mean": 3.6160039962319814,
+    "median": 4.0582071428571425,
+    "std": 1.4419469288112003,
+    "skew": -0.49328745997055706,
+    "kurt": -0.7066784417922882
+  }
+}
