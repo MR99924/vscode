@@ -1,0 +1,201 @@
+{
+  "country": "Hungary",
+  "tenor": "yld_2yr",
+  "feature_sources": [
+    "policy_rates",
+    "inflation",
+    "activity",
+    "unemployment_rate"
+  ],
+  "date_ranges": {
+    "target": {
+      "start": "2007-03-31",
+      "end": "2025-03-31",
+      "count": 217
+    },
+    "policy_rates": {
+      "start": "1990-01-31",
+      "end": "2025-03-31",
+      "count": 423,
+      "columns": [
+        "pol_rat_hu",
+        "pol_rat_us"
+      ]
+    },
+    "inflation": {
+      "start": "1947-01-31",
+      "end": "2025-03-31",
+      "count": 939,
+      "columns": [
+        "cpi_inf_hu"
+      ]
+    },
+    "activity": {
+      "start": "1990-01-31",
+      "end": "2025-03-31",
+      "count": 423,
+      "columns": [
+        "act_track_hu"
+      ]
+    },
+    "unemployment_rate": {
+      "start": "1948-01-31",
+      "end": "2025-03-31",
+      "count": 927,
+      "columns": [
+        "u_rat_hu"
+      ]
+    }
+  },
+  "feature_counts": {
+    "policy_rates": 2,
+    "inflation": 1,
+    "activity": 1,
+    "unemployment_rate": 1
+  },
+  "data_quality": {
+    "historical_forecasts_2": {
+      "missing_pct": 0.0,
+      "date_range": "1990-01-31 to 2025-03-31",
+      "columns": [
+        "gdp_forecast_2yr_hu",
+        "cpi_forecast_2yr_hu"
+      ]
+    },
+    "target": {
+      "missing_pct": 48.69976359338062,
+      "date_range": "2007-03-31 to 2025-03-31",
+      "count": 217
+    },
+    "missing_stats": {
+      "missing_count": {
+        "act_track_hu": 673,
+        "u_rat_hu": 638,
+        "cpi_inf_hu": 552,
+        "gdp_forecast_2yr_hu": 516,
+        "cpi_forecast_2yr_hu": 516,
+        "pol_rat_us_influence": 516,
+        "pol_rat_hu": 516,
+        "pol_rat_us": 516
+      },
+      "missing_pct": {
+        "act_track_hu": 71.67199148029819,
+        "u_rat_hu": 67.94462193823216,
+        "cpi_inf_hu": 58.78594249201278,
+        "gdp_forecast_2yr_hu": 54.9520766773163,
+        "cpi_forecast_2yr_hu": 54.9520766773163,
+        "pol_rat_us_influence": 54.9520766773163,
+        "pol_rat_hu": 54.9520766773163,
+        "pol_rat_us": 54.9520766773163
+      },
+      "missing_before": {
+        "act_track_hu": 673,
+        "u_rat_hu": 638,
+        "cpi_inf_hu": 552,
+        "gdp_forecast_2yr_hu": 516,
+        "cpi_forecast_2yr_hu": 516,
+        "pol_rat_us_influence": 516,
+        "pol_rat_hu": 516,
+        "pol_rat_us": 516
+      },
+      "missing_after": {
+        "act_track_hu": 0,
+        "u_rat_hu": 0,
+        "cpi_inf_hu": 0,
+        "gdp_forecast_2yr_hu": 0,
+        "cpi_forecast_2yr_hu": 0,
+        "pol_rat_us_influence": 0,
+        "pol_rat_hu": 0,
+        "pol_rat_us": 0
+      }
+    },
+    "total_missing_before": 4443,
+    "total_missing_after": 0,
+    "rows_before": 939,
+    "rows_after": 939
+  },
+  "feature_engineering": {
+    "count": 8,
+    "types": {
+      "yield_curve": 0
+    },
+    "calendar_features": [
+      "quarter",
+      "year",
+      "day_of_month",
+      "is_month_end",
+      "is_quarter_end",
+      "is_year_end",
+      "month_sin",
+      "month_cos",
+      "day_of_week_sin",
+      "day_of_week_cos"
+    ]
+  },
+  "target_column": "yld_2yr_hu",
+  "total_features": 8,
+  "feature_columns": [
+    "gdp_forecast_2yr_hu",
+    "cpi_forecast_2yr_hu",
+    "pol_rat_us_influence",
+    "pol_rat_hu",
+    "pol_rat_us",
+    "cpi_inf_hu",
+    "act_track_hu",
+    "u_rat_hu"
+  ],
+  "combined_date_range": {
+    "start": "1947-01-31",
+    "end": "2025-03-31",
+    "count": 939
+  },
+  "clean_date_range": {
+    "start": "1947-01-31",
+    "end": "2025-03-31",
+    "count": 939
+  },
+  "enhanced_features": [
+    "gdp_forecast_2yr_hu",
+    "cpi_forecast_2yr_hu",
+    "pol_rat_us_influence",
+    "pol_rat_hu",
+    "pol_rat_us",
+    "cpi_inf_hu",
+    "act_track_hu",
+    "u_rat_hu"
+  ],
+  "feature_correlations": {
+    "pol_rat_hu": 0.934,
+    "cpi_inf_hu": 0.5962,
+    "act_track_hu": 0.4885,
+    "u_rat_hu": 0.4457,
+    "gdp_forecast_2yr_hu": 0.4316,
+    "cpi_forecast_2yr_hu": 0.4198,
+    "pol_rat_us_influence": 0.3181,
+    "pol_rat_us": 0.3181
+  },
+  "overlap_diagnosis": {
+    "target_earliest": "2007-03-31",
+    "target_latest": "2025-03-31",
+    "features_earliest": "1947-01-31",
+    "features_latest": "2025-03-31",
+    "overlapping_earliest": "2007-03-31",
+    "overlapping_latest": "2025-03-31",
+    "target_count": 217,
+    "features_count": 939,
+    "common_count": 217,
+    "issue": "None"
+  },
+  "feature_quality": {
+    "low_variance_features": []
+  },
+  "target_stats": {
+    "min": 0.288225806451613,
+    "max": 12.84974193548387,
+    "mean": 4.921728607920975,
+    "median": 5.2806428571428565,
+    "std": 3.329343218482841,
+    "skew": 0.25942733450089195,
+    "kurt": -1.0523201188190945
+  }
+}

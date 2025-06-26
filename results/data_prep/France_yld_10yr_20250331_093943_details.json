@@ -1,0 +1,211 @@
+{
+  "country": "France",
+  "tenor": "yld_10yr",
+  "feature_sources": [
+    "policy_rates",
+    "inflation",
+    "activity",
+    "risk_rating",
+    "unemployment_rate"
+  ],
+  "date_ranges": {
+    "target": {
+      "start": "1990-08-31",
+      "end": "2025-03-31",
+      "count": 416
+    },
+    "policy_rates": {
+      "start": "1990-01-31",
+      "end": "2025-03-31",
+      "count": 423,
+      "columns": [
+        "pol_rat_fr",
+        "pol_rat_us"
+      ]
+    },
+    "inflation": {
+      "start": "1947-01-31",
+      "end": "2025-03-31",
+      "count": 939,
+      "columns": [
+        "cpi_inf_fr"
+      ]
+    },
+    "activity": {
+      "start": "1990-01-31",
+      "end": "2025-03-31",
+      "count": 423,
+      "columns": [
+        "act_track_fr"
+      ]
+    },
+    "risk_rating": {
+      "start": "1986-01-31",
+      "end": "2025-03-31",
+      "count": 471,
+      "columns": [
+        "rating_fr"
+      ]
+    },
+    "unemployment_rate": {
+      "start": "1948-01-31",
+      "end": "2025-03-31",
+      "count": 927,
+      "columns": [
+        "u_rat_fr"
+      ]
+    }
+  },
+  "feature_counts": {
+    "policy_rates": 2,
+    "inflation": 1,
+    "activity": 1,
+    "risk_rating": 1,
+    "unemployment_rate": 1
+  },
+  "data_quality": {
+    "historical_forecasts_10": {
+      "missing_pct": 0.0,
+      "date_range": "1990-01-31 to 2025-03-31",
+      "columns": [
+        "gdp_forecast_10yr_fr",
+        "cpi_forecast_10yr_fr"
+      ]
+    },
+    "target": {
+      "missing_pct": 1.654846335697402,
+      "date_range": "1990-08-31 to 2025-03-31",
+      "count": 416
+    },
+    "missing_stats": {
+      "missing_count": {
+        "act_track_fr": 625,
+        "pol_rat_fr": 624,
+        "gdp_forecast_10yr_fr": 516,
+        "cpi_forecast_10yr_fr": 516,
+        "pol_rat_us": 516,
+        "rating_fr": 468,
+        "u_rat_fr": 338,
+        "cpi_inf_fr": 108
+      },
+      "missing_pct": {
+        "act_track_fr": 66.5601703940362,
+        "pol_rat_fr": 66.45367412140575,
+        "gdp_forecast_10yr_fr": 54.9520766773163,
+        "cpi_forecast_10yr_fr": 54.9520766773163,
+        "pol_rat_us": 54.9520766773163,
+        "rating_fr": 49.84025559105431,
+        "u_rat_fr": 35.99574014909478,
+        "cpi_inf_fr": 11.501597444089457
+      },
+      "missing_before": {
+        "act_track_fr": 625,
+        "pol_rat_fr": 624,
+        "gdp_forecast_10yr_fr": 516,
+        "cpi_forecast_10yr_fr": 516,
+        "pol_rat_us": 516,
+        "rating_fr": 468,
+        "u_rat_fr": 338,
+        "cpi_inf_fr": 108
+      },
+      "missing_after": {
+        "act_track_fr": 0,
+        "pol_rat_fr": 0,
+        "gdp_forecast_10yr_fr": 0,
+        "cpi_forecast_10yr_fr": 0,
+        "pol_rat_us": 0,
+        "rating_fr": 0,
+        "u_rat_fr": 0,
+        "cpi_inf_fr": 0
+      }
+    },
+    "total_missing_before": 3711,
+    "total_missing_after": 0,
+    "rows_before": 939,
+    "rows_after": 939
+  },
+  "feature_engineering": {
+    "count": 8,
+    "types": {
+      "yield_curve": 0
+    },
+    "calendar_features": [
+      "quarter",
+      "year",
+      "day_of_month",
+      "is_month_end",
+      "is_quarter_end",
+      "is_year_end",
+      "month_sin",
+      "month_cos",
+      "day_of_week_sin",
+      "day_of_week_cos"
+    ]
+  },
+  "target_column": "yld_10yr_fr",
+  "total_features": 8,
+  "feature_columns": [
+    "gdp_forecast_10yr_fr",
+    "cpi_forecast_10yr_fr",
+    "pol_rat_fr",
+    "pol_rat_us",
+    "cpi_inf_fr",
+    "act_track_fr",
+    "rating_fr",
+    "u_rat_fr"
+  ],
+  "combined_date_range": {
+    "start": "1947-01-31",
+    "end": "2025-03-31",
+    "count": 939
+  },
+  "clean_date_range": {
+    "start": "1947-01-31",
+    "end": "2025-03-31",
+    "count": 939
+  },
+  "enhanced_features": [
+    "gdp_forecast_10yr_fr",
+    "cpi_forecast_10yr_fr",
+    "pol_rat_fr",
+    "pol_rat_us",
+    "cpi_inf_fr",
+    "act_track_fr",
+    "rating_fr",
+    "u_rat_fr"
+  ],
+  "feature_correlations": {
+    "pol_rat_fr": 0.7258,
+    "rating_fr": 0.7252,
+    "cpi_forecast_10yr_fr": 0.6972,
+    "pol_rat_us": 0.6686,
+    "gdp_forecast_10yr_fr": 0.3905,
+    "cpi_inf_fr": 0.2836,
+    "u_rat_fr": 0.0645,
+    "act_track_fr": 0.0619
+  },
+  "overlap_diagnosis": {
+    "target_earliest": "1990-08-31",
+    "target_latest": "2025-03-31",
+    "features_earliest": "1947-01-31",
+    "features_latest": "2025-03-31",
+    "overlapping_earliest": "1990-08-31",
+    "overlapping_latest": "2025-03-31",
+    "target_count": 416,
+    "features_count": 939,
+    "common_count": 416,
+    "issue": "None"
+  },
+  "feature_quality": {
+    "low_variance_features": []
+  },
+  "target_stats": {
+    "min": -0.3420645161290323,
+    "max": 10.477966666666669,
+    "mean": 3.7973166876426685,
+    "median": 3.699892473118279,
+    "std": 2.5199683557608723,
+    "skew": 0.3903210232488582,
+    "kurt": -0.34704191216363434
+  }
+}

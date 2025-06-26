@@ -1,0 +1,174 @@
+{
+  "country": "United States",
+  "tenor": "yld_2yr",
+  "feature_sources": [
+    "policy_rates",
+    "inflation",
+    "activity",
+    "unemployment_rate"
+  ],
+  "date_ranges": {
+    "target": {
+      "start": "1990-01-31",
+      "end": "2025-04-30",
+      "count": 424
+    },
+    "policy_rates": {
+      "start": "1990-01-31",
+      "end": "2025-04-30",
+      "count": 424,
+      "columns": [
+        "pol_rat_us"
+      ]
+    },
+    "inflation": {
+      "start": "1947-01-31",
+      "end": "2025-03-31",
+      "count": 939,
+      "columns": [
+        "cpi_inf_us"
+      ]
+    },
+    "activity": {
+      "start": "1990-01-31",
+      "end": "2025-04-30",
+      "count": 424,
+      "columns": [
+        "act_track_us"
+      ]
+    },
+    "unemployment_rate": {
+      "start": "1948-01-31",
+      "end": "2025-03-31",
+      "count": 927,
+      "columns": [
+        "u_rat_us"
+      ]
+    }
+  },
+  "feature_counts": {
+    "policy_rates": 1,
+    "inflation": 1,
+    "activity": 1,
+    "unemployment_rate": 1
+  },
+  "data_quality": {
+    "historical_forecasts_2": {
+      "missing_pct": 0.0,
+      "date_range": "1990-01-31 to 2025-03-31",
+      "columns": [
+        "gdp_forecast_2yr_us",
+        "cpi_forecast_2yr_us"
+      ]
+    },
+    "target": {
+      "missing_pct": 0.0,
+      "date_range": "1990-01-31 to 2025-04-30",
+      "count": 424
+    },
+    "missing_stats": {
+      "missing_count": {
+        "gdp_forecast_2yr_us": 517,
+        "cpi_forecast_2yr_us": 517,
+        "pol_rat_us": 516,
+        "act_track_us": 516,
+        "cpi_inf_us": 13,
+        "u_rat_us": 13
+      },
+      "missing_pct": {
+        "gdp_forecast_2yr_us": 55.00000000000001,
+        "cpi_forecast_2yr_us": 55.00000000000001,
+        "pol_rat_us": 54.8936170212766,
+        "act_track_us": 54.8936170212766,
+        "cpi_inf_us": 1.3829787234042552,
+        "u_rat_us": 1.3829787234042552
+      },
+      "missing_before": {
+        "gdp_forecast_2yr_us": 517,
+        "cpi_forecast_2yr_us": 517,
+        "pol_rat_us": 516,
+        "act_track_us": 516,
+        "cpi_inf_us": 13,
+        "u_rat_us": 13
+      },
+      "missing_after": {
+        "gdp_forecast_2yr_us": 0,
+        "cpi_forecast_2yr_us": 0,
+        "pol_rat_us": 0,
+        "act_track_us": 0,
+        "cpi_inf_us": 0,
+        "u_rat_us": 0
+      }
+    },
+    "total_missing_before": 2092,
+    "total_missing_after": 0,
+    "rows_before": 940,
+    "rows_after": 940
+  },
+  "feature_engineering": {
+    "count": 6,
+    "types": {
+      "yield_curve": 0
+    }
+  },
+  "target_column": "yld_2yr_us",
+  "total_features": 6,
+  "feature_columns": [
+    "gdp_forecast_2yr_us",
+    "cpi_forecast_2yr_us",
+    "pol_rat_us",
+    "cpi_inf_us",
+    "act_track_us",
+    "u_rat_us"
+  ],
+  "combined_date_range": {
+    "start": "1947-01-31",
+    "end": "2025-04-30",
+    "count": 940
+  },
+  "clean_date_range": {
+    "start": "1947-01-31",
+    "end": "2025-04-30",
+    "count": 940
+  },
+  "enhanced_features": [
+    "gdp_forecast_2yr_us",
+    "cpi_forecast_2yr_us",
+    "pol_rat_us",
+    "cpi_inf_us",
+    "act_track_us",
+    "u_rat_us"
+  ],
+  "feature_correlations": {
+    "pol_rat_us": 0.9618,
+    "cpi_forecast_2yr_us": 0.3997,
+    "u_rat_us": 0.3852,
+    "cpi_inf_us": 0.3764,
+    "gdp_forecast_2yr_us": 0.225,
+    "act_track_us": 0.0659
+  },
+  "overlap_diagnosis": {
+    "target_earliest": "1990-01-31",
+    "target_latest": "2025-04-30",
+    "features_earliest": "1947-01-31",
+    "features_latest": "2025-04-30",
+    "overlapping_earliest": "1990-01-31",
+    "overlapping_latest": "2025-04-30",
+    "target_count": 424,
+    "features_count": 940,
+    "common_count": 424,
+    "issue": "None"
+  },
+  "feature_quality": {
+    "low_variance_features": []
+  },
+  "target_stats": {
+    "min": 0.11321428571428568,
+    "max": 8.699499999999999,
+    "mean": 3.220642723295174,
+    "median": 3.141283870967742,
+    "std": 2.2875162912842466,
+    "skew": 0.235236086341752,
+    "kurt": -1.1141430863598096
+  }
+}

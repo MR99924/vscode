@@ -1,0 +1,149 @@
+{
+  "country": "Canada",
+  "tenor": "yld_30yr",
+  "feature_sources": [
+    "policy_rates",
+    "inflation",
+    "activity",
+    "risk_rating",
+    "unemployment_rate"
+  ],
+  "date_ranges": {
+    "target": {
+      "start": "1990-12-31",
+      "end": "2025-06-30",
+      "count": 415
+    },
+    "policy_rates": {
+      "start": "1990-01-31",
+      "end": "2025-06-30",
+      "count": 426,
+      "columns": [
+        "pol_rat_ca",
+        "pol_rat_us"
+      ]
+    },
+    "activity": {
+      "start": "1990-01-31",
+      "end": "2025-06-30",
+      "count": 426,
+      "columns": [
+        "act_track_ca"
+      ]
+    },
+    "risk_rating": {
+      "start": "1986-01-31",
+      "end": "2025-05-31",
+      "count": 473,
+      "columns": [
+        "rating_ca"
+      ]
+    },
+    "unemployment_rate": {
+      "start": "1948-01-31",
+      "end": "2025-05-31",
+      "count": 929,
+      "columns": [
+        "u_rat_ca"
+      ]
+    }
+  },
+  "feature_counts": {
+    "policy_rates": 2,
+    "activity": 1,
+    "risk_rating": 1,
+    "unemployment_rate": 1
+  },
+  "data_quality": {
+    "target": {
+      "missing_pct": 2.5821596244131495,
+      "date_range": "1990-12-31 to 2025-06-30",
+      "count": 415
+    },
+    "missing_stats": {
+      "missing_count": {
+        "act_track_ca": 589,
+        "pol_rat_ca": 504,
+        "pol_rat_us": 504,
+        "rating_ca": 457,
+        "u_rat_ca": 217
+      },
+      "missing_pct": {
+        "act_track_ca": 63.33333333333333,
+        "pol_rat_ca": 54.19354838709678,
+        "pol_rat_us": 54.19354838709678,
+        "rating_ca": 49.13978494623656,
+        "u_rat_ca": 23.333333333333332
+      },
+      "missing_before": {
+        "act_track_ca": 589,
+        "pol_rat_ca": 504,
+        "pol_rat_us": 504,
+        "rating_ca": 457,
+        "u_rat_ca": 217
+      },
+      "missing_after": {
+        "act_track_ca": 0,
+        "pol_rat_ca": 0,
+        "pol_rat_us": 0,
+        "rating_ca": 0,
+        "u_rat_ca": 0
+      }
+    },
+    "total_missing_before": 2271,
+    "total_missing_after": 0,
+    "rows_before": 930,
+    "rows_after": 930
+  },
+  "feature_engineering": {},
+  "target_column": "yld_30yr_ca",
+  "total_features": 5,
+  "feature_columns": [
+    "pol_rat_ca",
+    "pol_rat_us",
+    "act_track_ca",
+    "rating_ca",
+    "u_rat_ca"
+  ],
+  "combined_date_range": {
+    "start": "1948-01-31",
+    "end": "2025-06-30",
+    "count": 930
+  },
+  "clean_date_range": {
+    "start": "1990-12-31",
+    "end": "2025-06-30",
+    "count": 415
+  },
+  "overlap_diagnosis": {
+    "target_earliest": "1990-12-31",
+    "target_latest": "2025-06-30",
+    "features_earliest": "1948-01-31",
+    "features_latest": "2025-06-30",
+    "overlapping_earliest": "1990-12-31",
+    "overlapping_latest": "2025-06-30",
+    "target_count": 415,
+    "features_count": 930,
+    "common_count": 415,
+    "issue": "None"
+  },
+  "feature_correlations": {
+    "pol_rat_ca": 0.8282,
+    "u_rat_ca": 0.6641,
+    "pol_rat_us": 0.6357,
+    "rating_ca": 0.5117,
+    "act_track_ca": 0.1623
+  },
+  "feature_quality": {
+    "low_variance_features": []
+  },
+  "target_stats": {
+    "min": 1.0011304347826087,
+    "max": 10.266521739130434,
+    "mean": 4.590310758074647,
+    "median": 4.108363636363636,
+    "std": 2.3241449186103376,
+    "skew": 0.6604867016013597,
+    "kurt": -0.5154228723924188
+  }
+}

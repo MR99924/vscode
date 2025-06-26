@@ -1,0 +1,13 @@
+Country,Tenor,Model_Type,Status,Train_RMSE,Train_R2,Test_RMSE,Test_R2,Is_Best_Model,Error
+Czechia,yld_2yr,mlp,Success - Advanced MLP Training,,,,,True,
+Czechia,yld_2yr,gbm,Success - Advanced GBM Training,,,,,False,
+Czechia,yld_2yr,gp,Failed - gp Training Error,,,,,False,Cross-validation training failed to produce a valid model
+Czechia,yld_5yr,mlp,Success - Advanced MLP Training,,,,,True,
+Czechia,yld_5yr,gbm,Success - Advanced GBM Training,,,,,False,
+Czechia,yld_5yr,gp,Failed - gp Training Error,,,,,False,Cross-validation training failed to produce a valid model
+Czechia,yld_10yr,mlp,Success - Advanced MLP Training,,,,,True,
+Czechia,yld_10yr,gbm,Success - Advanced GBM Training,,,,,False,
+Czechia,yld_10yr,gp,Failed - gp Training Error,,,,,False,Cross-validation training failed to produce a valid model
+Czechia,yld_30yr,mlp,Failed - Insufficient Data,,,,,False,No overlapping data between features and target
+Czechia,yld_30yr,gbm,Failed - Insufficient Data,,,,,False,No overlapping data between features and target
+Czechia,yld_30yr,gp,Failed - Insufficient Data,,,,,False,No overlapping data between features and target

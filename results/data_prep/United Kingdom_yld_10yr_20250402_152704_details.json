@@ -1,0 +1,184 @@
+{
+  "country": "United Kingdom",
+  "tenor": "yld_10yr",
+  "feature_sources": [
+    "policy_rates",
+    "inflation",
+    "activity",
+    "risk_rating",
+    "unemployment_rate"
+  ],
+  "date_ranges": {
+    "target": {
+      "start": "1992-01-31",
+      "end": "2025-04-30",
+      "count": 400
+    },
+    "policy_rates": {
+      "start": "1990-01-31",
+      "end": "2025-04-30",
+      "count": 424,
+      "columns": [
+        "pol_rat_gb",
+        "pol_rat_us"
+      ]
+    },
+    "inflation": {
+      "start": "1947-01-31",
+      "end": "2025-03-31",
+      "count": 939,
+      "columns": [
+        "cpi_inf_gb"
+      ]
+    },
+    "activity": {
+      "start": "1990-01-31",
+      "end": "2025-04-30",
+      "count": 424,
+      "columns": [
+        "act_track_gb"
+      ]
+    },
+    "risk_rating": {
+      "start": "1986-01-31",
+      "end": "2025-03-31",
+      "count": 471,
+      "columns": [
+        "rating_gb"
+      ]
+    },
+    "unemployment_rate": {
+      "start": "1948-01-31",
+      "end": "2025-03-31",
+      "count": 927,
+      "columns": [
+        "u_rat_gb"
+      ]
+    }
+  },
+  "feature_counts": {
+    "policy_rates": 2,
+    "inflation": 1,
+    "activity": 1,
+    "risk_rating": 1,
+    "unemployment_rate": 1
+  },
+  "data_quality": {
+    "historical_forecasts_10": {
+      "missing_pct": 0.0,
+      "date_range": "1990-01-31 to 2025-03-31",
+      "columns": [
+        "gdp_forecast_10yr_gb",
+        "cpi_forecast_10yr_gb"
+      ]
+    },
+    "target": {
+      "missing_pct": 5.660377358490565,
+      "date_range": "1992-01-31 to 2025-04-30",
+      "count": 400
+    },
+    "missing_stats": {
+      "missing_count": {
+        "act_track_gb": 603,
+        "gdp_forecast_10yr_gb": 517,
+        "cpi_forecast_10yr_gb": 517,
+        "pol_rat_gb": 516,
+        "pol_rat_us": 516,
+        "cpi_inf_gb": 505,
+        "rating_gb": 469,
+        "u_rat_gb": 290
+      },
+      "missing_pct": {
+        "act_track_gb": 64.14893617021276,
+        "gdp_forecast_10yr_gb": 55.00000000000001,
+        "cpi_forecast_10yr_gb": 55.00000000000001,
+        "pol_rat_gb": 54.8936170212766,
+        "pol_rat_us": 54.8936170212766,
+        "cpi_inf_gb": 53.72340425531915,
+        "rating_gb": 49.8936170212766,
+        "u_rat_gb": 30.851063829787233
+      },
+      "missing_before": {
+        "act_track_gb": 603,
+        "gdp_forecast_10yr_gb": 517,
+        "cpi_forecast_10yr_gb": 517,
+        "pol_rat_gb": 516,
+        "pol_rat_us": 516,
+        "cpi_inf_gb": 505,
+        "rating_gb": 469,
+        "u_rat_gb": 290
+      },
+      "missing_after": {
+        "act_track_gb": 0,
+        "gdp_forecast_10yr_gb": 0,
+        "cpi_forecast_10yr_gb": 0,
+        "pol_rat_gb": 0,
+        "pol_rat_us": 0,
+        "cpi_inf_gb": 0,
+        "rating_gb": 0,
+        "u_rat_gb": 0
+      }
+    },
+    "total_missing_before": 3933,
+    "total_missing_after": 0,
+    "rows_before": 940,
+    "rows_after": 940
+  },
+  "feature_engineering": {},
+  "target_column": "yld_10yr_gb",
+  "total_features": 8,
+  "feature_columns": [
+    "gdp_forecast_10yr_gb",
+    "cpi_forecast_10yr_gb",
+    "pol_rat_gb",
+    "pol_rat_us",
+    "cpi_inf_gb",
+    "act_track_gb",
+    "rating_gb",
+    "u_rat_gb"
+  ],
+  "combined_date_range": {
+    "start": "1947-01-31",
+    "end": "2025-04-30",
+    "count": 940
+  },
+  "clean_date_range": {
+    "start": "1947-01-31",
+    "end": "2025-04-30",
+    "count": 940
+  },
+  "feature_correlations": {
+    "pol_rat_gb": 0.8865,
+    "pol_rat_us": 0.6807,
+    "u_rat_gb": 0.6142,
+    "rating_gb": 0.5809,
+    "cpi_forecast_10yr_gb": 0.5712,
+    "act_track_gb": 0.4642,
+    "gdp_forecast_10yr_gb": 0.1655,
+    "cpi_inf_gb": 0.0278
+  },
+  "overlap_diagnosis": {
+    "target_earliest": "1992-01-31",
+    "target_latest": "2025-04-30",
+    "features_earliest": "1947-01-31",
+    "features_latest": "2025-04-30",
+    "overlapping_earliest": "1992-01-31",
+    "overlapping_latest": "2025-04-30",
+    "target_count": 400,
+    "features_count": 940,
+    "common_count": 400,
+    "issue": "None"
+  },
+  "feature_quality": {
+    "low_variance_features": []
+  },
+  "target_stats": {
+    "min": 0.15239677419354844,
+    "max": 9.679032258064513,
+    "mean": 4.116212006586023,
+    "median": 4.315209677419355,
+    "std": 2.340319312726306,
+    "skew": 0.32112529845072973,
+    "kurt": -0.6088550749822441
+  }
+}

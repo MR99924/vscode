@@ -1,0 +1,8 @@
+{
+    "country": "Czechia",
+    "tenor": "yld_2yr",
+    "model_type": "mlp",
+    "data_points": 220,
+    "features": 6,
+    "date_range": "2007-03-01 to 2025-06-01"
+}

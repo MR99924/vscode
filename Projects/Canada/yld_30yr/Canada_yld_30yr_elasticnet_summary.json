@@ -1,0 +1,8 @@
+{
+    "country": "Canada",
+    "tenor": "yld_30yr",
+    "model_type": "elasticnet",
+    "data_points": 415,
+    "features": 6,
+    "date_range": "1990-12-31 to 2025-06-30"
+}

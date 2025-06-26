@@ -58,6 +58,21 @@ gdp_tickers = {
     "krgdp": "South Korea"
 }
 
+gdp_start_dates = {
+    "usgdp": "2000-01-01",
+    "gbgdp": "1995-01-01",
+    "frgdp": "1990-01-01",
+    "degdp": "1985-01-01",
+    "oecd_qna_00011061": "1998-01-01",
+    "plnaac0197": "2005-01-01",
+    "hugdp": "2003-01-01",
+    "czgdp": "2000-01-01",
+    "zagdp": "1994-01-01",
+    "cagdp": "1990-01-01",
+    "augdp": "1987-01-01",
+    "krgdp": "1995-01-01"
+}
+
 # CPI inflation data tickers (Macrobond)
 cpi_inf_tickers = {
     "uscpi": "United States",
@@ -72,6 +87,21 @@ cpi_inf_tickers = {
     "cacpi": "Canada",
     "aucpi": "Australia",
     "krcpi": "South Korea"
+}
+
+cpi_inf_start_dates = {
+    "usgdp": "2000-01-01",
+    "gbgdp": "1995-01-01",
+    "frgdp": "1990-01-01",
+    "degdp": "1985-01-01",
+    "oecd_qna_00011061": "1998-01-01",
+    "plnaac0197": "2005-01-01",
+    "hugdp": "2003-01-01",
+    "czgdp": "2000-01-01",
+    "zagdp": "1994-01-01",
+    "cagdp": "1990-01-01",
+    "augdp": "1987-01-01",
+    "krgdp": "1995-01-01"
 }
 
 # Long-term GDP forecast tickers (Macrobond)
@@ -240,19 +270,18 @@ sp_rating_tickers = {
 }
 
 iip_gdp_tickers = {
-
     "ih:mb:com:iip_ppt_gdp_us:iip_ppt_gdp_us"	: "United States",
-    "ih:mb:com:iip_ppt_gdp_us:iip_ppt_gdp_gb"	: "United Kingdom",
-    "ih:mb:com:iip_ppt_gdp_us:iip_ppt_gdp_fr"	: "France",
-    "ih:mb:com:iip_ppt_gdp_us:iip_ppt_gdp_de"	: "Germany",
-    "ih:mb:com:iip_ppt_gdp_us:iip_ppt_gdp_it"	: "Italy",
-    "ih:mb:com:iip_ppt_gdp_us:iip_ppt_gdp_pl"	: "Poland",
-    "ih:mb:com:iip_ppt_gdp_us:iip_ppt_gdp_hu"	: "Hungary",
-    "ih:mb:com:iip_ppt_gdp_us:iip_ppt_gdp_cz"	: "Czechia",
-    "ih:mb:com:iip_ppt_gdp_us:iip_ppt_gdp_za"	: "South Africa",
-    "ih:mb:com:iip_ppt_gdp_us:iip_ppt_gdp_ca"	: "Canada",
-    "ih:mb:com:iip_ppt_gdp_us:iip_ppt_gdp_au"	: "Australia",
-    "ih:mb:com:iip_ppt_gdp_us:iip_ppt_gdp_kr"	: "South Korea"   
+    "ih:mb:com:iip_ppt_gdp_gb:iip_ppt_gdp_gb"	: "United Kingdom",
+    "ih:mb:com:iip_ppt_gdp_fr:iip_ppt_gdp_fr"	: "France",
+    "ih:mb:com:iip_ppt_gdp_de:iip_ppt_gdp_de"	: "Germany",
+    "ih:mb:com:iip_ppt_gdp_it:iip_ppt_gdp_it"	: "Italy",
+    "ih:mb:com:iip_ppt_gdp_pl:iip_ppt_gdp_pl"	: "Poland",
+    "ih:mb:com:iip_ppt_gdp_hu:iip_ppt_gdp_hu"	: "Hungary",
+    "ih:mb:com:iip_ppt_gdp_cz:iip_ppt_gdp_cz"	: "Czechia",
+    "ih:mb:com:iip_ppt_gdp_za:iip_ppt_gdp_za"	: "South Africa",
+    "ih:mb:com:iip_ppt_gdp_ca:iip_ppt_gdp_ca"	: "Canada",
+    "ih:mb:com:iip_ppt_gdp_au:iip_ppt_gdp_au"	: "Australia",
+    "ih:mb:com:iip_ppt_gdp_kr:iip_ppt_gdp_kr"	: "South Korea"   
 }
 
 unemployment_tickers = {
@@ -273,7 +302,7 @@ unemployment_tickers = {
 
 # Column name mappings for data sources
 COLUMN_MAPPINGS = {
-    "growth_forecast": {
+    "gdp": {
         "usgdp": "gdp_us",
         "gbgdp": "gdp_gb",
         "frgdp": "gdp_fr",
@@ -287,7 +316,7 @@ COLUMN_MAPPINGS = {
         "augdp": "gdp_au",
         "krgdp": "gdp_kr"
     },
-    "cpi_forecast": {
+    "cpi_inf": {
         "uscpi": "cpi_inf_us",
         "gbcpi": "cpi_inf_gb",
         "frcpi": "cpi_inf_fr",
@@ -465,19 +494,19 @@ COLUMN_MAPPINGS = {
         "au": "rating_au",
         "kr": "rating_kr"
     },
-    "iip_gdp_tickers" : {
+    "iip_gdp" : {
     "ih:mb:com:iip_ppt_gdp_us:iip_ppt_gdp_us"	: "iip_gdp_us",
-    "ih:mb:com:iip_ppt_gdp_us:iip_ppt_gdp_gb"	: "iip_gdp_gb",
-    "ih:mb:com:iip_ppt_gdp_us:iip_ppt_gdp_fr"	: "iip_gdp_fr",
-    "ih:mb:com:iip_ppt_gdp_us:iip_ppt_gdp_de"	: "iip_gdp_de",
-    "ih:mb:com:iip_ppt_gdp_us:iip_ppt_gdp_it"	: "iip_gdp_it",
-    "ih:mb:com:iip_ppt_gdp_us:iip_ppt_gdp_pl"	: "iip_gdp_pl",
-    "ih:mb:com:iip_ppt_gdp_us:iip_ppt_gdp_hu"	: "iip_gdp_hu",
-    "ih:mb:com:iip_ppt_gdp_us:iip_ppt_gdp_cz"	: "iip_gdp_cz",
-    "ih:mb:com:iip_ppt_gdp_us:iip_ppt_gdp_za"	: "iip_gdp_za",
-    "ih:mb:com:iip_ppt_gdp_us:iip_ppt_gdp_ca"	: "iip_gdp_ca",
-    "ih:mb:com:iip_ppt_gdp_us:iip_ppt_gdp_au"	: "iip_gdp_au",
-    "ih:mb:com:iip_ppt_gdp_us:iip_ppt_gdp_kr"	: "iip_gdp_kr",   
+    "ih:mb:com:iip_ppt_gdp_gb:iip_ppt_gdp_gb"	: "iip_gdp_gb",
+    "ih:mb:com:iip_ppt_gdp_fr:iip_ppt_gdp_fr"	: "iip_gdp_fr",
+    "ih:mb:com:iip_ppt_gdp_de:iip_ppt_gdp_de"	: "iip_gdp_de",
+    "ih:mb:com:iip_ppt_gdp_it:iip_ppt_gdp_it"	: "iip_gdp_it",
+    "ih:mb:com:iip_ppt_gdp_pl:iip_ppt_gdp_pl"	: "iip_gdp_pl",
+    "ih:mb:com:iip_ppt_gdp_hu:iip_ppt_gdp_hu"	: "iip_gdp_hu",
+    "ih:mb:com:iip_ppt_gdp_cz:iip_ppt_gdp_cz"	: "iip_gdp_cz",
+    "ih:mb:com:iip_ppt_gdp_za:iip_ppt_gdp_za"	: "iip_gdp_za",
+    "ih:mb:com:iip_ppt_gdp_ca:iip_ppt_gdp_ca"	: "iip_gdp_ca",
+    "ih:mb:com:iip_ppt_gdp_au:iip_ppt_gdp_au"	: "iip_gdp_au",
+    "ih:mb:com:iip_ppt_gdp_kr:iip_ppt_gdp_kr"	: "iip_gdp_kr",   
     },
     "unemployment_rate" : {
     "uslama1849" :"u_rat_us",
@@ -505,7 +534,7 @@ DEFAULT_FORECAST_END_DATE = '2060-12-31'  # End date for forecasts
 DEFAULT_HISTORICAL_FORECAST_START = '1990-01-01'  # Start date for historical forecasts
 
 # Forecast horizons (in months)
-FORECAST_HORIZONS = [24, 60, 120, 360]  # 2, 5, 10, and 30 years
+FORECAST_HORIZON = [24, 60, 120, 360]  # 2, 5, 10, and 30 years
 
 # Forecast transition parameters
 DEFAULT_FORECAST_HORIZON = 60  # Near-term forecast horizon (5 years)
@@ -513,7 +542,7 @@ FULL_FORECAST_HORIZON = 432  # Full forecast horizon (36 years)
 GROWTH_DECAY_PERIOD = 60  # Transition period for growth (5 years)
 INFLATION_DECAY_PERIOD = 36  # Transition period for inflation (3 years)
 DEFAULT_WIND_BACK_YEARS = 5  # Years to wind back for transition
-
+GENERATE_PLOTS = True
 # =============================================================================
 # YIELD MODEL CONFIGURATION
 # =============================================================================

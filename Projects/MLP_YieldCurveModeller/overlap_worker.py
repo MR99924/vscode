@@ -493,10 +493,15 @@ def create_data_availability_summary(country_list, country_code_mapping, yield_l
     
     
     # Add historical forecasts if provided
-    if historical_forecasts is not None and 'historical_df' in historical_forecasts:
-        historical_df = historical_forecasts['historical_df']
-        if not historical_df.empty:
+    
+    if isinstance(historical_forecasts, dict):
+        historical_df = historical_forecasts.get('historical_df')
+        if isinstance(historical_df, pd.DataFrame) and not historical_df.empty:
             data_sources['historical_forecasts'] = historical_df
+        else:
+            # Remove the invalid entry to prevent .empty error
+            data_sources.pop('historical_forecasts', None)
+
     
     # Initialize results dictionary
     availability = {
@@ -588,8 +593,8 @@ def create_data_availability_summary(country_list, country_code_mapping, yield_l
             }
     
     # 1. Global date range for all data
-    all_dfs = list(data_sources.values()) + yield_list
-    all_dfs = [df for df in all_dfs if df is not None and not df.empty]
+    
+    all_dfs = [df for df in data_sources.values() if isinstance(df, pd.DataFrame)] + yield_list
     
     if all_dfs:
         all_start_dates = [df.index.min() for df in all_dfs if len(df) > 0]
@@ -608,6 +613,10 @@ def create_data_availability_summary(country_list, country_code_mapping, yield_l
     logger.info("Analyzing data availability by source")
     
     for source_name, source_df in data_sources.items():
+        
+        if source_name == 'historical_forecasts':
+            continue # already handled separately
+        
         stats = get_date_stats(source_df)
         availability['by_source'][source_name] = stats
         
@@ -654,7 +663,23 @@ def create_data_availability_summary(country_list, country_code_mapping, yield_l
             # For historical forecasts, use a special filter based on tenor
             if source_name == 'historical_forecasts':
                 all_forecast_stats = {}
-                
+
+                # ✅ Safely unwrap the DataFrame
+                if isinstance(source_df, dict):
+                    source_df = source_df.get('historical_df')
+
+                # ✅ Skip if still not a DataFrame
+                if not isinstance(source_df, pd.DataFrame):
+                    logger.warning(f"Skipping {source_name} for {country} — not a valid DataFrame")
+                    availability['by_country'][country]['sources'][source_name] = {
+                        'start_date': None,
+                        'end_date': None,
+                        'count': 0,
+                        'nan_pct': 100.0,
+                        'columns': []
+                    }
+                    continue
+               
                 for tenor_name in yield_names:
                     horizon = tenor_to_horizon.get(tenor_name)
                     

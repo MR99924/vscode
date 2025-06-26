@@ -1,0 +1,182 @@
+{
+  "country": "Italy",
+  "tenor": "yld_2yr",
+  "feature_sources": [
+    "policy_rates",
+    "inflation",
+    "activity",
+    "unemployment_rate"
+  ],
+  "date_ranges": {
+    "target": {
+      "start": "1999-11-30",
+      "end": "2025-04-30",
+      "count": 306
+    },
+    "policy_rates": {
+      "start": "1990-01-31",
+      "end": "2025-04-30",
+      "count": 424,
+      "columns": [
+        "pol_rat_it",
+        "pol_rat_us"
+      ]
+    },
+    "inflation": {
+      "start": "1947-01-31",
+      "end": "2025-03-31",
+      "count": 939,
+      "columns": [
+        "cpi_inf_it"
+      ]
+    },
+    "activity": {
+      "start": "1990-01-31",
+      "end": "2025-04-30",
+      "count": 424,
+      "columns": [
+        "act_track_it"
+      ]
+    },
+    "unemployment_rate": {
+      "start": "1948-01-31",
+      "end": "2025-03-31",
+      "count": 927,
+      "columns": [
+        "u_rat_it"
+      ]
+    }
+  },
+  "feature_counts": {
+    "policy_rates": 2,
+    "inflation": 1,
+    "activity": 1,
+    "unemployment_rate": 1
+  },
+  "data_quality": {
+    "historical_forecasts_2": {
+      "missing_pct": 0.0,
+      "date_range": "1990-01-31 to 2025-03-31",
+      "columns": [
+        "gdp_forecast_2yr_it",
+        "cpi_forecast_2yr_it"
+      ]
+    },
+    "target": {
+      "missing_pct": 27.830188679245282,
+      "date_range": "1999-11-30 to 2025-04-30",
+      "count": 306
+    },
+    "missing_stats": {
+      "missing_count": {
+        "act_track_it": 685,
+        "pol_rat_it": 623,
+        "gdp_forecast_2yr_it": 517,
+        "cpi_forecast_2yr_it": 517,
+        "pol_rat_us": 516,
+        "u_rat_it": 433,
+        "cpi_inf_it": 97
+      },
+      "missing_pct": {
+        "act_track_it": 72.87234042553192,
+        "pol_rat_it": 66.27659574468086,
+        "gdp_forecast_2yr_it": 55.00000000000001,
+        "cpi_forecast_2yr_it": 55.00000000000001,
+        "pol_rat_us": 54.8936170212766,
+        "u_rat_it": 46.06382978723404,
+        "cpi_inf_it": 10.319148936170212
+      },
+      "missing_before": {
+        "act_track_it": 685,
+        "pol_rat_it": 623,
+        "gdp_forecast_2yr_it": 517,
+        "cpi_forecast_2yr_it": 517,
+        "pol_rat_us": 516,
+        "u_rat_it": 433,
+        "cpi_inf_it": 97
+      },
+      "missing_after": {
+        "act_track_it": 0,
+        "pol_rat_it": 0,
+        "gdp_forecast_2yr_it": 0,
+        "cpi_forecast_2yr_it": 0,
+        "pol_rat_us": 0,
+        "u_rat_it": 0,
+        "cpi_inf_it": 0
+      }
+    },
+    "total_missing_before": 3388,
+    "total_missing_after": 0,
+    "rows_before": 940,
+    "rows_after": 940
+  },
+  "feature_engineering": {
+    "count": 7,
+    "types": {
+      "yield_curve": 0
+    }
+  },
+  "target_column": "yld_2yr_it",
+  "total_features": 7,
+  "feature_columns": [
+    "gdp_forecast_2yr_it",
+    "cpi_forecast_2yr_it",
+    "pol_rat_it",
+    "pol_rat_us",
+    "cpi_inf_it",
+    "act_track_it",
+    "u_rat_it"
+  ],
+  "combined_date_range": {
+    "start": "1947-01-31",
+    "end": "2025-04-30",
+    "count": 940
+  },
+  "clean_date_range": {
+    "start": "1947-01-31",
+    "end": "2025-04-30",
+    "count": 940
+  },
+  "enhanced_features": [
+    "gdp_forecast_2yr_it",
+    "cpi_forecast_2yr_it",
+    "pol_rat_it",
+    "pol_rat_us",
+    "cpi_inf_it",
+    "act_track_it",
+    "u_rat_it"
+  ],
+  "feature_correlations": {
+    "pol_rat_it": 0.8324,
+    "gdp_forecast_2yr_it": 0.6379,
+    "pol_rat_us": 0.636,
+    "u_rat_it": 0.5428,
+    "cpi_forecast_2yr_it": 0.5069,
+    "cpi_inf_it": 0.4129,
+    "act_track_it": 0.0852
+  },
+  "overlap_diagnosis": {
+    "target_earliest": "1999-11-30",
+    "target_latest": "2025-04-30",
+    "features_earliest": "1947-01-31",
+    "features_latest": "2025-04-30",
+    "overlapping_earliest": "1999-11-30",
+    "overlapping_latest": "2025-04-30",
+    "target_count": 306,
+    "features_count": 940,
+    "common_count": 306,
+    "issue": "None"
+  },
+  "feature_quality": {
+    "low_variance_features": []
+  },
+  "target_stats": {
+    "min": -0.49551612903225795,
+    "max": 6.282866666666667,
+    "mean": 2.1181139377726126,
+    "median": 2.3523358294930876,
+    "std": 1.6667505633175104,
+    "skew": 0.01982063554655291,
+    "kurt": -1.1413919571339126
+  }
+}

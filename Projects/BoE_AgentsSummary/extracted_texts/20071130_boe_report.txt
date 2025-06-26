@@ -1,0 +1,130 @@
+Source: https://www.bankofengland.co.uk/-/media/boe/files/agents-summary/2007/november-2007.pdf
+Date: 2007-11-30
+
+•Growth in the value of consumer spending eased further, though the volume of sales remained resilient,
+aided by aggressive discounting.
+•Demand for housing also eased further in most regions, as did house price inflation.
+• Investment intentions in the service sector fell sharply again in October.  They were, however, already
+being pared back ahead of the recent financial turmoil.  So far, tighter credit conditions had not been a
+major concern for most companies, though posed risks for the investment outlook (see box).
+•Demand for exports remained buoyant, despite weaker demand from the United States.
+•Growth in manufacturing was solid, and that in construction remained very strong.  However, business
+services activity slowed further.
+• Capacity pressures lessened noticeably in service industries, but persisted elsewhere.
+• Employment intentions eased, as did recruitment difficulties , largely owing to developments in the
+business service sector.
+•Growth in total labour costs continued to point to stronger earnings growth than official data.
+•Annual input price inflation increased in the month, while output price inflation was little changed.
+•Annual consumer price inflation fell further, driven by discounting by retailers.  Nonetheless, significant
+increases in some retail food prices were in prospect. 
+This publication is a summary of monthly reports compiled by
+the Bank of England’s Agents, following discussions with nearly900 businesses in the period between late September and late
+October .  It provides information on the state of business
+conditions, from companies across all sectors of the economy.  The report does not represent the Bank’s own views, nor does itrepresent the views of any particular company or region.  TheBank’s Monetary Policy Committee uses the intelligence providedby the Agents, in conjunction with information from other sources,to assist its understanding and assessment of current economicconditions.  A copy of this publication can be found at:www.bankofengland.co.uk/publications/agentssummary/index.htm.The Bank of England has Agencies for Central Southern England, the
+East Midlands, Greater London, the North East, the North West,Northern Ireland, Scotland, the South East & East Anglia, theSouth West, Wales, the West Midlands & Oxfordshire, andYorkshire & the Humber.
+The Bank’s assessment of current monetary and economic
+conditions, and the outlook for inflation, are contained in theInflation Report, obtained from:www.bankofengland.co.uk/publications/inflationreport/index.htm.Agents’ summary of business conditions
+November 2007Demand
+Consumption
+The Agents’ score for the value of retail sales fell further in
+October, continuing a trend which had begun well ahead ofthe recent financial market turmoil ( Chart 1 ).  Agents reported
+that discretionary spending remained subdued, especially forhousing-related expenditures, consistent with the easing inhousing demand.  And there were reports of weaker spendingon products typically purchased by middle-income groups whowere facing higher interest costs.  Spending on consumerservices also remained down on rates earlier in the year.Retailers had attempted to stimulate demand and reduceunwanted inventories through aggressive discounting.Consequently, growth in the volume of sales remained resilientand exceeded that for sales values.
+Housing market
+Housing demand eased further in October.  In the market forestablished housing, estate agencies reported lower levels ofenquiries, and a slowdown in new instructions.  Conditionswere described as unseasonably weak, both across regions andproperty types.  Sale periods had lengthened, and there was anincrease in the share of properties sold at a discount.Consequently, price inflation for established homes eased inmost regions, and estate agencies claimed that the prospect oflower City bonuses had weighed on house price expectations,especially in the south.
+In the market for new housing, demand also remained soft.
+This had prompted greater use of discounts and incentives tosecure sales, so that price inflation for new homes slowedfurther.  But the reduction in overall building activity had so farbeen modest, given the volume of pre-committed work.Larger builders were yet to be significantly affected by tightercredit conditions, though expressed some concern about theeffects of financial turmoil on potential clients’ job security.Investment
+Investment intentions fell again in October, for the thirdsuccessive month.  This reduction was driven by a sharp fall inintentions in the service sector;  manufacturers’ investmentintentions remained robust ( Chart 2 ).  Since May, an easing in
+investment intentions had been under way in response toincreases in Bank Rate, with much of the reduction inintentions predating the recent financial turmoil.  So far, themajority of companies reported that tighter credit conditionssince August had not inhibited their investment plans.  But fora non-trivial minority of companies, it had become difficult torefinance existing debt, or to finance new projects withuncertain cash flow.  And some companies were deferringinvestment decisions given increased uncertainty about theeffect of tighter credit conditions on demand.  (For details seethe box on ‘Credit conditions’.)
+Overseas trade
+External demand remained buoyant overall, despitedeteriorating conditions for those exporting to the UnitedStates.  While these exporters were increasinglyuncompetitive, given the strength of sterling relative to thedollar, the fall in US demand was being offset by a furtherstrengthening in demand elsewhere.  This was most so forexporters to Europe (notably the accession economies), theMiddle East and emerging economies in Asia and Africa.  Byproduct type, demand was strongest for business services andcapital goods.
+Demand by UK companies for intermediate imports remained
+high, given healthy domestic production.  But whileconsumption imports remained firm, there were some reportsof retailers reviewing their orders to reduce the risk ofunwanted inventories.2 Agents’ summary of business conditions November 2007
+1.00.01.02.03.04.05.06.07.08.0
+2001 02 03 04 05 06 071.51.00.50.00.51.01.52.02.53.0
+Agents (right-hand scale)
+ONS (left-hand scale)Percentage change Score
+++
+––Three months on same period a year earlierChart 1 Retail sales values
+2101234
+1998 99 2000 01 02 03 04 05 06 07Scores
+Services
+ManufacturingThree months on same period a year earlier
++
+–Chart 2 Investment intentions over the next twelve
+monthsAgents’ summary of business conditions November 2007 3
+Output
+Primary production
+Livestock production remained hampered by recent disease
+outbreaks, which had restricted movement of animals.However, dairy production was beginning to expand inresponse to rising world prices and efforts of retailers to securesupply.
+Manufacturing
+Manufacturing output growth remained strong in October,buoyed by external demand, especially high-value capitalgoods ( Chart 3 ).  Domestic production was also firm,
+particularly among those manufacturers exposed to non-residential construction.  Prospects remained good,exceeding expectations for some contacts.
+Construction
+Growth in construction output remained very strong, though itticked down from its recent exceptional pace ( Chart 3 ).
+Activity continued to be supported by infrastructure projects,health, education, demand for new industrial and commercialspace, and retail refurbishment.  For many contacts, orderbooks were full.  And capacity constraints remained acute forthose in some southern regions, with Olympics-relatedprojects expected to impinge on the availability of resources.The strength in construction activity reflected the largeamount of pre-committed work, with output yet to beaffected by the downturn in demand for property developmentstemming from recent financial events.
+Services
+In contrast to the strength in manufacturing and construction,service sector output slowed further in October ( Chart 4 ).  The
+slowdown was driven by the main component of the sector —professional and business services — and reflected an easing indemand for services related to large mergers and acquisitions,regulatory standards and property.  Following a series of one-off boosts to business service demand in the first half of
+the decade, a slowdown in growth had become evident earlierin the year.  Recent financial turmoil had, however, amplifiedthis trend, with a reduction in activity in financial services andproperty development weighing on output in the businessservices sector more generally.
+Employment
+Employment intentions eased again in October ( Chart 5 ).  This
+outcome was driven by weaker employment intentions in thebusiness service sector;  intentions elsewhere were foremployment to grow at current rates.  And for the first time inover a year, there were signs that recruitment difficulties wereeasing somewhat.  This mainly reflected conditions in southernregions where Agents reported less difficulty recruitingbusiness service professionals, consistent with the easing ofservice sector activity.  Recruitment difficulties did, however,persist for other occupations, especially professionals in themanufacturing and construction industries.
+Three months on same period a year earlier
+2.01.00.01.02.03.04.0
+1998 99 2000 01 02 03 04 05 06 07ManufacturingConstructionScores
++
+–
+(a) Recruitment difficulties relative to normal;  employment intentions (average across sectors)
+over next six months.Chart 3 Manufacturing and constructionThree months on same period a year earlier
+101234
+1998 99 2000 01 02 03 04 05 06 07Consumer servicesBusiness servicesScores
++
+–Chart 4 Service sector output
+1.00.50.00.51.01.52.02.53.03.54.0
+1997 98 99 2000 01 02 03 04 05 06 07Scores
+Recruitment difﬁculties
+Employment intentions+
+–Chart 5 Labour market conditions(a)Capacity utilisation
+Contacts expected capacity pressures to ease over the next six
+months, but remain higher than the average of recent years(Chart 6 ).  While this anticipated easing partly reflected recent
+additions to capacity, it also reflected the current slowing inactivity, which would make it easier for companies to meetdemand with existing resources.  Alleviation of capacitypressures was expected to be most apparent in the servicessector, where there had been the most pronounced slowdownin demand.  Pressures were expected to persist inmanufacturing and construction, given ongoing shortages ofprofessional and technical staff and, in some cases, materials.
+Costs and prices
+Labour costs
+Agents reported that across-the-board pay settlementsremained stable in October, and their score for total labourcost growth ticked down to be well below its level at thebeginning of the year, reflecting lower required contributionsto pension schemes.  While the overall picture on earningsgrowth was benign, it masked growing wage dispersion acrossoccupational groups as companies grappled with those areasof persistent skill shortage.  And there were further reports ofthe impact of requirements to increase paid leave entitlementsfor temporary staff and those on the national minimum wage.This was said to be significantly increasing unit labour costs insome sectors (notably hospitality, retail and agriculture).
+Input and output prices
+Input price inflation rebounded in October, driven by higherprices for energy, oil derivatives, metals, building materials and food inputs.  These costs increased despite the strength of sterling relative to the US dollar, and reflected sharp rises in world prices.  Partly offsetting the higher cost ofcommodity-based inputs, utility costs declined, though the fallwas modest, given the significant lags in renegotiation ofcontracts for many companies.The score for manufacturing output price inflation was little
+changed in October, and had stabilised in recent months.Consequently, with input price inflation displaying renewedstrength, manufacturers’ margin recovery had slowed.  Mostmanufacturers had only secured partial margin recovery sincethe episode of rising costs during 2004–06.  However,manufacturers of food products, who had experienced visibleincreases in costs, continued to have greater success in raising prices, especially when retailers were keen to securelonger-term supplies.
+The score for business-to-business service price inflation was
+unchanged in October, having fallen in September.  Contactssaid this reflected an easing in demand and the effects ofincreased commoditisation of commonly provided services.
+Consumer prices
+Agents’ scores for annual goods price inflation edged downagain in October, partly reflecting the path of utilities pricesover the past year.  With annual service price inflationunchanged, overall consumer price inflation also fell.
+Aggressive discounting had placed downward pressure on
+retail goods prices.  It reflected efforts of retailers to stimulatedemand, and intense competition between supermarketchains.  Despite recent discounting, most contacts expectedthat a low point for retail goods price inflation was near.  Deepdiscounting was not expected to be sustained.  Contract pricesof Chinese imports were increasing, and higher materials costswere beginning to feed through to retail prices of varioushousehold items.  And some major suppliers of food productsreported large increases in their contract prices withsupermarkets.  While these increases were likely to beabsorbed in supermarket margins initially, contacts speculatedthat by the new year, there could be sizable rises in some retailfood prices.4 Agents’ summary of business conditions November 2007
+32101234
+1998 99 2000 01 02 03 04 05 06 07Scores
+ManufacturingServicesRelative to normal
++
+–Chart 6 Capacity constraints over the next six monthsCredit conditions
+Agents spoke to nearly 900 companies in October, and
+explored the extent to which they were affected by tightercredit conditions.  This box summarises the main messagesfrom their interviews.
+Companies little affected 
+The majority of companies reported few direct effects of thetightening of credit conditions so far.  This was because thegreater share of companies interviewed had no need toundertake new borrowing to finance current business plans;they had pre-existing credit lines, access to internal sources offinance or had borrowed long term earlier in the year.  
+Where new borrowing was required, smaller loans remained
+linked to Bank Rate and terms were therefore unchanged.  Andalthough Libor-linked interest rates on larger loans rose, mostborrowers said that this had not yet posed serious problems.Many contacts claimed that financial institutions continued tolend actively for transactions that would generate cash flow, orhad risks that were straightforward to assess.  Some ‘blue chip’companies even reported that they had benefited from a ‘flightto quality’, while some subsidiaries were borrowing fromparent companies without penalty.
+Companies most affected
+Nonetheless, a non-trivial minority of companies reported thattighter credit conditions were affecting their operations.  Byfirm type, these were mainly: 
+• highly leveraged firms seeking to refinance their debt 
+(with some contemplating asset sales to meet debtobligations);
+• private equity firms unable to access funding on sufficient
+scale to progress major deals; 
+• firms seeking syndicated finance;  and• small to medium-sized firms with reduced access to invoice
+discounting, trade credit and factoring facilities.
+By industry, activity in the financial services sector was
+affected by the cessation of large deals and securitisations.And property development was affected by reduced lending,as investors and financiers took a more cautious view ofproperty valuations.
+But so far, the effect of changes in credit conditions on overall
+investment decisions had been relatively small.  To the extentthat investment was being inhibited, companies were morelikely to be deferring decisions than cancelling them.  Andwhen investment was deferred or cancelled, most companies
+attributed this decision to uncertainty about the effects offinancial turmoil on demand rather than the cost or availabilityof finance.
+Nonetheless, there were some early reports of spillovers 
+from those areas affected by tighter credit conditions to other parts of the economy.  For example, reduced activity by financial service providers and commercial propertydevelopers had reduced demand for accountants andcorporate lawyers.
+Risks
+Contacts emphasised the uncertainty of their current businessenvironment and perceived a number of risks to the outlook.They were concerned that spillovers might become morepronounced, with reduced financial sector activity andcommercial property development weighing on demand for arange of professional services.  Contacts also predicted therewould be job losses in the financial sector, along with morewidespread reductions in bonuses, which might remove animpetus to spending on consumer services and residentialproperty.  More generally, contacts highlighted the risk of atemporary suspension of decision-making as companiesassessed the impact of tighter credit conditions on bothdomestic and global growth before committing to increases ininvestment or employment.Agents’ summary of business conditions November 2007

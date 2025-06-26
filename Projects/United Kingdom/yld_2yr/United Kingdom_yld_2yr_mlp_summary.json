@@ -1,0 +1,8 @@
+{
+    "country": "United Kingdom",
+    "tenor": "yld_2yr",
+    "model_type": "mlp",
+    "data_points": 402,
+    "features": 5,
+    "date_range": "1992-01-01 to 2025-06-01"
+}

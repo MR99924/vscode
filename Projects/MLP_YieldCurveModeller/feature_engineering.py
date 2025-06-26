@@ -11,13 +11,13 @@ import logging
 # Configure logging
 logger = logging.getLogger(__name__)
 
-def forward_fill_to_current_date(df, freq='M', max_fill_limit=None):
+def forward_fill_to_current_date(df, freq='MS', max_fill_limit=None):
     """
     Forward-fill a DataFrame to the current date with enhanced controls.
     
     Parameters:
         df (DataFrame): DataFrame to forward-fill
-        freq (str): Frequency for date_range ('M' for monthly, 'D' for daily)
+        freq (str): Frequency for date_range ('MS' for monthly, 'D' for daily)
         max_fill_limit (int, optional): Maximum number of periods to forward fill. None means no limit.
         
     Returns:
@@ -32,7 +32,7 @@ def forward_fill_to_current_date(df, freq='M', max_fill_limit=None):
     
     if original_end < today:
         # Calculate number of periods to forward fill
-        if freq == 'M':
+        if freq == 'MS':
             periods_to_fill = (today.year - original_end.year) * 12 + (today.month - original_end.month)
         elif freq == 'D':
             periods_to_fill = (today - original_end).days

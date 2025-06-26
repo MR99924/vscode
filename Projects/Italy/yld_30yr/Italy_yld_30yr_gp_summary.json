@@ -1,0 +1,12 @@
+{
+    "country": "Italy",
+    "tenor": "yld_30yr",
+    "model_type": "gp",
+    "data_points": 308,
+    "features": 6,
+    "date_range": "1999-11-01 to 2025-06-01",
+    "train_rmse": null,
+    "train_r2": null,
+    "test_rmse": null,
+    "test_r2": null
+}

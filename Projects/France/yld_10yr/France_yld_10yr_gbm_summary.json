@@ -1,0 +1,8 @@
+{
+    "country": "France",
+    "tenor": "yld_10yr",
+    "model_type": "gbm",
+    "data_points": 419,
+    "features": 6,
+    "date_range": "1990-08-01 to 2025-06-01"
+}

@@ -1,0 +1,8 @@
+{
+    "country": "Australia",
+    "tenor": "yld_2yr",
+    "model_type": "gbm",
+    "data_points": 308,
+    "features": 5,
+    "date_range": "1999-11-01 to 2025-06-01"
+}

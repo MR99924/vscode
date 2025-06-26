@@ -1,0 +1,189 @@
+{
+  "country": "Czechia",
+  "tenor": "yld_5yr",
+  "feature_sources": [
+    "policy_rates",
+    "inflation",
+    "risk_rating",
+    "unemployment_rate"
+  ],
+  "date_ranges": {
+    "target": {
+      "start": "2007-03-31",
+      "end": "2025-04-30",
+      "count": 218
+    },
+    "policy_rates": {
+      "start": "1990-01-31",
+      "end": "2025-04-30",
+      "count": 424,
+      "columns": [
+        "pol_rat_cz",
+        "pol_rat_us"
+      ]
+    },
+    "inflation": {
+      "start": "1947-01-31",
+      "end": "2025-03-31",
+      "count": 939,
+      "columns": [
+        "cpi_inf_cz"
+      ]
+    },
+    "risk_rating": {
+      "start": "1986-01-31",
+      "end": "2025-03-31",
+      "count": 471,
+      "columns": [
+        "rating_cz"
+      ]
+    },
+    "unemployment_rate": {
+      "start": "1948-01-31",
+      "end": "2025-03-31",
+      "count": 927,
+      "columns": [
+        "u_rat_cz"
+      ]
+    }
+  },
+  "feature_counts": {
+    "policy_rates": 2,
+    "inflation": 1,
+    "risk_rating": 1,
+    "unemployment_rate": 1
+  },
+  "data_quality": {
+    "historical_forecasts_5": {
+      "missing_pct": 0.0,
+      "date_range": "1990-01-31 to 2025-03-31",
+      "columns": [
+        "gdp_forecast_5yr_cz",
+        "cpi_forecast_5yr_cz"
+      ]
+    },
+    "target": {
+      "missing_pct": 48.58490566037735,
+      "date_range": "2007-03-31 to 2025-04-30",
+      "count": 218
+    },
+    "missing_stats": {
+      "missing_count": {
+        "pol_rat_cz": 587,
+        "u_rat_cz": 577,
+        "rating_cz": 556,
+        "cpi_inf_cz": 541,
+        "gdp_forecast_5yr_cz": 517,
+        "cpi_forecast_5yr_cz": 517,
+        "pol_rat_us_influence": 516,
+        "pol_rat_us": 516
+      },
+      "missing_pct": {
+        "pol_rat_cz": 62.4468085106383,
+        "u_rat_cz": 61.38297872340426,
+        "rating_cz": 59.148936170212764,
+        "cpi_inf_cz": 57.5531914893617,
+        "gdp_forecast_5yr_cz": 55.00000000000001,
+        "cpi_forecast_5yr_cz": 55.00000000000001,
+        "pol_rat_us_influence": 54.8936170212766,
+        "pol_rat_us": 54.8936170212766
+      },
+      "missing_before": {
+        "pol_rat_cz": 587,
+        "u_rat_cz": 577,
+        "rating_cz": 556,
+        "cpi_inf_cz": 541,
+        "gdp_forecast_5yr_cz": 517,
+        "cpi_forecast_5yr_cz": 517,
+        "pol_rat_us_influence": 516,
+        "pol_rat_us": 516
+      },
+      "missing_after": {
+        "pol_rat_cz": 0,
+        "u_rat_cz": 0,
+        "rating_cz": 0,
+        "cpi_inf_cz": 0,
+        "gdp_forecast_5yr_cz": 0,
+        "cpi_forecast_5yr_cz": 0,
+        "pol_rat_us_influence": 0,
+        "pol_rat_us": 0
+      }
+    },
+    "total_missing_before": 4327,
+    "total_missing_after": 0,
+    "rows_before": 940,
+    "rows_after": 940
+  },
+  "feature_engineering": {
+    "count": 8,
+    "types": {
+      "yield_curve": 0
+    }
+  },
+  "target_column": "yld_5yr_cz",
+  "total_features": 8,
+  "feature_columns": [
+    "gdp_forecast_5yr_cz",
+    "cpi_forecast_5yr_cz",
+    "pol_rat_us_influence",
+    "pol_rat_cz",
+    "pol_rat_us",
+    "cpi_inf_cz",
+    "rating_cz",
+    "u_rat_cz"
+  ],
+  "combined_date_range": {
+    "start": "1947-01-31",
+    "end": "2025-04-30",
+    "count": 940
+  },
+  "clean_date_range": {
+    "start": "1947-01-31",
+    "end": "2025-04-30",
+    "count": 940
+  },
+  "enhanced_features": [
+    "gdp_forecast_5yr_cz",
+    "cpi_forecast_5yr_cz",
+    "pol_rat_us_influence",
+    "pol_rat_cz",
+    "pol_rat_us",
+    "cpi_inf_cz",
+    "rating_cz",
+    "u_rat_cz"
+  ],
+  "feature_correlations": {
+    "pol_rat_cz": 0.8191,
+    "cpi_inf_cz": 0.6217,
+    "pol_rat_us_influence": 0.5788,
+    "pol_rat_us": 0.5788,
+    "gdp_forecast_5yr_cz": 0.4697,
+    "u_rat_cz": 0.2614,
+    "rating_cz": 0.1327,
+    "cpi_forecast_5yr_cz": 0.0229
+  },
+  "overlap_diagnosis": {
+    "target_earliest": "2007-03-31",
+    "target_latest": "2025-04-30",
+    "features_earliest": "1947-01-31",
+    "features_latest": "2025-04-30",
+    "overlapping_earliest": "2007-03-31",
+    "overlapping_latest": "2025-04-30",
+    "target_count": 218,
+    "features_count": 940,
+    "common_count": 218,
+    "issue": "None"
+  },
+  "feature_quality": {
+    "low_variance_features": []
+  },
+  "target_stats": {
+    "min": -0.28819354838709677,
+    "max": 5.78948387096774,
+    "mean": 2.1985848629077203,
+    "median": 1.8005043010752688,
+    "std": 1.6537490901221013,
+    "skew": 0.20520285116285739,
+    "kurt": -1.2886546944171073
+  }
+}

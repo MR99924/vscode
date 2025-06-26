@@ -1,4 +1,5 @@
 import os
+import json
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -11,15 +12,15 @@ import datetime
 
 # Project imports
 import config
-from data_worker import train_evaluate_model, fetch_all_data_sources, save_consolidated_fitted_values, forward_fill_to_current_date, select_best_model
+from data_worker import train_evaluate_model, fetch_all_data_sources, forward_fill_to_current_date, select_best_model, all_fitted_values
 from data_visualizer import create_model_summary_visualization
 from overlap_worker import create_data_availability_summary
-from model_tester import configure_diagnostic_logging, extract_feature_names
+from model_tester import extract_feature_names
 from forecast_generator import get_forecast_data_for_modelling
 from sklearn.preprocessing import LabelEncoder
 from model_training import build_ensemble_model
-from macrobond import Macrobond
-import bloomberg
+from macrobond_fixed import Macrobond
+import bloomberg_fixed
 
 # Module level logger (will be configured in main)
 logger = logging.getLogger(__name__)
@@ -40,7 +41,7 @@ def initialize_api_clients():
         mb = None
     
     try:
-        bbg = bloomberg.Bloomberg()
+        bbg = bloomberg_fixed.Bloomberg()
         logger.info("Bloomberg API client initialized successfully")
     except Exception as e:
         logger.error(f"Failed to initialize Bloomberg client: {e}")
@@ -80,8 +81,8 @@ def parse_command_line_arguments():
     """
     parser = argparse.ArgumentParser(description='Yield Curve Modeling Pipeline')
     parser.add_argument('--models', nargs='+', 
-                       default=['elasticnet', 'mlp', 'gbm', 'gp'],
-                       choices=['mlp', 'enhanced_mlp', 'gbm', 'elasticnet', 'gp', 'ensemble'],
+                       default=['mlp', 'gbm', 'gp'],
+                       choices=['mlp', 'enhanced_mlp', 'gbm', 'gp', 'ensemble'],
                        help='Model types to train')
     parser.add_argument('--use-ensembles', action='store_true', 
                        help='Create ensembles of different model types')
@@ -132,10 +133,12 @@ def fetch_and_prepare_data(mb_client, bbg_client):
     
     # Get historical forecasts from forecast_generator
     logger.info("Generating historical forecasts...")
+    country_list = config.country_list
     historical_forecasts = get_forecast_data_for_modelling(
-        forecast_horizons=config.FORECAST_HORIZONS,
-        start_date=config.DEFAULT_HISTORICAL_FORECAST_START,
-        mb_client=mb_client
+        mb_client=mb_client,
+        country_list=country_list,
+        country_code_mapping=config.country_list_mapping,
+        forecast_horizon=config.FORECAST_HORIZON[3]
     )
     
     # Store yield data in lists for easier iteration
@@ -216,7 +219,6 @@ def select_models_for_tenor(tenor_idx, args):
         tenor_model_types.insert(0, 'elasticnet')
     
     return tenor_model_types
-
 
 def train_models_for_tenor(country, tenor_name, tenor_idx, tenor_data, data_dict, 
                           country_predicted_yields, tenor_model_types, args):
@@ -351,39 +353,37 @@ def update_predicted_yields(country, tenor_name, model_result, predicted_yields_
 def save_best_models(results_summary):
     """
     Save the best models with proper feature names and metadata.
+    Also consolidates fitted values into a single CSV and saves a registry of best models.
     
     Parameters:
         results_summary: Dictionary containing all results
     """
     logger.info("Saving best models with explicit feature names")
-    
+
+    global all_fitted_values
+    best_fitted_values = {}
+    best_models_registry = {}
+
     for country in results_summary['best_models']:
         for tenor, model_type in results_summary['best_models'][country].items():
             try:
-                # Get the specific model result
                 model_result = results_summary['model_results'][country][tenor]
-                
-                # Ensure model and scaler exist
+
                 if 'model' not in model_result or 'scaler' not in model_result:
                     logger.warning(f"Missing model or scaler for {country} - {tenor}")
                     continue
-                
-                # Create output directory
+
                 country_dir = os.path.join(config.MODEL_DIR, country)
                 os.makedirs(country_dir, exist_ok=True)
-                
-                # Construct model path
+
                 model_path = os.path.join(country_dir, f"{country}_{tenor}_best_model.pkl")
-                
-                # Extract feature names
+
                 try:
                     feature_names = extract_feature_names(model_result, country, tenor)
                 except Exception as e:
                     logger.warning(f"Could not extract feature names for {country} - {tenor}: {e}")
-                    # Fallback to feature_details if available
                     feature_names = model_result.get('feature_details', {}).get('feature_columns', [])
-                
-                # Create model package
+
                 model_package = {
                     'model': model_result['model'],
                     'scaler': model_result['scaler'],
@@ -394,20 +394,45 @@ def save_best_models(results_summary):
                     'country': country,
                     'tenor': tenor
                 }
-                
-                # Save model package
+
                 joblib.dump(model_package, model_path)
                 logger.info(f"Saved best model for {country} - {tenor}: {model_type}")
-                
-                # Log feature names for verification
-                if feature_names:
-                    logger.debug(f"Feature names for {country} - {tenor}: {feature_names}")
+
+                fitted_key = f"{country}_{tenor}_{model_type}"
+                if fitted_key in all_fitted_values:
+                    fitted_df = all_fitted_values[fitted_key]
+                    fitted_path = os.path.join(country_dir, f"{country}_{tenor}_fitted_values.csv")
+                    fitted_df.to_csv(fitted_path, index=False)
+                    logger.info(f"Saved fitted values for {country} - {tenor} to {fitted_path}")
+
+                    # Track for consolidated saving
+                    best_fitted_values[fitted_key] = fitted_df
+                    best_models_registry[f"{country}_{tenor}"] = {
+                        'model_type': model_type,
+                        'model_path': os.path.abspath(model_path)
+                    }
                 else:
-                    logger.warning(f"No feature names found for {country} - {tenor}")
-                    
+                    logger.warning(f"No fitted values found for {country} - {tenor} ({model_type})")
+
             except Exception as e:
                 logger.error(f"Error saving best model for {country} - {tenor}: {e}")
                 logger.exception("Full traceback:")
+
+    # Save consolidated fitted values
+    if best_fitted_values:
+        consolidated_df = pd.concat(best_fitted_values.values(), ignore_index=True)
+        consolidated_path = os.path.join(config.OUTPUT_DIR, "best_fitted_values.csv")
+        consolidated_df.to_csv(consolidated_path, index=False)
+        logger.info(f"Saved consolidated best fitted values to '{consolidated_path}'")
+
+        # Save registry
+        registry_path = os.path.join(config.OUTPUT_DIR, "best_models_registry.json")
+        with open(registry_path, 'w') as f:
+            json.dump(best_models_registry, f, indent=4)
+        logger.info(f"Saved best models registry to '{registry_path}'")
+    else:
+        logger.warning("No best fitted values found to consolidate")
+
 
 
 def generate_summary_outputs(results_summary, models_df, country_list):
@@ -613,7 +638,6 @@ def main():
         logger.error(f"Critical error in main pipeline: {e}")
         logger.exception("Full traceback:")
         raise
-
 
 if __name__ == "__main__":
     main()

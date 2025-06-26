@@ -1,0 +1,8 @@
+{
+    "country": "United Kingdom",
+    "tenor": "yld_30yr",
+    "model_type": "gbm",
+    "data_points": 391,
+    "features": 6,
+    "date_range": "1992-12-01 to 2025-06-01"
+}

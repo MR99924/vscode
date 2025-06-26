@@ -1,0 +1,218 @@
+{
+  "country": "South Korea",
+  "tenor": "yld_10yr",
+  "feature_sources": [
+    "policy_rates",
+    "inflation",
+    "activity",
+    "risk_rating",
+    "unemployment_rate"
+  ],
+  "date_ranges": {
+    "target": {
+      "start": "2001-01-31",
+      "end": "2025-03-31",
+      "count": 291
+    },
+    "policy_rates": {
+      "start": "1990-01-31",
+      "end": "2025-03-31",
+      "count": 423,
+      "columns": [
+        "pol_rat_kr",
+        "pol_rat_us"
+      ]
+    },
+    "inflation": {
+      "start": "1947-01-31",
+      "end": "2025-03-31",
+      "count": 939,
+      "columns": [
+        "cpi_inf_kr"
+      ]
+    },
+    "activity": {
+      "start": "1990-01-31",
+      "end": "2025-03-31",
+      "count": 423,
+      "columns": [
+        "act_track_kr"
+      ]
+    },
+    "risk_rating": {
+      "start": "1986-01-31",
+      "end": "2025-03-31",
+      "count": 471,
+      "columns": [
+        "rating_kr"
+      ]
+    },
+    "unemployment_rate": {
+      "start": "1948-01-31",
+      "end": "2025-03-31",
+      "count": 927,
+      "columns": [
+        "u_rat_kr"
+      ]
+    }
+  },
+  "feature_counts": {
+    "policy_rates": 2,
+    "inflation": 1,
+    "activity": 1,
+    "risk_rating": 1,
+    "unemployment_rate": 1
+  },
+  "data_quality": {
+    "historical_forecasts_10": {
+      "missing_pct": 0.0,
+      "date_range": "1990-01-31 to 2025-03-31",
+      "columns": [
+        "gdp_forecast_10yr_kr",
+        "cpi_forecast_10yr_kr"
+      ]
+    },
+    "target": {
+      "missing_pct": 31.20567375886525,
+      "date_range": "2001-01-31 to 2025-03-31",
+      "count": 291
+    },
+    "missing_stats": {
+      "missing_count": {
+        "act_track_kr": 637,
+        "u_rat_kr": 629,
+        "pol_rat_kr": 628,
+        "gdp_forecast_10yr_kr": 516,
+        "cpi_forecast_10yr_kr": 516,
+        "pol_rat_us_influence": 516,
+        "pol_rat_us": 516,
+        "rating_kr": 479,
+        "cpi_inf_kr": 67
+      },
+      "missing_pct": {
+        "act_track_kr": 67.8381256656017,
+        "u_rat_kr": 66.98615548455804,
+        "pol_rat_kr": 66.87965921192757,
+        "gdp_forecast_10yr_kr": 54.9520766773163,
+        "cpi_forecast_10yr_kr": 54.9520766773163,
+        "pol_rat_us_influence": 54.9520766773163,
+        "pol_rat_us": 54.9520766773163,
+        "rating_kr": 51.01171458998935,
+        "cpi_inf_kr": 7.135250266240682
+      },
+      "missing_before": {
+        "act_track_kr": 637,
+        "u_rat_kr": 629,
+        "pol_rat_kr": 628,
+        "gdp_forecast_10yr_kr": 516,
+        "cpi_forecast_10yr_kr": 516,
+        "pol_rat_us_influence": 516,
+        "pol_rat_us": 516,
+        "rating_kr": 479,
+        "cpi_inf_kr": 67
+      },
+      "missing_after": {
+        "act_track_kr": 0,
+        "u_rat_kr": 0,
+        "pol_rat_kr": 0,
+        "gdp_forecast_10yr_kr": 0,
+        "cpi_forecast_10yr_kr": 0,
+        "pol_rat_us_influence": 0,
+        "pol_rat_us": 0,
+        "rating_kr": 0,
+        "cpi_inf_kr": 0
+      }
+    },
+    "total_missing_before": 4504,
+    "total_missing_after": 0,
+    "rows_before": 939,
+    "rows_after": 939
+  },
+  "feature_engineering": {
+    "count": 9,
+    "types": {
+      "yield_curve": 0
+    },
+    "calendar_features": [
+      "quarter",
+      "year",
+      "day_of_month",
+      "is_month_end",
+      "is_quarter_end",
+      "is_year_end",
+      "month_sin",
+      "month_cos",
+      "day_of_week_sin",
+      "day_of_week_cos"
+    ]
+  },
+  "target_column": "yld_10yr_kr",
+  "total_features": 9,
+  "feature_columns": [
+    "gdp_forecast_10yr_kr",
+    "cpi_forecast_10yr_kr",
+    "pol_rat_us_influence",
+    "pol_rat_kr",
+    "pol_rat_us",
+    "cpi_inf_kr",
+    "act_track_kr",
+    "rating_kr",
+    "u_rat_kr"
+  ],
+  "combined_date_range": {
+    "start": "1947-01-31",
+    "end": "2025-03-31",
+    "count": 939
+  },
+  "clean_date_range": {
+    "start": "1947-01-31",
+    "end": "2025-03-31",
+    "count": 939
+  },
+  "enhanced_features": [
+    "gdp_forecast_10yr_kr",
+    "cpi_forecast_10yr_kr",
+    "pol_rat_us_influence",
+    "pol_rat_kr",
+    "pol_rat_us",
+    "cpi_inf_kr",
+    "act_track_kr",
+    "rating_kr",
+    "u_rat_kr"
+  ],
+  "feature_correlations": {
+    "rating_kr": 0.8875,
+    "pol_rat_kr": 0.8246,
+    "cpi_inf_kr": 0.6029,
+    "cpi_forecast_10yr_kr": 0.4881,
+    "pol_rat_us_influence": 0.3349,
+    "pol_rat_us": 0.3349,
+    "act_track_kr": 0.2828,
+    "gdp_forecast_10yr_kr": 0.2788,
+    "u_rat_kr": 0.0714
+  },
+  "overlap_diagnosis": {
+    "target_earliest": "2001-01-31",
+    "target_latest": "2025-03-31",
+    "features_earliest": "1947-01-31",
+    "features_latest": "2025-03-31",
+    "overlapping_earliest": "2001-01-31",
+    "overlapping_latest": "2025-03-31",
+    "target_count": 291,
+    "features_count": 939,
+    "common_count": 291,
+    "issue": "None"
+  },
+  "feature_quality": {
+    "low_variance_features": []
+  },
+  "target_stats": {
+    "min": 1.2555161290322583,
+    "max": 7.802333333333335,
+    "mean": 3.853074271299825,
+    "median": 3.6483870967741927,
+    "std": 1.5647836676317133,
+    "skew": 0.2609052388670067,
+    "kurt": -0.836427600813749
+  }
+}
