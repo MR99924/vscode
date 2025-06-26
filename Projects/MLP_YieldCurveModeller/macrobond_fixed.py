@@ -595,7 +595,7 @@ class Macrobond(object):
             'md': 'Moldova',
             'mc': 'Monaco',
             'mn': 'Mongolia',
-            'me': 'Montenegro',
+            'MS': 'Montenegro',
             'ms': 'Montserrat',
             'ma': 'Morocco',
             'mz': 'Mozambique',

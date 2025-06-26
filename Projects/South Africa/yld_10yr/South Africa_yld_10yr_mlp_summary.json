@@ -4,5 +4,5 @@
     "model_type": "mlp",
     "data_points": 308,
     "features": 7,
-    "date_range": "1999-11-30 to 2025-06-30"
+    "date_range": "1999-11-01 to 2025-06-01"
 }

@@ -1,0 +1,164 @@
+{
+  "country": "United Kingdom",
+  "tenor": "yld_30yr",
+  "feature_sources": [
+    "policy_rates",
+    "inflation",
+    "activity",
+    "risk_rating",
+    "unemployment_rate"
+  ],
+  "date_ranges": {
+    "target": {
+      "start": "1992-12-01",
+      "end": "2025-06-01",
+      "count": 391
+    },
+    "policy_rates": {
+      "start": "1990-01-01",
+      "end": "2025-06-01",
+      "count": 426,
+      "columns": [
+        "pol_rat_gb",
+        "pol_rat_us"
+      ]
+    },
+    "inflation": {
+      "start": "1947-01-01",
+      "end": "2025-06-01",
+      "count": 942,
+      "columns": [
+        "cpi_inf_gb"
+      ]
+    },
+    "activity": {
+      "start": "1990-01-01",
+      "end": "2025-06-01",
+      "count": 426,
+      "columns": [
+        "act_track_gb"
+      ]
+    },
+    "risk_rating": {
+      "start": "1986-01-01",
+      "end": "2025-06-01",
+      "count": 474,
+      "columns": [
+        "rating_gb"
+      ]
+    },
+    "unemployment_rate": {
+      "start": "1948-01-01",
+      "end": "2025-06-01",
+      "count": 930,
+      "columns": [
+        "u_rat_gb"
+      ]
+    }
+  },
+  "feature_counts": {
+    "policy_rates": 2,
+    "inflation": 1,
+    "activity": 1,
+    "risk_rating": 1,
+    "unemployment_rate": 1
+  },
+  "data_quality": {
+    "target": {
+      "missing_pct": 8.21596244131455,
+      "date_range": "1992-12-01 to 2025-06-01",
+      "count": 391
+    },
+    "missing_stats": {
+      "missing_count": {
+        "act_track_gb": 603,
+        "pol_rat_gb": 516,
+        "pol_rat_us": 516,
+        "cpi_inf_gb": 504,
+        "rating_gb": 468,
+        "u_rat_gb": 289
+      },
+      "missing_pct": {
+        "act_track_gb": 64.01273885350318,
+        "pol_rat_gb": 54.77707006369427,
+        "pol_rat_us": 54.77707006369427,
+        "cpi_inf_gb": 53.503184713375795,
+        "rating_gb": 49.681528662420384,
+        "u_rat_gb": 30.67940552016985
+      },
+      "missing_before": {
+        "act_track_gb": 603,
+        "pol_rat_gb": 516,
+        "pol_rat_us": 516,
+        "cpi_inf_gb": 504,
+        "rating_gb": 468,
+        "u_rat_gb": 289
+      },
+      "missing_after": {
+        "act_track_gb": 0,
+        "pol_rat_gb": 0,
+        "pol_rat_us": 0,
+        "cpi_inf_gb": 0,
+        "rating_gb": 0,
+        "u_rat_gb": 0
+      }
+    },
+    "total_missing_before": 2896,
+    "total_missing_after": 0,
+    "rows_before": 942,
+    "rows_after": 942
+  },
+  "feature_engineering": {},
+  "target_column": "yld_30yr_gb",
+  "total_features": 6,
+  "feature_columns": [
+    "pol_rat_gb",
+    "pol_rat_us",
+    "cpi_inf_gb",
+    "act_track_gb",
+    "rating_gb",
+    "u_rat_gb"
+  ],
+  "combined_date_range": {
+    "start": "1947-01-01",
+    "end": "2025-06-01",
+    "count": 942
+  },
+  "clean_date_range": {
+    "start": "1992-12-01",
+    "end": "2025-06-01",
+    "count": 391
+  },
+  "overlap_diagnosis": {
+    "target_earliest": "1992-12-01",
+    "target_latest": "2025-06-01",
+    "features_earliest": "1947-01-01",
+    "features_latest": "2025-06-01",
+    "overlapping_earliest": "1992-12-01",
+    "overlapping_latest": "2025-06-01",
+    "target_count": 391,
+    "features_count": 942,
+    "common_count": 391,
+    "issue": "None"
+  },
+  "feature_correlations": {
+    "pol_rat_gb": 0.784,
+    "u_rat_gb": 0.6708,
+    "pol_rat_us": 0.6141,
+    "rating_gb": 0.5613,
+    "act_track_gb": 0.4621,
+    "cpi_inf_gb": 0.0078
+  },
+  "feature_quality": {
+    "low_variance_features": []
+  },
+  "target_stats": {
+    "min": 0.5915047619047619,
+    "max": 8.91947619047619,
+    "mean": 4.249451538854414,
+    "median": 4.355091304347826,
+    "std": 1.9895679097190144,
+    "skew": 0.4490561082624306,
+    "kurt": -0.09507260467990797
+  }
+}

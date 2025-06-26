@@ -4,7 +4,7 @@
     "model_type": "gp",
     "data_points": 378,
     "features": 6,
-    "date_range": "1994-01-31 to 2025-06-30",
+    "date_range": "1994-01-01 to 2025-06-01",
     "train_rmse": null,
     "train_r2": null,
     "test_rmse": null,

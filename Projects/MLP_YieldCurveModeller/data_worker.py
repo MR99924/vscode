@@ -1447,7 +1447,7 @@ def fetch_yield_data(bbg_client, dt_from, dt_to):
         periodicity=config.BLOOMBERG_DAILY_PERIODICITY
     )
     yld_2yr = yld_2yr.rename(columns=config.COLUMN_MAPPINGS['bond_yield_2yr'])
-    yld_2yr_ann = yld_2yr.resample('ME').mean()
+    yld_2yr_ann = yld_2yr.resample('MS').mean()
     yield_data['yld_2yr'] = yld_2yr
     yield_data['yld_2yr_ann'] = yld_2yr_ann
     
@@ -1459,7 +1459,7 @@ def fetch_yield_data(bbg_client, dt_from, dt_to):
         periodicity=config.BLOOMBERG_DAILY_PERIODICITY
     )
     yld_5yr = yld_5yr.rename(columns=config.COLUMN_MAPPINGS['bond_yield_5yr'])
-    yld_5yr_ann = yld_5yr.resample('ME').mean()
+    yld_5yr_ann = yld_5yr.resample('MS').mean()
     yield_data['yld_5yr'] = yld_5yr
     yield_data['yld_5yr_ann'] = yld_5yr_ann
     
@@ -1471,7 +1471,7 @@ def fetch_yield_data(bbg_client, dt_from, dt_to):
         periodicity=config.BLOOMBERG_DAILY_PERIODICITY
     )
     yld_10yr = yld_10yr.rename(columns=config.COLUMN_MAPPINGS['bond_yield_10yr'])
-    yld_10yr_ann = yld_10yr.resample('ME').mean()
+    yld_10yr_ann = yld_10yr.resample('MS').mean()
     yield_data['yld_10yr'] = yld_10yr
     yield_data['yld_10yr_ann'] = yld_10yr_ann
     
@@ -1483,7 +1483,7 @@ def fetch_yield_data(bbg_client, dt_from, dt_to):
         periodicity=config.BLOOMBERG_DAILY_PERIODICITY
     )
     yld_30yr = yld_30yr.rename(columns=config.COLUMN_MAPPINGS['bond_yield_30yr'])
-    yld_30yr_ann = yld_30yr.resample('ME').mean()
+    yld_30yr_ann = yld_30yr.resample('MS').mean()
     yield_data['yld_30yr'] = yld_30yr
     yield_data['yld_30yr_ann'] = yld_30yr_ann
     
@@ -1498,7 +1498,7 @@ def fetch_policy_rate_data(bbg_client, dt_from, dt_to):
         periodicity=config.BLOOMBERG_DAILY_PERIODICITY
     )
     pol_rat = pol_rat.rename(columns=config.COLUMN_MAPPINGS['policy_rates'])
-    pol_rat = pol_rat.resample('ME').mean()
+    pol_rat = pol_rat.resample('MS').mean()
     return pol_rat
 
 def fetch_activity_data(bbg_client, dt_from, dt_to):
@@ -1512,7 +1512,7 @@ def fetch_activity_data(bbg_client, dt_from, dt_to):
     act_track = act_track.rename(columns=config.COLUMN_MAPPINGS['activity'])
     if not act_track.empty:
         act_track.index = act_track.index.to_period("M").to_timestamp("M")
-        act_track = act_track.resample('ME').first().ffill()
+        act_track = act_track.resample('MS').first().ffill()
         act_track.index = pd.DatetimeIndex(act_track.index.strftime('%Y-%m-%d'))
     return act_track
 
@@ -1525,7 +1525,7 @@ def fetch_inflation_data(mb_client):
         
         cpi_inf = mb_client.FetchSeries(list(config.cpi_inf_tickers.keys()))
         cpi_inf = cpi_inf.rename(columns=config.COLUMN_MAPPINGS['cpi_inf'])
-        cpi_inf = cpi_inf.resample('ME').mean()
+        cpi_inf = cpi_inf.resample('MS').mean()
         cpi_inf = cpi_inf.pct_change(periods=12) * 100  # Convert to year-over-year percentage change
         return cpi_inf
     except Exception as e:
@@ -1541,7 +1541,7 @@ def fetch_unemployment_data(mb_client):
         
         unemployment_rate = mb_client.FetchSeries(list(config.unemployment_tickers.keys()))
         unemployment_rate = unemployment_rate.rename(columns=config.COLUMN_MAPPINGS['unemployment_rate'])
-        unemployment_rate = unemployment_rate.resample('ME').mean()
+        unemployment_rate = unemployment_rate.resample('MS').mean()
         return unemployment_rate
     except Exception as e:
         logger.error(f"Error fetching unemployment data: {e}")
@@ -1561,7 +1561,7 @@ def fetch_iip_gdp_data(mb_client):
         
         iip_gdp = mb_client.FetchSeries(list(config.iip_gdp_tickers.keys()))
         iip_gdp = iip_gdp.rename(columns=config.COLUMN_MAPPINGS['iip_gdp'])
-        iip_gdp = iip_gdp.resample('ME').mean()
+        iip_gdp = iip_gdp.resample('MS').mean()
         return iip_gdp
     except Exception as e:
         logger.error(f"Error fetching IIP/GDP data: {e}")
@@ -1578,17 +1578,17 @@ def fetch_risk_rating_data(mb_client):
         m_rating = mb_client.FetchSeries(list(config.moodys_rating_tickers.keys()))
         m_rating.index.name = "Date"
         m_rating = m_rating.rename(columns=config.COLUMN_MAPPINGS['moody_ratings'])
-        m_rating = m_rating.resample('ME').mean()
+        m_rating = m_rating.resample('MS').mean()
         
         f_rating = mb_client.FetchSeries(list(config.fitch_rating_tickers.keys()))
         f_rating.index.name = "Date"
         f_rating = f_rating.rename(columns=config.COLUMN_MAPPINGS['fitch_ratings'])
-        f_rating = f_rating.resample('ME').mean()
+        f_rating = f_rating.resample('MS').mean()
         
         s_rating = mb_client.FetchSeries(list(config.sp_rating_tickers.keys()))
         s_rating.index.name = "Date"
         s_rating = s_rating.rename(columns=config.COLUMN_MAPPINGS['sp_ratings'])
-        s_rating = s_rating.resample('ME').mean()
+        s_rating = s_rating.resample('MS').mean()
         
         # Calculate consolidated risk rating
         if not m_rating.empty and not s_rating.empty and not f_rating.empty:
@@ -1613,13 +1613,13 @@ def fetch_risk_rating_data(mb_client):
         logger.error(f"Error fetching credit rating data: {e}")
         return pd.DataFrame()
 
-def forward_fill_to_current_date(df, freq='ME'):
+def forward_fill_to_current_date(df, freq='MS'):
     """
     Forward-fill a DataFrame to the current date
     
     Parameters:
         df: DataFrame - DataFrame to forward-fill
-        freq: str - Frequency for date_range ('ME' for monthly, 'D' for daily)
+        freq: str - Frequency for date_range ('MS' for monthly, 'D' for daily)
         
     Returns:
         DataFrame: Forward-filled DataFrame

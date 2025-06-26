@@ -58,6 +58,21 @@ gdp_tickers = {
     "krgdp": "South Korea"
 }
 
+gdp_start_dates = {
+    "usgdp": "2000-01-01",
+    "gbgdp": "1995-01-01",
+    "frgdp": "1990-01-01",
+    "degdp": "1985-01-01",
+    "oecd_qna_00011061": "1998-01-01",
+    "plnaac0197": "2005-01-01",
+    "hugdp": "2003-01-01",
+    "czgdp": "2000-01-01",
+    "zagdp": "1994-01-01",
+    "cagdp": "1990-01-01",
+    "augdp": "1987-01-01",
+    "krgdp": "1995-01-01"
+}
+
 # CPI inflation data tickers (Macrobond)
 cpi_inf_tickers = {
     "uscpi": "United States",
@@ -72,6 +87,21 @@ cpi_inf_tickers = {
     "cacpi": "Canada",
     "aucpi": "Australia",
     "krcpi": "South Korea"
+}
+
+cpi_inf_start_dates = {
+    "usgdp": "2000-01-01",
+    "gbgdp": "1995-01-01",
+    "frgdp": "1990-01-01",
+    "degdp": "1985-01-01",
+    "oecd_qna_00011061": "1998-01-01",
+    "plnaac0197": "2005-01-01",
+    "hugdp": "2003-01-01",
+    "czgdp": "2000-01-01",
+    "zagdp": "1994-01-01",
+    "cagdp": "1990-01-01",
+    "augdp": "1987-01-01",
+    "krgdp": "1995-01-01"
 }
 
 # Long-term GDP forecast tickers (Macrobond)

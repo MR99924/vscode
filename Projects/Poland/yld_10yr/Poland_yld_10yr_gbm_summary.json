@@ -4,5 +4,5 @@
     "model_type": "gbm",
     "data_points": 314,
     "features": 7,
-    "date_range": "1999-05-31 to 2025-06-30"
+    "date_range": "1999-05-01 to 2025-06-01"
 }
