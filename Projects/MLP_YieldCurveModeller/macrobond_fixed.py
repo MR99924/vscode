@@ -87,14 +87,13 @@ class Macrobond(object):
             print(f'Exception fetching ticker {ticker}: {str(e)}')
             return pd.DataFrame()
 
-    def FetchSeries(self, ticker_list: [str]) -> pd.DataFrame:
+    def FetchSeries(self, ticker_list: [str], start_date: str = None) -> pd.DataFrame:
         """
         Fetch several series and return a dataframe.
+        Optionally filter by start_date (YYYY-MM-DD).
         """
-
-        # Assert input type
         try:
-            assert type(ticker_list) is list
+            assert isinstance(ticker_list, list)
         except AssertionError as ae:
             print('Input must be a list')
             raise ae
@@ -104,36 +103,38 @@ class Macrobond(object):
             return pd.DataFrame()
 
         try:
-            # Fetch all the series
             series = self._mbdb.FetchSeries(ticker_list)
-            
-            # Check for errors in individual series and filter out failed ones
+
             valid_tickers = []
             valid_series = []
-            
+
             for i, ticker in enumerate(ticker_list):
                 try:
                     if hasattr(series[i], 'IsError') and series[i].IsError:
                         print(f'Error fetching ticker {ticker}: {series[i].ErrorMessage}')
                         continue
-                    else:
-                        valid_tickers.append(ticker)
-                        valid_series.append(series[i])
+                    valid_tickers.append(ticker)
+                    valid_series.append(series[i])
                 except Exception as e:
                     print(f'Exception checking ticker {ticker}: {str(e)}')
                     continue
-            
+
             if not valid_tickers:
                 print("No valid tickers found")
                 return pd.DataFrame()
-            
-            # Convert valid series to DataFrame
+
             df = self.__m_series_tuple_to_df(ticker_list=valid_tickers, series=valid_series)
+
+            # Apply start_date filtering if provided
+            if start_date:
+                df = df[df.index >= pd.to_datetime(start_date)]
+
             return df
-            
+
         except Exception as e:
             print(f"Error in FetchSeries: {str(e)}")
             return pd.DataFrame()
+
 
     def CreateUnifiedSeriesRequest(self, series_list: [MbSeries], StartDate: str= "", EndDate: str = "", Currency: str = None, Frequency: int = sf.HIGHEST) -> pd.DataFrame:
         """

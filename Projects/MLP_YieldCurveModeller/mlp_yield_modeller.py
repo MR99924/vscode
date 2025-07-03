@@ -126,8 +126,8 @@ def fetch_and_prepare_data(mb_client, bbg_client):
     yield_data = data_sources['yield_data']
     pol_rat = forward_fill_to_current_date(data_sources['policy_rates'])
     cpi_inf = forward_fill_to_current_date(data_sources['inflation'])
-    act_track = forward_fill_to_current_date(data_sources['activity'])
-    risk_rating = forward_fill_to_current_date(data_sources['risk_rating'])
+    act_track = forward_fill_to_current_date(data_sources['act_track'])
+    consolidated_ratings = forward_fill_to_current_date(data_sources['consolidated_ratings'])
     unemployment_rate = forward_fill_to_current_date(data_sources['unemployment_rate'])
     iip_gdp = forward_fill_to_current_date(data_sources['iip_gdp'])
     
@@ -137,9 +137,8 @@ def fetch_and_prepare_data(mb_client, bbg_client):
     historical_forecasts = get_forecast_data_for_modelling(
         mb_client=mb_client,
         country_list=country_list,
-        country_code_mapping=config.country_list_mapping,
-        forecast_horizon=config.FORECAST_HORIZON[3]
-    )
+        country_code_mapping=config.country_list_mapping
+            )
     
     # Store yield data in lists for easier iteration
     yield_list = [
@@ -155,7 +154,7 @@ def fetch_and_prepare_data(mb_client, bbg_client):
         'pol_rat': pol_rat,
         'cpi_inf': cpi_inf,
         'act_track': act_track,
-        'risk_rating': risk_rating,
+        'consolidated_ratings': consolidated_ratings,
         'unemployment_rate': unemployment_rate,
         'iip_gdp': iip_gdp,
         'historical_forecasts': historical_forecasts
@@ -184,7 +183,7 @@ def run_data_diagnostics(country_list, data_dict, tenor_names):
         pol_rat=data_dict['pol_rat'],
         cpi_inf=data_dict['cpi_inf'],
         act_track=data_dict['act_track'],
-        risk_rating=data_dict['risk_rating'],
+        consolidated_ratings=data_dict['consolidated_ratings'],
         historical_forecasts=data_dict['historical_forecasts'],
         unemployment_rate=data_dict['unemployment_rate'],
         iip_gdp=data_dict['iip_gdp']
@@ -255,7 +254,7 @@ def train_models_for_tenor(country, tenor_name, tenor_idx, tenor_data, data_dict
                 cpi_inf=data_dict['cpi_inf'],
                 act_track=data_dict['act_track'],
                 model_type=model_type,
-                risk_rating=data_dict['risk_rating'],
+                consolidated_ratings=data_dict['consolidated_ratings'],
                 historical_forecasts=data_dict['historical_forecasts'],
                 unemployment_rate=data_dict['unemployment_rate'],
                 iip_gdp=data_dict['iip_gdp'],
@@ -521,6 +520,33 @@ def main():
         data_availability = run_data_diagnostics(country_list, data_dict, tenor_names)
         results_summary['data_availability'] = data_availability
         
+        logger.info("=== DATA DATE VALIDATION ===")
+
+        for country in country_list:
+            country_code = config.country_list_mapping[country]
+
+            growth_col = f"gdp_{country_code}"
+            if 'historical forecasts' in data_dict and country in data_dict['historical_forecasts']:
+                growth_data = data_dict['historical_forecasts'][country]['growth'] if 'growth' in data_dict['historical_forecasts'][country] else None
+                if growth_data is not None:
+                    logger.info(f"{country} GDP forecast: {len(growth_data)} points")
+
+            if 'yield_data' in data_dict:
+                for tenor_name in ['yld_2yr', 'yld_5yr', 'yld_10yr', 'yld_30yr']:
+                    tenor_col = f"{tenor_name}_{country_code}"
+
+                    found_data = False
+
+                    for yield_df in data_dict['yield_list']:
+                        if tenor_col in yield_df.columns:
+                            yield_series = yield_df[tenor_col].dropna()
+                            if not yield_series.empty:
+                                logger.info(f"{country} {tenor_name}: {yield_series.index[0]} to {yield_series.index[-1]} ({len(yield_series)} points)")
+                                found_data = True
+                                break
+                    if not found_data:
+                        logger.info(f"{country} {tenor_name}: No data found")
+
         # Initialize tracking variables
         models_df = []
         predicted_yields_by_country = {}

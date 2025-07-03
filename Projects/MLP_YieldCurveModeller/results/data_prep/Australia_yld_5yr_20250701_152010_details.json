@@ -1,0 +1,95 @@
+{
+  "country": "Australia",
+  "tenor": "yld_5yr",
+  "feature_sources": [
+    "policy_rates",
+    "inflation",
+    "consolidated_ratings",
+    "unemployment_rate"
+  ],
+  "date_ranges": {
+    "target": {
+      "start": "1999-11-01",
+      "end": "2025-07-01",
+      "count": 309
+    }
+  },
+  "feature_counts": {},
+  "data_quality": {
+    "target": {
+      "missing_pct": 27.634660421545664,
+      "date_range": "1999-11-01 to 2025-07-01",
+      "count": 309
+    },
+    "missing_stats": {
+      "missing_count": {
+        "gdp_forecast_5m_au": 726,
+        "cpi_forecast_5m_au": 726
+      },
+      "missing_pct": {
+        "gdp_forecast_5m_au": 92.36641221374046,
+        "cpi_forecast_5m_au": 92.36641221374046
+      },
+      "missing_before": {
+        "gdp_forecast_5m_au": 726,
+        "cpi_forecast_5m_au": 726
+      },
+      "missing_after": {
+        "gdp_forecast_5m_au": 0,
+        "cpi_forecast_5m_au": 0
+      }
+    },
+    "total_missing_before": 1452,
+    "total_missing_after": 0,
+    "rows_before": 786,
+    "rows_after": 786
+  },
+  "feature_engineering": {},
+  "target_column": "yld_5yr_au",
+  "total_features": 2,
+  "feature_columns": [
+    "gdp_forecast_5m_au",
+    "cpi_forecast_5m_au"
+  ],
+  "combined_date_range": {
+    "start": "1990-02-01",
+    "end": "2055-07-01",
+    "count": 786
+  },
+  "clean_date_range": {
+    "start": "1999-11-01",
+    "end": "2025-07-01",
+    "count": 309
+  },
+  "overlap_diagnosis": {
+    "target_earliest": "1999-11-01",
+    "target_latest": "2025-07-01",
+    "features_earliest": "1990-02-01",
+    "features_latest": "2055-07-01",
+    "overlapping_earliest": "1999-11-01",
+    "overlapping_latest": "2025-07-01",
+    "target_count": 309,
+    "features_count": 786,
+    "common_count": 309,
+    "issue": "None"
+  },
+  "feature_correlations": {
+    "gdp_forecast_5m_au": 0.0,
+    "cpi_forecast_5m_au": 0.0
+  },
+  "feature_quality": {
+    "low_variance_features": [
+      "gdp_forecast_5m_au",
+      "cpi_forecast_5m_au"
+    ]
+  },
+  "target_stats": {
+    "min": 0.28914285714285715,
+    "max": 6.990761904761905,
+    "mean": 3.8282249071246754,
+    "median": 3.8413809523809523,
+    "std": 1.7634690830821609,
+    "skew": -0.2647955626982121,
+    "kurt": -1.0450361705970739
+  }
+}

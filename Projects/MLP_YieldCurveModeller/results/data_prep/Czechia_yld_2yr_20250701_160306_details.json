@@ -1,0 +1,169 @@
+{
+  "country": "Czechia",
+  "tenor": "yld_2yr",
+  "feature_sources": [
+    "policy_rates",
+    "inflation",
+    "act_track",
+    "unemployment_rate"
+  ],
+  "date_ranges": {
+    "target": {
+      "start": "2007-03-01",
+      "end": "2025-07-01",
+      "count": 221
+    },
+    "policy_rates": {
+      "start": "1990-01-01",
+      "end": "2025-07-01",
+      "count": 427,
+      "columns": [
+        "pol_rat_cz",
+        "pol_rat_us"
+      ]
+    },
+    "inflation": {
+      "start": "1947-01-01",
+      "end": "2025-07-01",
+      "count": 943,
+      "columns": [
+        "cpi_inf_cz"
+      ]
+    },
+    "act_track": {
+      "start": "1990-01-01",
+      "end": "2025-07-01",
+      "count": 427,
+      "columns": [
+        "act_track_cz"
+      ]
+    },
+    "unemployment_rate": {
+      "start": "1948-01-01",
+      "end": "2025-07-01",
+      "count": 931,
+      "columns": [
+        "u_rat_cz"
+      ]
+    }
+  },
+  "feature_counts": {
+    "policy_rates": 2,
+    "inflation": 1,
+    "act_track": 1,
+    "unemployment_rate": 1
+  },
+  "data_quality": {
+    "target": {
+      "missing_pct": 48.24355971896955,
+      "date_range": "2007-03-01 to 2025-07-01",
+      "count": 221
+    },
+    "missing_stats": {
+      "missing_count": {
+        "gdp_forecast_2yr_cz": 1279,
+        "cpi_forecast_2yr_cz": 1279,
+        "act_track_cz": 1024,
+        "pol_rat_cz": 947,
+        "u_rat_cz": 936,
+        "cpi_inf_cz": 900,
+        "pol_rat_us_influence": 876,
+        "pol_rat_us": 876
+      },
+      "missing_pct": {
+        "gdp_forecast_2yr_cz": 98.15809669992326,
+        "cpi_forecast_2yr_cz": 98.15809669992326,
+        "act_track_cz": 78.58787413660782,
+        "pol_rat_cz": 72.67843438219494,
+        "u_rat_cz": 71.8342287029931,
+        "cpi_inf_cz": 69.07137375287797,
+        "pol_rat_us_influence": 67.22947045280124,
+        "pol_rat_us": 67.22947045280124
+      },
+      "missing_before": {
+        "gdp_forecast_2yr_cz": 1279,
+        "cpi_forecast_2yr_cz": 1279,
+        "act_track_cz": 1024,
+        "pol_rat_cz": 947,
+        "u_rat_cz": 936,
+        "cpi_inf_cz": 900,
+        "pol_rat_us_influence": 876,
+        "pol_rat_us": 876
+      },
+      "missing_after": {
+        "gdp_forecast_2yr_cz": 0,
+        "cpi_forecast_2yr_cz": 0,
+        "act_track_cz": 0,
+        "pol_rat_cz": 0,
+        "u_rat_cz": 0,
+        "cpi_inf_cz": 0,
+        "pol_rat_us_influence": 0,
+        "pol_rat_us": 0
+      }
+    },
+    "total_missing_before": 8117,
+    "total_missing_after": 0,
+    "rows_before": 1303,
+    "rows_after": 1303
+  },
+  "feature_engineering": {},
+  "target_column": "yld_2yr_cz",
+  "total_features": 8,
+  "feature_columns": [
+    "gdp_forecast_2yr_cz",
+    "cpi_forecast_2yr_cz",
+    "pol_rat_us_influence",
+    "pol_rat_cz",
+    "pol_rat_us",
+    "cpi_inf_cz",
+    "act_track_cz",
+    "u_rat_cz"
+  ],
+  "combined_date_range": {
+    "start": "1947-01-01",
+    "end": "2055-07-01",
+    "count": 1303
+  },
+  "clean_date_range": {
+    "start": "2007-03-01",
+    "end": "2025-07-01",
+    "count": 221
+  },
+  "overlap_diagnosis": {
+    "target_earliest": "2007-03-01",
+    "target_latest": "2025-07-01",
+    "features_earliest": "1947-01-01",
+    "features_latest": "2055-07-01",
+    "overlapping_earliest": "2007-03-01",
+    "overlapping_latest": "2025-07-01",
+    "target_count": 221,
+    "features_count": 1303,
+    "common_count": 221,
+    "issue": "None"
+  },
+  "feature_correlations": {
+    "pol_rat_cz": 0.935,
+    "cpi_inf_cz": 0.7379,
+    "pol_rat_us_influence": 0.692,
+    "pol_rat_us": 0.692,
+    "u_rat_cz": 0.431,
+    "act_track_cz": 0.2089,
+    "gdp_forecast_2yr_cz": 0.0,
+    "cpi_forecast_2yr_cz": 0.0
+  },
+  "feature_quality": {
+    "low_variance_features": [
+      "gdp_forecast_2yr_cz",
+      "cpi_forecast_2yr_cz"
+    ]
+  },
+  "target_stats": {
+    "min": -0.8242380952380953,
+    "max": 6.320857142857143,
+    "mean": 1.845487524368215,
+    "median": 1.522318181818182,
+    "std": 1.8492883570301815,
+    "skew": 0.6135867833678483,
+    "kurt": -0.7453814721149663
+  }
+}

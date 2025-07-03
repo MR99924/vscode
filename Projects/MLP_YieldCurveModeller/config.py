@@ -59,18 +59,18 @@ gdp_tickers = {
 }
 
 gdp_start_dates = {
-    "usgdp": "2000-01-01",
-    "gbgdp": "1995-01-01",
-    "frgdp": "1990-01-01",
-    "degdp": "1985-01-01",
-    "oecd_qna_00011061": "1998-01-01",
-    "plnaac0197": "2005-01-01",
-    "hugdp": "2003-01-01",
-    "czgdp": "2000-01-01",
-    "zagdp": "1994-01-01",
-    "cagdp": "1990-01-01",
-    "augdp": "1987-01-01",
-    "krgdp": "1995-01-01"
+    "usgdp": "1947-01-01",
+    "gbgdp": "1955-01-01",
+    "frgdp": "1949-01-01",
+    "degdp": "1970-01-01",
+    "oecd_qna_00011061": "1960-01-01",
+    "plnaac0197": "1995-01-01",
+    "hugdp": "1995-01-01",
+    "czgdp": "1995-01-01",
+    "zagdp": "1960-01-01",
+    "cagdp": "1961-01-01",
+    "augdp": "1960-01-01",
+    "krgdp": "1960-01-01"
 }
 
 # CPI inflation data tickers (Macrobond)
@@ -90,18 +90,20 @@ cpi_inf_tickers = {
 }
 
 cpi_inf_start_dates = {
-    "usgdp": "2000-01-01",
-    "gbgdp": "1995-01-01",
-    "frgdp": "1990-01-01",
-    "degdp": "1985-01-01",
-    "oecd_qna_00011061": "1998-01-01",
-    "plnaac0197": "2005-01-01",
-    "hugdp": "2003-01-01",
-    "czgdp": "2000-01-01",
-    "zagdp": "1994-01-01",
-    "cagdp": "1990-01-01",
-    "augdp": "1987-01-01",
-    "krgdp": "1995-01-01"
+    "uscpi": "1947-01-01",
+    "gbcpi": "1988-01-01",
+    "frcpi": "1955-01-01",
+    "decpi": "1991-01-01",
+    "itcpi": "1954-01-01",
+    "plcpi": "1988-01-01",
+    "hucpi": "1992-01-01",
+    "czcpi": "1991-01-01",
+    "zacpi": "1980-01-01",
+    "cacpi": "1992-01-01",
+    "aucpi": "1986-01-01",
+    "krcpi": "1951-08-01"
+
+    
 }
 
 # Long-term GDP forecast tickers (Macrobond)
@@ -424,7 +426,7 @@ COLUMN_MAPPINGS = {
         "BISPDHAU Index": "pol_rat_au",
         "BISPDHSK Index": "pol_rat_kr"
     },
-    "activity": {
+    "act_track": {
         "GSUSCAI Index": "act_track_us",
         "GSGBCAI Index": "act_track_gb",
         "GSFRCAI Index": "act_track_fr",
@@ -543,16 +545,17 @@ GROWTH_DECAY_PERIOD = 60  # Transition period for growth (5 years)
 INFLATION_DECAY_PERIOD = 36  # Transition period for inflation (3 years)
 DEFAULT_WIND_BACK_YEARS = 5  # Years to wind back for transition
 GENERATE_PLOTS = True
+#EXPORT_RESULTS = True
 # =============================================================================
 # YIELD MODEL CONFIGURATION
 # =============================================================================
 
 # Tenor-specific feature sets
 TENOR_FEATURES = {
-    'yld_2yr': ['policy_rates', 'inflation', 'activity', 'historical_forecasts_2yr'],
-    'yld_5yr': ['policy_rates', 'inflation', 'activity', 'historical_forecasts_5yr'],
-    'yld_10yr': ['policy_rates', 'inflation', 'activity', 'risk_rating', 'historical_forecasts_10yr'],
-    'yld_30yr': ['policy_rates', 'inflation', 'activity', 'risk_rating', 'historical_forecasts_30yr']
+    'yld_2yr': ['policy_rates', 'inflation', 'act_track', 'consolidated_ratings', 'iip_gdp', "unemployment_rate", 'historical_forecasts_2yr'],
+    'yld_5yr': ['policy_rates', 'inflation', 'act_track', 'consolidated_ratings', 'iip_gdp', "unemployment_rate", 'historical_forecasts_5yr'],
+    'yld_10yr': ['policy_rates', 'inflation', 'act_track', 'consolidated_ratings', 'iip_gdp', "unemployment_rate", 'historical_forecasts_10yr'],
+    'yld_30yr': ['policy_rates', 'inflation', 'act_track', 'consolidated_ratings', 'iip_gdp',  "unemployment_rate", 'historical_forecasts_30yr']
 }
 
 # Neural network parameters

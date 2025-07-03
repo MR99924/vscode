@@ -1,0 +1,170 @@
+{
+  "country": "South Korea",
+  "tenor": "yld_30yr",
+  "feature_sources": [
+    "policy_rates",
+    "inflation",
+    "activity",
+    "consolidated_ratings",
+    "unemployment_rate"
+  ],
+  "date_ranges": {
+    "target": {
+      "start": "2012-09-01",
+      "end": "2025-07-01",
+      "count": 155
+    },
+    "policy_rates": {
+      "start": "1990-01-01",
+      "end": "2025-07-01",
+      "count": 427,
+      "columns": [
+        "pol_rat_kr",
+        "pol_rat_us"
+      ]
+    },
+    "inflation": {
+      "start": "1947-01-01",
+      "end": "2025-07-01",
+      "count": 943,
+      "columns": [
+        "cpi_inf_kr"
+      ]
+    },
+    "activity": {
+      "start": "1990-01-01",
+      "end": "2025-07-01",
+      "count": 427,
+      "columns": [
+        "act_track_kr"
+      ]
+    },
+    "consolidated_ratings": {
+      "start": "1986-01-01",
+      "end": "2025-07-01",
+      "count": 475,
+      "columns": [
+        "rating_kr"
+      ]
+    },
+    "unemployment_rate": {
+      "start": "1948-01-01",
+      "end": "2025-07-01",
+      "count": 931,
+      "columns": [
+        "u_rat_kr"
+      ]
+    }
+  },
+  "feature_counts": {
+    "policy_rates": 2,
+    "inflation": 1,
+    "activity": 1,
+    "consolidated_ratings": 1,
+    "unemployment_rate": 1
+  },
+  "data_quality": {
+    "target": {
+      "missing_pct": 63.70023419203748,
+      "date_range": "2012-09-01 to 2025-07-01",
+      "count": 155
+    },
+    "missing_stats": {
+      "missing_count": {
+        "act_track_kr": 637,
+        "u_rat_kr": 629,
+        "pol_rat_kr": 628,
+        "pol_rat_us": 516,
+        "pol_rat_us_influence": 516,
+        "rating_kr": 479,
+        "cpi_inf_kr": 67
+      },
+      "missing_pct": {
+        "act_track_kr": 67.55037115588547,
+        "u_rat_kr": 66.70201484623541,
+        "pol_rat_kr": 66.59597030752916,
+        "pol_rat_us": 54.718981972428416,
+        "pol_rat_us_influence": 54.718981972428416,
+        "rating_kr": 50.79533404029692,
+        "cpi_inf_kr": 7.104984093319194
+      },
+      "missing_before": {
+        "act_track_kr": 637,
+        "u_rat_kr": 629,
+        "pol_rat_kr": 628,
+        "pol_rat_us": 516,
+        "pol_rat_us_influence": 516,
+        "rating_kr": 479,
+        "cpi_inf_kr": 67
+      },
+      "missing_after": {
+        "act_track_kr": 0,
+        "u_rat_kr": 0,
+        "pol_rat_kr": 0,
+        "pol_rat_us": 0,
+        "pol_rat_us_influence": 0,
+        "rating_kr": 0,
+        "cpi_inf_kr": 0
+      }
+    },
+    "total_missing_before": 3472,
+    "total_missing_after": 0,
+    "rows_before": 943,
+    "rows_after": 943
+  },
+  "feature_engineering": {},
+  "target_column": "yld_30yr_kr",
+  "total_features": 7,
+  "feature_columns": [
+    "pol_rat_us_influence",
+    "pol_rat_kr",
+    "pol_rat_us",
+    "cpi_inf_kr",
+    "act_track_kr",
+    "rating_kr",
+    "u_rat_kr"
+  ],
+  "combined_date_range": {
+    "start": "1947-01-01",
+    "end": "2025-07-01",
+    "count": 943
+  },
+  "clean_date_range": {
+    "start": "2012-09-01",
+    "end": "2025-07-01",
+    "count": 155
+  },
+  "overlap_diagnosis": {
+    "target_earliest": "2012-09-01",
+    "target_latest": "2025-07-01",
+    "features_earliest": "1947-01-01",
+    "features_latest": "2025-07-01",
+    "overlapping_earliest": "2012-09-01",
+    "overlapping_latest": "2025-07-01",
+    "target_count": 155,
+    "features_count": 943,
+    "common_count": 155,
+    "issue": "None"
+  },
+  "feature_correlations": {
+    "pol_rat_kr": 0.7713,
+    "u_rat_kr": 0.6605,
+    "cpi_inf_kr": 0.5048,
+    "rating_kr": 0.4094,
+    "pol_rat_us_influence": 0.3134,
+    "pol_rat_us": 0.3134,
+    "act_track_kr": 0.0182
+  },
+  "feature_quality": {
+    "low_variance_features": []
+  },
+  "target_stats": {
+    "min": 1.2414545454545456,
+    "max": 4.140818181818182,
+    "mean": 2.644660777399319,
+    "median": 2.5902857142857143,
+    "std": 0.7312462275500352,
+    "skew": 0.13532825643095178,
+    "kurt": -1.0086562342355259
+  }
+}

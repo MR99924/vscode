@@ -1,0 +1,176 @@
+{
+  "country": "France",
+  "tenor": "yld_10yr",
+  "feature_sources": [
+    "policy_rates",
+    "inflation",
+    "act_track",
+    "consolidated_ratings",
+    "unemployment_rate"
+  ],
+  "date_ranges": {
+    "target": {
+      "start": "1990-08-01",
+      "end": "2025-07-01",
+      "count": 420
+    },
+    "policy_rates": {
+      "start": "1990-01-01",
+      "end": "2025-07-01",
+      "count": 427,
+      "columns": [
+        "pol_rat_fr",
+        "pol_rat_us"
+      ]
+    },
+    "inflation": {
+      "start": "1947-01-01",
+      "end": "2025-07-01",
+      "count": 943,
+      "columns": [
+        "cpi_inf_fr"
+      ]
+    },
+    "act_track": {
+      "start": "1990-01-01",
+      "end": "2025-07-01",
+      "count": 427,
+      "columns": [
+        "act_track_fr"
+      ]
+    },
+    "consolidated_ratings": {
+      "start": "1986-01-01",
+      "end": "2025-07-01",
+      "count": 475,
+      "columns": [
+        "rating_fr"
+      ]
+    },
+    "unemployment_rate": {
+      "start": "1948-01-01",
+      "end": "2025-07-01",
+      "count": 931,
+      "columns": [
+        "u_rat_fr"
+      ]
+    }
+  },
+  "feature_counts": {
+    "policy_rates": 2,
+    "inflation": 1,
+    "act_track": 1,
+    "consolidated_ratings": 1,
+    "unemployment_rate": 1
+  },
+  "data_quality": {
+    "target": {
+      "missing_pct": 1.6393442622950838,
+      "date_range": "1990-08-01 to 2025-07-01",
+      "count": 420
+    },
+    "missing_stats": {
+      "missing_count": {
+        "gdp_forecast_10yr_fr": 1183,
+        "cpi_forecast_10yr_fr": 1183,
+        "act_track_fr": 985,
+        "pol_rat_fr": 984,
+        "pol_rat_us": 876,
+        "rating_fr": 828,
+        "u_rat_fr": 698,
+        "cpi_inf_fr": 468
+      },
+      "missing_pct": {
+        "gdp_forecast_10yr_fr": 90.79048349961627,
+        "cpi_forecast_10yr_fr": 90.79048349961627,
+        "act_track_fr": 75.59478127398312,
+        "pol_rat_fr": 75.51803530314658,
+        "pol_rat_us": 67.22947045280124,
+        "rating_fr": 63.545663852647735,
+        "u_rat_fr": 53.56868764389869,
+        "cpi_inf_fr": 35.91711435149655
+      },
+      "missing_before": {
+        "gdp_forecast_10yr_fr": 1183,
+        "cpi_forecast_10yr_fr": 1183,
+        "act_track_fr": 985,
+        "pol_rat_fr": 984,
+        "pol_rat_us": 876,
+        "rating_fr": 828,
+        "u_rat_fr": 698,
+        "cpi_inf_fr": 468
+      },
+      "missing_after": {
+        "gdp_forecast_10yr_fr": 0,
+        "cpi_forecast_10yr_fr": 0,
+        "act_track_fr": 0,
+        "pol_rat_fr": 0,
+        "pol_rat_us": 0,
+        "rating_fr": 0,
+        "u_rat_fr": 0,
+        "cpi_inf_fr": 0
+      }
+    },
+    "total_missing_before": 7205,
+    "total_missing_after": 0,
+    "rows_before": 1303,
+    "rows_after": 1303
+  },
+  "feature_engineering": {},
+  "target_column": "yld_10yr_fr",
+  "total_features": 8,
+  "feature_columns": [
+    "gdp_forecast_10yr_fr",
+    "cpi_forecast_10yr_fr",
+    "pol_rat_fr",
+    "pol_rat_us",
+    "cpi_inf_fr",
+    "act_track_fr",
+    "rating_fr",
+    "u_rat_fr"
+  ],
+  "combined_date_range": {
+    "start": "1947-01-01",
+    "end": "2055-07-01",
+    "count": 1303
+  },
+  "clean_date_range": {
+    "start": "1990-08-01",
+    "end": "2025-07-01",
+    "count": 420
+  },
+  "overlap_diagnosis": {
+    "target_earliest": "1990-08-01",
+    "target_latest": "2025-07-01",
+    "features_earliest": "1947-01-01",
+    "features_latest": "2055-07-01",
+    "overlapping_earliest": "1990-08-01",
+    "overlapping_latest": "2025-07-01",
+    "target_count": 420,
+    "features_count": 1303,
+    "common_count": 420,
+    "issue": "None"
+  },
+  "feature_correlations": {
+    "pol_rat_fr": 0.7252,
+    "rating_fr": 0.7144,
+    "pol_rat_us": 0.6653,
+    "cpi_forecast_10yr_fr": 0.4203,
+    "gdp_forecast_10yr_fr": 0.3382,
+    "cpi_inf_fr": 0.2844,
+    "u_rat_fr": 0.0681,
+    "act_track_fr": 0.0001
+  },
+  "feature_quality": {
+    "low_variance_features": []
+  },
+  "target_stats": {
+    "min": -0.3452727272727273,
+    "max": 10.484350000000001,
+    "mean": 3.7929364804657038,
+    "median": 3.6685919913419913,
+    "std": 2.5084728733549415,
+    "skew": 0.39860868697764534,
+    "kurt": -0.31941002921608996
+  }
+}

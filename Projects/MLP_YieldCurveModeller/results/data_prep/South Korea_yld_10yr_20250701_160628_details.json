@@ -1,0 +1,185 @@
+{
+  "country": "South Korea",
+  "tenor": "yld_10yr",
+  "feature_sources": [
+    "policy_rates",
+    "inflation",
+    "act_track",
+    "consolidated_ratings",
+    "unemployment_rate"
+  ],
+  "date_ranges": {
+    "target": {
+      "start": "2001-01-01",
+      "end": "2025-07-01",
+      "count": 295
+    },
+    "policy_rates": {
+      "start": "1990-01-01",
+      "end": "2025-07-01",
+      "count": 427,
+      "columns": [
+        "pol_rat_kr",
+        "pol_rat_us"
+      ]
+    },
+    "inflation": {
+      "start": "1947-01-01",
+      "end": "2025-07-01",
+      "count": 943,
+      "columns": [
+        "cpi_inf_kr"
+      ]
+    },
+    "act_track": {
+      "start": "1990-01-01",
+      "end": "2025-07-01",
+      "count": 427,
+      "columns": [
+        "act_track_kr"
+      ]
+    },
+    "consolidated_ratings": {
+      "start": "1986-01-01",
+      "end": "2025-07-01",
+      "count": 475,
+      "columns": [
+        "rating_kr"
+      ]
+    },
+    "unemployment_rate": {
+      "start": "1948-01-01",
+      "end": "2025-07-01",
+      "count": 931,
+      "columns": [
+        "u_rat_kr"
+      ]
+    }
+  },
+  "feature_counts": {
+    "policy_rates": 2,
+    "inflation": 1,
+    "act_track": 1,
+    "consolidated_ratings": 1,
+    "unemployment_rate": 1
+  },
+  "data_quality": {
+    "target": {
+      "missing_pct": 30.913348946135834,
+      "date_range": "2001-01-01 to 2025-07-01",
+      "count": 295
+    },
+    "missing_stats": {
+      "missing_count": {
+        "gdp_forecast_10yr_kr": 1183,
+        "cpi_forecast_10yr_kr": 1183,
+        "act_track_kr": 997,
+        "u_rat_kr": 989,
+        "pol_rat_kr": 988,
+        "pol_rat_us": 876,
+        "pol_rat_us_influence": 876,
+        "rating_kr": 839,
+        "cpi_inf_kr": 427
+      },
+      "missing_pct": {
+        "gdp_forecast_10yr_kr": 90.79048349961627,
+        "cpi_forecast_10yr_kr": 90.79048349961627,
+        "act_track_kr": 76.51573292402148,
+        "u_rat_kr": 75.90176515732924,
+        "pol_rat_kr": 75.82501918649271,
+        "pol_rat_us": 67.22947045280124,
+        "pol_rat_us_influence": 67.22947045280124,
+        "rating_kr": 64.38986953184957,
+        "cpi_inf_kr": 32.77052954719878
+      },
+      "missing_before": {
+        "gdp_forecast_10yr_kr": 1183,
+        "cpi_forecast_10yr_kr": 1183,
+        "act_track_kr": 997,
+        "u_rat_kr": 989,
+        "pol_rat_kr": 988,
+        "pol_rat_us": 876,
+        "pol_rat_us_influence": 876,
+        "rating_kr": 839,
+        "cpi_inf_kr": 427
+      },
+      "missing_after": {
+        "gdp_forecast_10yr_kr": 0,
+        "cpi_forecast_10yr_kr": 0,
+        "act_track_kr": 0,
+        "u_rat_kr": 0,
+        "pol_rat_kr": 0,
+        "pol_rat_us": 0,
+        "pol_rat_us_influence": 0,
+        "rating_kr": 0,
+        "cpi_inf_kr": 0
+      }
+    },
+    "total_missing_before": 8358,
+    "total_missing_after": 0,
+    "rows_before": 1303,
+    "rows_after": 1303
+  },
+  "feature_engineering": {},
+  "target_column": "yld_10yr_kr",
+  "total_features": 9,
+  "feature_columns": [
+    "gdp_forecast_10yr_kr",
+    "cpi_forecast_10yr_kr",
+    "pol_rat_us_influence",
+    "pol_rat_kr",
+    "pol_rat_us",
+    "cpi_inf_kr",
+    "act_track_kr",
+    "rating_kr",
+    "u_rat_kr"
+  ],
+  "combined_date_range": {
+    "start": "1947-01-01",
+    "end": "2055-07-01",
+    "count": 1303
+  },
+  "clean_date_range": {
+    "start": "2001-01-01",
+    "end": "2025-07-01",
+    "count": 295
+  },
+  "overlap_diagnosis": {
+    "target_earliest": "2001-01-01",
+    "target_latest": "2025-07-01",
+    "features_earliest": "1947-01-01",
+    "features_latest": "2055-07-01",
+    "overlapping_earliest": "2001-01-01",
+    "overlapping_latest": "2025-07-01",
+    "target_count": 295,
+    "features_count": 1303,
+    "common_count": 295,
+    "issue": "None"
+  },
+  "feature_correlations": {
+    "rating_kr": 0.8878,
+    "pol_rat_kr": 0.8226,
+    "cpi_inf_kr": 0.6035,
+    "pol_rat_us_influence": 0.3159,
+    "pol_rat_us": 0.3159,
+    "act_track_kr": 0.2706,
+    "u_rat_kr": 0.0539,
+    "gdp_forecast_10yr_kr": 0.0,
+    "cpi_forecast_10yr_kr": 0.0
+  },
+  "feature_quality": {
+    "low_variance_features": [
+      "gdp_forecast_10yr_kr",
+      "cpi_forecast_10yr_kr"
+    ]
+  },
+  "target_stats": {
+    "min": 1.251909090909091,
+    "max": 7.810809523809523,
+    "mean": 3.8395781280964187,
+    "median": 3.625714285714286,
+    "std": 1.5601307128571322,
+    "skew": 0.28186989177051475,
+    "kurt": -0.8273124035514607
+  }
+}

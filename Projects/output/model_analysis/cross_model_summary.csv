@@ -1,0 +1,45 @@
+model,country,tenor,conformity_score,total_features,conforming_features
+Italy_30yr,Italy,30yr,0.75,8,6
+Czechia_10yr,Czechia,10yr,0.2222222222222222,9,2
+Czechia_2yr,Czechia,2yr,0.875,8,7
+Canada_30yr,Canada,30yr,0.75,8,6
+South Africa_2yr,South Africa,2yr,0.875,8,7
+Canada_5yr,Canada,5yr,0.5714285714285714,7,4
+Hungary_10yr,Hungary,10yr,0.5555555555555556,9,5
+Poland_2yr,Poland,2yr,0.75,8,6
+United States_5yr,United States,5yr,0.3333333333333333,6,2
+United States_2yr,United States,2yr,0.8333333333333334,6,5
+France_5yr,France,5yr,0.5714285714285714,7,4
+Hungary_5yr,Hungary,5yr,0.75,8,6
+United Kingdom_5yr,United Kingdom,5yr,0.5714285714285714,7,4
+United States_10yr,United States,10yr,0.2857142857142857,7,2
+France_10yr,France,10yr,0.5,8,4
+Germany_2yr,Germany,2yr,0.8571428571428571,7,6
+Australia_2yr,Australia,2yr,0.7142857142857143,7,5
+South Korea_2yr,South Korea,2yr,0.875,8,7
+Germany_5yr,Germany,5yr,0.7142857142857143,7,5
+Australia_10yr,Australia,10yr,0.75,8,6
+South Africa_10yr,South Africa,10yr,0.6666666666666666,9,6
+Italy_10yr,Italy,10yr,0.5,8,4
+Czechia_5yr,Czechia,5yr,0.75,8,6
+Germany_10yr,Germany,10yr,0.875,8,7
+France_2yr,France,2yr,0.42857142857142855,7,3
+South Korea_10yr,South Korea,10yr,0.7777777777777778,9,7
+France_30yr,France,30yr,0.625,8,5
+Germany_30yr,Germany,30yr,0.625,8,5
+United Kingdom_2yr,United Kingdom,2yr,0.8571428571428571,7,6
+Poland_5yr,Poland,5yr,0.375,8,3
+United Kingdom_10yr,United Kingdom,10yr,0.75,8,6
+United Kingdom_30yr,United Kingdom,30yr,0.625,8,5
+Canada_2yr,Canada,2yr,0.7142857142857143,7,5
+South Korea_30yr,South Korea,30yr,0.7777777777777778,9,7
+South Korea_5yr,South Korea,5yr,0.75,8,6
+Australia_30yr,Australia,30yr,0.5,8,4
+Australia_5yr,Australia,5yr,0.2857142857142857,7,2
+Poland_10yr,Poland,10yr,0.6666666666666666,9,6
+United States_30yr,United States,30yr,0.14285714285714285,7,1
+Hungary_2yr,Hungary,2yr,0.875,8,7
+Italy_2yr,Italy,2yr,0.42857142857142855,7,3
+Italy_5yr,Italy,5yr,0.5714285714285714,7,4
+Canada_10yr,Canada,10yr,0.625,8,5
+South Africa_5yr,South Africa,5yr,0.25,8,2

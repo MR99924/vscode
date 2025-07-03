@@ -1,0 +1,154 @@
+{
+  "country": "Czechia",
+  "tenor": "yld_5yr",
+  "feature_sources": [
+    "policy_rates",
+    "inflation",
+    "risk_rating",
+    "unemployment_rate"
+  ],
+  "date_ranges": {
+    "target": {
+      "start": "2007-03-01",
+      "end": "2025-06-01",
+      "count": 220
+    },
+    "policy_rates": {
+      "start": "1990-01-01",
+      "end": "2025-06-01",
+      "count": 426,
+      "columns": [
+        "pol_rat_cz",
+        "pol_rat_us"
+      ]
+    },
+    "inflation": {
+      "start": "1947-01-01",
+      "end": "2025-06-01",
+      "count": 942,
+      "columns": [
+        "cpi_inf_cz"
+      ]
+    },
+    "risk_rating": {
+      "start": "1986-01-01",
+      "end": "2025-06-01",
+      "count": 474,
+      "columns": [
+        "rating_cz"
+      ]
+    },
+    "unemployment_rate": {
+      "start": "1948-01-01",
+      "end": "2025-06-01",
+      "count": 930,
+      "columns": [
+        "u_rat_cz"
+      ]
+    }
+  },
+  "feature_counts": {
+    "policy_rates": 2,
+    "inflation": 1,
+    "risk_rating": 1,
+    "unemployment_rate": 1
+  },
+  "data_quality": {
+    "target": {
+      "missing_pct": 48.35680751173709,
+      "date_range": "2007-03-01 to 2025-06-01",
+      "count": 220
+    },
+    "missing_stats": {
+      "missing_count": {
+        "pol_rat_cz": 587,
+        "u_rat_cz": 576,
+        "rating_cz": 555,
+        "cpi_inf_cz": 540,
+        "pol_rat_us_influence": 516,
+        "pol_rat_us": 516
+      },
+      "missing_pct": {
+        "pol_rat_cz": 62.31422505307855,
+        "u_rat_cz": 61.146496815286625,
+        "rating_cz": 58.917197452229296,
+        "cpi_inf_cz": 57.324840764331206,
+        "pol_rat_us_influence": 54.77707006369427,
+        "pol_rat_us": 54.77707006369427
+      },
+      "missing_before": {
+        "pol_rat_cz": 587,
+        "u_rat_cz": 576,
+        "rating_cz": 555,
+        "cpi_inf_cz": 540,
+        "pol_rat_us_influence": 516,
+        "pol_rat_us": 516
+      },
+      "missing_after": {
+        "pol_rat_cz": 0,
+        "u_rat_cz": 0,
+        "rating_cz": 0,
+        "cpi_inf_cz": 0,
+        "pol_rat_us_influence": 0,
+        "pol_rat_us": 0
+      }
+    },
+    "total_missing_before": 3290,
+    "total_missing_after": 0,
+    "rows_before": 942,
+    "rows_after": 942
+  },
+  "feature_engineering": {},
+  "target_column": "yld_5yr_cz",
+  "total_features": 6,
+  "feature_columns": [
+    "pol_rat_us_influence",
+    "pol_rat_cz",
+    "pol_rat_us",
+    "cpi_inf_cz",
+    "rating_cz",
+    "u_rat_cz"
+  ],
+  "combined_date_range": {
+    "start": "1947-01-01",
+    "end": "2025-06-01",
+    "count": 942
+  },
+  "clean_date_range": {
+    "start": "2007-03-01",
+    "end": "2025-06-01",
+    "count": 220
+  },
+  "overlap_diagnosis": {
+    "target_earliest": "2007-03-01",
+    "target_latest": "2025-06-01",
+    "features_earliest": "1947-01-01",
+    "features_latest": "2025-06-01",
+    "overlapping_earliest": "2007-03-01",
+    "overlapping_latest": "2025-06-01",
+    "target_count": 220,
+    "features_count": 942,
+    "common_count": 220,
+    "issue": "None"
+  },
+  "feature_correlations": {
+    "pol_rat_cz": 0.8203,
+    "cpi_inf_cz": 0.6171,
+    "pol_rat_us_influence": 0.5823,
+    "pol_rat_us": 0.5823,
+    "u_rat_cz": 0.265,
+    "rating_cz": 0.1224
+  },
+  "feature_quality": {
+    "low_variance_features": []
+  },
+  "target_stats": {
+    "min": -0.28754545454545455,
+    "max": 5.786476190476191,
+    "mean": 2.2120576656742466,
+    "median": 1.8427934782608697,
+    "std": 1.652297695688594,
+    "skew": 0.18641168574286548,
+    "kurt": -1.297582589770365
+  }
+}

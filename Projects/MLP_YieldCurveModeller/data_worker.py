@@ -131,7 +131,7 @@ def validate_model_training_data(x, y, country, tenor_name):
     return validation_result
 
 def prepare_model_training_data(country, tenor_name, country_code_mapping, tenor_data, pol_rat, cpi_inf, 
-                              iip_gdp, act_track, risk_rating, historical_forecasts, unemployment_rate, 
+                              iip_gdp, act_track, consolidated_ratings, historical_forecasts, unemployment_rate, 
                               predicted_yields=None, use_advanced_training=True):
     """
     Prepare data for model training with enhanced feature engineering.
@@ -148,7 +148,7 @@ def prepare_model_training_data(country, tenor_name, country_code_mapping, tenor
             pol_rat=pol_rat,
             cpi_inf=cpi_inf,
             act_track=act_track,
-            risk_rating=risk_rating,
+            consolidated_ratings=consolidated_ratings,
             historical_forecasts=historical_forecasts,
             unemployment_rate=unemployment_rate,
             iip_gdp=iip_gdp,
@@ -465,7 +465,7 @@ def safe_r2_score(y_true, y_pred, fallback_value=0.0):
     
 
 def train_evaluate_model(country, tenor_name, country_code_mapping, tenor_data, pol_rat, cpi_inf, iip_gdp,
-                        act_track, risk_rating, historical_forecasts, unemployment_rate, model_type, 
+                        act_track, consolidated_ratings, historical_forecasts, unemployment_rate, model_type, 
                         predicted_yields=None, use_advanced_training=True, compare_models=False, 
                         optimize_params=True, output_dir=None, use_yield_curve_models=True):
     """
@@ -482,7 +482,7 @@ def train_evaluate_model(country, tenor_name, country_code_mapping, tenor_data, 
         pol_rat: DataFrame - Policy rate data
         cpi_inf: DataFrame - Inflation data
         act_track: DataFrame - Economic activity tracker data
-        risk_rating: DataFrame - Risk rating data
+        consolidated_ratings: DataFrame - Risk rating data
         historical_forecasts: dict - Historical forecasts from forecast_generator
         unemployment_rate: DataFrame - Unemployment rate data
         predicted_yields: dict - Dictionary containing predicted yields for shorter tenors
@@ -527,7 +527,7 @@ def train_evaluate_model(country, tenor_name, country_code_mapping, tenor_data, 
         # Prepare data with enhanced feature engineering
         x, y, feature_details = prepare_model_training_data(
             country, tenor_name, country_code_mapping, tenor_data, pol_rat, cpi_inf, 
-            iip_gdp, act_track, risk_rating, historical_forecasts, unemployment_rate, 
+            iip_gdp, act_track, consolidated_ratings, historical_forecasts, unemployment_rate, 
             predicted_yields, use_advanced_training
         )
         
@@ -1409,7 +1409,7 @@ def fetch_all_data_sources(bbg_client, mb_client):
         
         # 3. Fetch economic activity tracker data
         act_track = fetch_activity_data(bbg_client, dt_from, dt_to)
-        data_sources['activity'] = act_track
+        data_sources['act_track'] = act_track
         
         # 4. Fetch inflation data
         cpi_inf = fetch_inflation_data(mb_client)
@@ -1424,8 +1424,8 @@ def fetch_all_data_sources(bbg_client, mb_client):
         data_sources['iip_gdp'] = iip_gdp
         
         # 7. Fetch credit rating data
-        risk_rating = fetch_risk_rating_data(mb_client)
-        data_sources['risk_rating'] = risk_rating
+        consolidated_ratings = fetch_consolidated_ratings_data(mb_client)
+        data_sources['consolidated_ratings'] = consolidated_ratings
         
         logger.info("Successfully fetched all data sources")
         
@@ -1509,7 +1509,7 @@ def fetch_activity_data(bbg_client, dt_from, dt_to):
         dt_from, dt_to, 
         periodicity=config.BLOOMBERG_MONTHLY_PERIODICITY
     )
-    act_track = act_track.rename(columns=config.COLUMN_MAPPINGS['activity'])
+    act_track = act_track.rename(columns=config.COLUMN_MAPPINGS['act_track'])
     if not act_track.empty:
         act_track.index = act_track.index.to_period("M").to_timestamp("M")
         act_track = act_track.resample('MS').first().ffill()
@@ -1567,7 +1567,7 @@ def fetch_iip_gdp_data(mb_client):
         logger.error(f"Error fetching IIP/GDP data: {e}")
         return pd.DataFrame()
 
-def fetch_risk_rating_data(mb_client):
+def fetch_consolidated_ratings_data(mb_client):
     """Fetch and consolidate credit rating data from multiple agencies."""
     try:
         if mb_client is None:
@@ -1602,9 +1602,9 @@ def fetch_risk_rating_data(mb_client):
                 if country_columns:  # Only process countries with data
                     averages[country_code] = country_rating[country_columns].mean(axis=1)
             
-            risk_rating = pd.DataFrame(averages)
-            risk_rating = risk_rating.rename(columns=config.COLUMN_MAPPINGS['consolidated_ratings'])
-            return risk_rating
+            consolidated_ratings = pd.DataFrame(averages)
+            consolidated_ratings = consolidated_ratings.rename(columns=config.COLUMN_MAPPINGS['consolidated_ratings'])
+            return consolidated_ratings
         else:
             logger.warning("Cannot calculate risk rating: one or more rating agencies' data is missing")
             return pd.DataFrame()

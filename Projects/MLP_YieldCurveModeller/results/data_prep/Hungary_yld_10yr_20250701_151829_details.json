@@ -1,0 +1,96 @@
+{
+  "country": "Hungary",
+  "tenor": "yld_10yr",
+  "feature_sources": [
+    "policy_rates",
+    "inflation",
+    "activity",
+    "consolidated_ratings",
+    "unemployment_rate"
+  ],
+  "date_ranges": {
+    "target": {
+      "start": "2007-03-01",
+      "end": "2025-07-01",
+      "count": 221
+    }
+  },
+  "feature_counts": {},
+  "data_quality": {
+    "target": {
+      "missing_pct": 48.24355971896955,
+      "date_range": "2007-03-01 to 2025-07-01",
+      "count": 221
+    },
+    "missing_stats": {
+      "missing_count": {
+        "gdp_forecast_10m_hu": 666,
+        "cpi_forecast_10m_hu": 666
+      },
+      "missing_pct": {
+        "gdp_forecast_10m_hu": 84.7328244274809,
+        "cpi_forecast_10m_hu": 84.7328244274809
+      },
+      "missing_before": {
+        "gdp_forecast_10m_hu": 666,
+        "cpi_forecast_10m_hu": 666
+      },
+      "missing_after": {
+        "gdp_forecast_10m_hu": 0,
+        "cpi_forecast_10m_hu": 0
+      }
+    },
+    "total_missing_before": 1332,
+    "total_missing_after": 0,
+    "rows_before": 786,
+    "rows_after": 786
+  },
+  "feature_engineering": {},
+  "target_column": "yld_10yr_hu",
+  "total_features": 2,
+  "feature_columns": [
+    "gdp_forecast_10m_hu",
+    "cpi_forecast_10m_hu"
+  ],
+  "combined_date_range": {
+    "start": "1990-02-01",
+    "end": "2055-07-01",
+    "count": 786
+  },
+  "clean_date_range": {
+    "start": "2007-03-01",
+    "end": "2025-07-01",
+    "count": 221
+  },
+  "overlap_diagnosis": {
+    "target_earliest": "2007-03-01",
+    "target_latest": "2025-07-01",
+    "features_earliest": "1990-02-01",
+    "features_latest": "2055-07-01",
+    "overlapping_earliest": "2007-03-01",
+    "overlapping_latest": "2025-07-01",
+    "target_count": 221,
+    "features_count": 786,
+    "common_count": 221,
+    "issue": "None"
+  },
+  "feature_correlations": {
+    "cpi_forecast_10m_hu": 0.0,
+    "gdp_forecast_10m_hu": 0.0
+  },
+  "feature_quality": {
+    "low_variance_features": [
+      "gdp_forecast_10m_hu",
+      "cpi_forecast_10m_hu"
+    ]
+  },
+  "target_stats": {
+    "min": 1.8116818181818182,
+    "max": 11.70659090909091,
+    "mean": 5.563832761143375,
+    "median": 6.229809523809523,
+    "std": 2.379645292524385,
+    "skew": 0.049943603807239216,
+    "kurt": -1.157281015101606
+  }
+}

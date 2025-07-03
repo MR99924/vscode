@@ -1,0 +1,92 @@
+{
+  "country": "United States",
+  "tenor": "yld_5yr",
+  "feature_sources": [
+    "policy_rates",
+    "inflation",
+    "consolidated_ratings",
+    "unemployment_rate"
+  ],
+  "date_ranges": {
+    "target": {
+      "start": "1990-01-01",
+      "end": "2025-07-01",
+      "count": 427
+    }
+  },
+  "feature_counts": {},
+  "data_quality": {
+    "target": {
+      "missing_pct": 0.0,
+      "date_range": "1990-01-01 to 2025-07-01",
+      "count": 427
+    },
+    "missing_stats": {
+      "missing_count": {
+        "gdp_forecast_5m_us": 726,
+        "cpi_forecast_5m_us": 726
+      },
+      "missing_pct": {
+        "gdp_forecast_5m_us": 92.36641221374046,
+        "cpi_forecast_5m_us": 92.36641221374046
+      },
+      "missing_before": {
+        "gdp_forecast_5m_us": 726,
+        "cpi_forecast_5m_us": 726
+      },
+      "missing_after": {
+        "gdp_forecast_5m_us": 0,
+        "cpi_forecast_5m_us": 0
+      }
+    },
+    "total_missing_before": 1452,
+    "total_missing_after": 0,
+    "rows_before": 786,
+    "rows_after": 786
+  },
+  "feature_engineering": {},
+  "target_column": "yld_5yr_us",
+  "total_features": 2,
+  "feature_columns": [
+    "gdp_forecast_5m_us",
+    "cpi_forecast_5m_us"
+  ],
+  "combined_date_range": {
+    "start": "1990-02-01",
+    "end": "2055-07-01",
+    "count": 786
+  },
+  "clean_date_range": {
+    "start": "1990-02-01",
+    "end": "2025-07-01",
+    "count": 426
+  },
+  "overlap_diagnosis": {
+    "target_earliest": "1990-01-01",
+    "target_latest": "2025-07-01",
+    "features_earliest": "1990-02-01",
+    "features_latest": "2055-07-01",
+    "overlapping_earliest": "1990-02-01",
+    "overlapping_latest": "2025-07-01",
+    "target_count": 427,
+    "features_count": 786,
+    "common_count": 426,
+    "issue": "None"
+  },
+  "feature_correlations": {
+    "cpi_forecast_5m_us": 0.293,
+    "gdp_forecast_5m_us": 0.245
+  },
+  "feature_quality": {
+    "low_variance_features": []
+  },
+  "target_stats": {
+    "min": 0.26677619047619044,
+    "max": 8.743142857142857,
+    "mean": 3.7394954927964807,
+    "median": 3.7509065217391306,
+    "std": 2.110201392952654,
+    "skew": 0.2844104808611527,
+    "kurt": -0.8845877339684733
+  }
+}

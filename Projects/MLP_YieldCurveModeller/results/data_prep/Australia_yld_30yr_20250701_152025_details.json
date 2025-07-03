@@ -1,0 +1,95 @@
+{
+  "country": "Australia",
+  "tenor": "yld_30yr",
+  "feature_sources": [
+    "policy_rates",
+    "inflation",
+    "activity",
+    "consolidated_ratings",
+    "unemployment_rate"
+  ],
+  "date_ranges": {
+    "target": {
+      "start": "2016-10-01",
+      "end": "2025-07-01",
+      "count": 106
+    }
+  },
+  "feature_counts": {},
+  "data_quality": {
+    "target": {
+      "missing_pct": 75.17564402810304,
+      "date_range": "2016-10-01 to 2025-07-01",
+      "count": 106
+    },
+    "missing_stats": {
+      "missing_count": {
+        "gdp_forecast_30m_au": 426,
+        "cpi_forecast_30m_au": 426
+      },
+      "missing_pct": {
+        "gdp_forecast_30m_au": 54.19847328244275,
+        "cpi_forecast_30m_au": 54.19847328244275
+      },
+      "missing_before": {
+        "gdp_forecast_30m_au": 426,
+        "cpi_forecast_30m_au": 426
+      },
+      "missing_after": {
+        "gdp_forecast_30m_au": 0,
+        "cpi_forecast_30m_au": 0
+      }
+    },
+    "total_missing_before": 852,
+    "total_missing_after": 0,
+    "rows_before": 786,
+    "rows_after": 786
+  },
+  "feature_engineering": {},
+  "target_column": "yld_30yr_au",
+  "total_features": 2,
+  "feature_columns": [
+    "gdp_forecast_30m_au",
+    "cpi_forecast_30m_au"
+  ],
+  "combined_date_range": {
+    "start": "1990-02-01",
+    "end": "2055-07-01",
+    "count": 786
+  },
+  "clean_date_range": {
+    "start": "2016-10-01",
+    "end": "2025-07-01",
+    "count": 106
+  },
+  "overlap_diagnosis": {
+    "target_earliest": "2016-10-01",
+    "target_latest": "2025-07-01",
+    "features_earliest": "1990-02-01",
+    "features_latest": "2055-07-01",
+    "overlapping_earliest": "2016-10-01",
+    "overlapping_latest": "2025-07-01",
+    "target_count": 106,
+    "features_count": 786,
+    "common_count": 106,
+    "issue": "None"
+  },
+  "feature_correlations": {
+    "gdp_forecast_30m_au": 0.0221,
+    "cpi_forecast_30m_au": 0.0
+  },
+  "feature_quality": {
+    "low_variance_features": [
+      "cpi_forecast_30m_au"
+    ]
+  },
+  "target_stats": {
+    "min": 1.5782,
+    "max": 5.016272727272727,
+    "mean": 3.3174064120047304,
+    "median": 3.366073593073593,
+    "std": 1.0618852911874814,
+    "skew": -0.06758765781218021,
+    "kurt": -1.1774214638034082
+  }
+}

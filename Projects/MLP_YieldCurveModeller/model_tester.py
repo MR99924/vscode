@@ -10,7 +10,9 @@ import pandas as pd
 import joblib
 import matplotlib.pyplot as plt
 import seaborn as sns
+import argparse
 import logging
+import sys
 from typing import Dict, Any, List
 import re
 from matplotlib.gridspec import GridSpec
@@ -165,7 +167,7 @@ def determine_expected_direction(feature: str) -> int:
     impact_mapping = {
         # Positive correlations
         'pred_yld': 1,       # Predicted yields typically positive
-        'risk_rating': 1,    # Risk ratings typically positive
+        'consolidated_ratings': 1,    # Risk ratings typically positive
         'cpi_forecast': 1,   # Inflation forecasts typically positive
         'cpi_inf': 1,        # Inflation indicators typically positive
         'gdp_forecast': 1,   # GDP forecasts typically positive
@@ -722,8 +724,8 @@ def create_expected_impact_charts(all_feature_impacts: List[Dict],
     conformity_summary = {
         'overall_conformity': conformity_counts.to_dict(),
         'country_conformity': country_conformity.to_dict(),
-        'variable_conformity': variable_conformity.to_dict(),
-        'country_tenor_conformity': country_tenor_conformity.to_dict()
+        # 'variable_conformity': variable_conformity.to_dict(),
+        # 'country_tenor_conformity': country_tenor_conformity.to_dict()
     }
     
     with open(os.path.join(output_dir, 'conformity_summary.json'), 'w') as f:
@@ -1060,51 +1062,45 @@ def create_comprehensive_visualizations(sensitivity_results: Dict[str, Any],
     # 4. Detailed Impact CSV
     impact_df.to_csv(os.path.join(output_dir, f'{country}_{tenor}_feature_impacts.csv'), index=False)
 
-
 def main():
     """
-    Main execution function for model testing and sensitivity analysis.
+    Run sensitivity analysis and conformity diagnostics on all best models
+    in a specified directory (e.g., per-country model folders).
     """
-    # Run analysis
-    run_sensitivity_analysis(config.MODEL_DIR, config.OUTPUT_DIR)
+    # Setup logging using config
+    logger = config.configure_logging()
 
+    # Check if script is run with arguments
+    if len(sys.argv) == 1:
+        # Interactive fallback
+        model_dir = input(f"Enter model directory path [default: {config.MODEL_DIR}]: ").strip() or config.MODEL_DIR
+        output_dir = input(f"Enter output directory path [default: {config.OUTPUT_DIR}]: ").strip() or config.OUTPUT_DIR
+    else:
+        # Parse command-line arguments
+        parser = argparse.ArgumentParser(description="Run model diagnostics on all best models in a directory.")
+        parser.add_argument("--model-dir", required=False, default=config.MODEL_DIR, help="Path to the directory containing best model files.")
+        parser.add_argument("--output-dir", required=False, default=config.OUTPUT_DIR, help="Path to save diagnostic outputs.")
+        args = parser.parse_args()
+        model_dir = args.model_dir
+        output_dir = args.output_dir
+
+    # Validate model directory
+    if not os.path.isdir(model_dir):
+        logger.error(f"Model directory does not exist: {model_dir}")
+        return
+
+    # Create output directory if it doesn't exist
+    if not os.path.isdir(output_dir):
+        logger.info(f"Creating output directory: {output_dir}")
+        os.makedirs(output_dir, exist_ok=True)
+
+    # Run the full analysis
+    logger.info(f"Starting diagnostics for models in: {model_dir}")
+    results = run_sensitivity_analysis(model_dir, output_dir)
+
+    logger.info("Diagnostics complete.")
+    logger.info(f"Total models found: {results['total_models']}")
+    logger.info(f"Models successfully analyzed: {results['analyzed_models']}")
 
 if __name__ == "__main__":
-    main()(x=66.0, color='red', linestyle='--')
-    plt.tight_layout()
-    plt.savefig(os.path.join(output_dir, 'country_conformity.png'))
-    plt.close()
-    
-    # 2. Variable Type Conformity Chart
-    plt.figure(figsize=(12, 8))
-    
-    # Compute variable type conformity
-    variable_conformity = impacts_df.groupby('feature_type').apply(
-        lambda x: (x['conformity'].isin(['Positive', 'Negative'])).mean() * 100
-    ).sort_values(ascending=True)
-    
-    # Color coding based on conformity
-    colors = ['green' if conf > 50 else 'red' for conf in variable_conformity]
-    
-    plt.barh(variable_conformity.index, variable_conformity.values, color=colors)
-    plt.title('Model Conformity to Expected Relationships by Variable Type')
-    plt.xlabel('Percentage of Variables Matching Expectations')
-    plt.ylabel('Variable Type')
-    plt.axvline(x=66.0, color='red', linestyle='--')
-    plt.tight_layout()
-    plt.savefig(os.path.join(output_dir, 'variable_type_conformity.png'))
-    plt.close()
-    
-    # 3. Country-Tenor Conformity Chart
-    plt.figure(figsize=(15, 10))
-    
-    # Compute country-tenor conformity
-    country_tenor_conformity = impacts_df.groupby('country_tenor').apply(
-        lambda x: (x['conformity'].isin(['Positive', 'Negative'])).mean() * 100
-    ).sort_values(ascending=True)
-    
-    plt.barh(country_tenor_conformity.index, country_tenor_conformity.values)
-    plt.title('Model Conformity to Expected Relationships by Country-Tenor')
-    plt.xlabel('Percentage of Variables Matching Expectations')
-    plt.ylabel('Country-Tenor')
-    plt.axvline
+    main()

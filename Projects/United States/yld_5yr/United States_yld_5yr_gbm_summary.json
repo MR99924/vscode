@@ -2,7 +2,7 @@
     "country": "United States",
     "tenor": "yld_5yr",
     "model_type": "gbm",
-    "data_points": 426,
-    "features": 4,
-    "date_range": "1990-01-01 to 2025-06-01"
+    "data_points": 427,
+    "features": 6,
+    "date_range": "1990-01-01 to 2025-07-01"
 }

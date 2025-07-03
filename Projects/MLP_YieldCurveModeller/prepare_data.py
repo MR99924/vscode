@@ -17,7 +17,7 @@ logger = logging.getLogger(__name__)
 
 
 def prepare_data(country, tenor_name, country_code_mapping, tenor, pol_rat, cpi_inf, act_track, iip_gdp,
-                 risk_rating, historical_forecasts, unemployment_rate, predicted_yields,
+                 consolidated_ratings, historical_forecasts, unemployment_rate, predicted_yields,
                  forward_fill=True, enhance_features=False, handle_missing='ffill', feature_selection=None,
                  mb_client=None, label_encoder=None):
     """
@@ -33,7 +33,7 @@ def prepare_data(country, tenor_name, country_code_mapping, tenor, pol_rat, cpi_
         cpi_inf: DataFrame - Inflation data
         act_track: DataFrame - Economic activity tracker data
         iip_gdp: DataFrame - IIP to GDP ratio data
-        risk_rating: DataFrame - Risk rating data
+        consolidated_ratings: DataFrame - Risk rating data
         historical_forecasts: dict - Historical forecasts from forecast_generator
         unemployment_rate: DataFrame - Unemployment rate data
         predicted_yields: dict - Dictionary containing predicted yields for shorter tenors
@@ -109,7 +109,7 @@ def prepare_data(country, tenor_name, country_code_mapping, tenor, pol_rat, cpi_
     
     # Prepare source data dictionaries
     source_dfs = _prepare_source_dataframes(
-        pol_rat, cpi_inf, act_track, risk_rating, unemployment_rate, 
+        pol_rat, cpi_inf, act_track, consolidated_ratings, unemployment_rate, 
         iip_gdp, forward_fill
     )
     
@@ -328,14 +328,14 @@ def _process_predicted_yields(predicted_yields, tenor_name, forward_fill, featur
     return {'df': pred_df, 'columns': [column_name]}
 
 
-def _prepare_source_dataframes(pol_rat, cpi_inf, act_track, risk_rating, 
+def _prepare_source_dataframes(pol_rat, cpi_inf, act_track, consolidated_ratings, 
                               unemployment_rate, iip_gdp, forward_fill):
     """Prepare and forward fill source dataframes."""
     source_dfs = {
         'policy_rates': pol_rat,
         'inflation': cpi_inf,
-        'activity': act_track,
-        'risk_rating': risk_rating,
+        'act_track': act_track,
+        'consolidated_ratings': consolidated_ratings,
         'unemployment_rate': unemployment_rate,
         'iip_gdp': iip_gdp
     }
@@ -350,49 +350,61 @@ def _prepare_source_dataframes(pol_rat, cpi_inf, act_track, risk_rating,
     return source_dfs
 
 
-def _select_and_process_features(tenor_name, country, country_code, source_dfs, 
-                               feature_details, forward_fill):
+def _select_and_process_features(
+    tenor_name, country, country_code, source_dfs,
+    feature_details, forward_fill
+):
     """Select appropriate features based on tenor and process them."""
-    # Determine if country is an emerging market
     is_emerging_market = hasattr(config, 'emerging_markets') and country in config.emerging_markets
-    
-    # Select appropriate sources based on tenor
     sources = _get_sources_for_tenor(tenor_name)
-    
-    # Add US policy rate influence for emerging markets
+
     feature_dfs = []
+
+    # Add US policy rate influence for EMs
     if is_emerging_market and source_dfs['policy_rates'] is not None:
         us_influence_df = _add_us_policy_rate_influence(
             source_dfs['policy_rates'], forward_fill, country
         )
         if us_influence_df is not None:
             feature_dfs.append(us_influence_df)
-    
-    feature_details['feature_sources'] = sources
-    logger.info(f"Using feature sources: {', '.join(sources)}")
-    
-    # Process each source
+            logger.info(f"Added US policy rate influence for {country}")
+
+    logger.info(f"Using feature sources: {sources}")
+    feature_details['feature_sources'].extend(sources)
+
     for source_name in sources:
+        source_df = source_dfs.get(source_name)
+        if source_df is None:
+            logger.warning(f"Source {source_name} is missing from source_dfs")
+            continue
+
+        logger.info(f"Processing source: {source_name}")
+        logger.info(f"Available columns: {list(source_df.columns)}")
+
         source_data = _process_feature_source(
-            source_name, source_dfs[source_name], country_code, 
-            feature_details
+            source_name, source_df, country_code, feature_details
         )
+
         if source_data is not None:
+            logger.info(f"Included {source_data.shape[1]} features from {source_name}")
             feature_dfs.append(source_data)
-    
+        else:
+            logger.warning(f"No features added from {source_name} for {country}")
+
     return feature_dfs
+
 
 
 def _get_sources_for_tenor(tenor_name):
     """Get appropriate data sources based on tenor."""
     if tenor_name == 'yld_2yr':
-        sources = ['policy_rates', 'inflation', 'activity', 'unemployment_rate']
-        logger.info(f"Model type: {tenor_name} - Using policy rates, inflation, and economic activity")
+        sources = ['policy_rates', 'inflation', 'act_track', 'unemployment_rate']
+        logger.info(f"Model type: {tenor_name} - Using policy rates, inflation, and economic act_track")
     elif tenor_name == 'yld_5yr':
-        sources = ['policy_rates', 'inflation', 'risk_rating', 'unemployment_rate']
+        sources = ['policy_rates', 'inflation', 'consolidated_ratings', 'unemployment_rate']
         logger.info(f"Model type: {tenor_name} - Using policy rates, inflation, and risk ratings")
     elif tenor_name in ['yld_10yr', 'yld_30yr']:
-        sources = ['policy_rates', 'inflation', 'activity', 'risk_rating', 'unemployment_rate']
+        sources = ['policy_rates', 'inflation', 'act_track', 'consolidated_ratings', 'unemployment_rate']
         logger.info(f"Model type: {tenor_name} - Using all available features")
     else:
         logger.error(f"Unsupported tenor: {tenor_name}")
@@ -420,37 +432,34 @@ def _process_feature_source(source_name, source_df, country_code, feature_detail
     if source_df is None or source_df.empty:
         logger.warning(f"Source {source_name} is empty or None")
         return None
-    
+
     logger.info(f"Processing source: {source_name}")
-    
+    logger.info(f"Available columns in {source_name}: {list(source_df.columns)}")
+
     # Get country-specific columns
     country_cols = [col for col in source_df.columns if col.endswith(f"_{country_code}")]
-    
+    logger.info(f"Matched columns for {source_name}: {country_cols}")
+
     # Add global factors for certain sources
     if source_name == 'policy_rates':
-        # Include US policy rate for all countries
         if 'pol_rat_us' in source_df.columns and 'pol_rat_us' not in country_cols:
             country_cols.append('pol_rat_us')
-        
-        # Include ECB policy rate for European countries
-        if (hasattr(config, 'european_countries') and 
+        if (hasattr(config, 'european_countries') and
             country_code in getattr(config, 'european_countries', []) and
             'pol_rat_ecb' in source_df.columns and 'pol_rat_ecb' not in country_cols):
             country_cols.append('pol_rat_ecb')
-    
-    logger.info(f"Selected {len(country_cols)} columns from {source_name}: {country_cols}")
-    
+
     if not country_cols:
         logger.warning(f"No columns found for country in {source_name}")
         return None
-    
+
     source_data = source_df[country_cols].copy()
-    
+
     if not source_data.empty:
-        logger.info(f"Date range: {source_data.index.min().strftime('%Y-%m-%d')} to {source_data.index.max().strftime('%Y-%m-%d')}")
+        logger.info(f"Date range: {source_data.index.min()} to {source_data.index.max()}")
         logger.info(f"Number of observations: {len(source_data)}")
         logger.info(f"Missing values: {source_data.isna().mean().mean() * 100:.2f}%")
-        
+
         # Update feature details
         feature_details['feature_counts'][source_name] = len(country_cols)
         feature_details['date_ranges'][source_name] = {
@@ -459,11 +468,12 @@ def _process_feature_source(source_name, source_df, country_code, feature_detail
             'count': len(source_data),
             'columns': country_cols
         }
-        
+
         return source_data
-    
-    logger.warning("No data after column filtering")
+
+    logger.warning(f"No data after filtering for {source_name}")
     return None
+
 
 
 def _update_feature_details_combined(x, feature_details):

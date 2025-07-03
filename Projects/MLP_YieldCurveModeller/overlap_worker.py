@@ -8,7 +8,7 @@ import matplotlib.dates as mdates
 logger = logging.getLogger(__name__)
 
 def analyze_data_overlap_issues(country_list, country_code_mapping, yield_list, yield_names, pol_rat, cpi_inf, act_track,
-                                risk_rating, historical_forecasts, unemployment_rate):
+                                consolidated_ratings, historical_forecasts, unemployment_rate):
     """
     Analyze data overlap issues to diagnose why some models have no overlapping data.
     Generates a comprehensive report with date ranges for each data source.
@@ -18,7 +18,7 @@ def analyze_data_overlap_issues(country_list, country_code_mapping, yield_list, 
         country_code_mapping: Mapping from country names to codes
         yield_list: List of yield DataFrames
         yield_names: List of yield tenor names
-        pol_rat, cpi_inf, act_track, risk_rating: Feature DataFrames
+        pol_rat, cpi_inf, act_track, consolidated_ratings: Feature DataFrames
         historical_forecasts: Historical forecast data from forecast_generator
         debt_gdp: Debt to GDP ratio data (optional)
     
@@ -34,7 +34,7 @@ def analyze_data_overlap_issues(country_list, country_code_mapping, yield_list, 
     feature_sources = {
         'policy_rates': pol_rat,
         'inflation': cpi_inf,
-        'risk_rating': risk_rating,
+        'consolidated_ratings': consolidated_ratings,
         'historical_forecasts' : historical_forecasts,
         'act_track' : act_track,
         'unemployment_rate' : unemployment_rate
@@ -53,10 +53,10 @@ def analyze_data_overlap_issues(country_list, country_code_mapping, yield_list, 
     
     # Define which features to use for each tenor
     tenor_features = {
-        'yld_2yr': ['policy_rates', 'inflation', 'activity', 'historical_forecasts_2yr', 'unemployment_rate'],
-        'yld_5yr': ['policy_rates', 'inflation', 'risk_rating', 'historical_forecasts_5yr', 'unemployment_rate'],
-        'yld_10yr': ['policy_rates', 'inflation', 'activity', 'risk_rating', 'historical_forecasts_10yr', 'unemployment_rate'],
-        'yld_30yr': ['policy_rates', 'inflation', 'activity', 'risk_rating', 'historical_forecasts_30yr', 'unemployment_rate']
+        'yld_2yr': ['policy_rates', 'inflation', 'act_track', 'consolidated_ratings', 'historical_forecasts_2yr', 'unemployment_rate'],
+        'yld_5yr': ['policy_rates', 'inflation', 'act_track', 'consolidated_ratings', 'historical_forecasts_5yr', 'unemployment_rate'],
+        'yld_10yr': ['policy_rates', 'inflation', 'act_track', 'consolidated_ratings', 'historical_forecasts_10yr', 'unemployment_rate'],
+        'yld_30yr': ['policy_rates', 'inflation', 'act_track', 'consolidated_ratings', 'historical_forecasts_30yr', 'unemployment_rate']
     }
     
     # # Add debt_gdp and historical_forecasts to appropriate tenors if available
@@ -460,7 +460,7 @@ def analyze_data_overlap_issues(country_list, country_code_mapping, yield_list, 
 
 
 def create_data_availability_summary(country_list, country_code_mapping, yield_list, yield_names, pol_rat, cpi_inf, act_track,
-                                     risk_rating, historical_forecasts, unemployment_rate, iip_gdp, predicted_yields=None):
+                                     consolidated_ratings, historical_forecasts, unemployment_rate, iip_gdp, predicted_yields=None):
     """
     Create a comprehensive summary of data availability across all data sources,
     countries, and tenors to identify gaps and coverage.
@@ -470,7 +470,7 @@ def create_data_availability_summary(country_list, country_code_mapping, yield_l
         country_code_mapping: Mapping from country names to codes
         yield_list: List of yield DataFrames
         yield_names: List of yield tenor names
-        pol_rat, cpi_inf, act_track, risk_rating: Feature DataFrames
+        pol_rat, cpi_inf, act_track, consolidated_ratings: Feature DataFrames
         historical_forecasts: Historical forecast data from forecast_generator
         debt_gdp: Debt to GDP ratio data (optional)
         
@@ -483,7 +483,7 @@ def create_data_availability_summary(country_list, country_code_mapping, yield_l
     data_sources = {
         'policy_rates': pol_rat,
         'inflation': cpi_inf,
-        'risk_rating': risk_rating,
+        'consolidated_ratings': consolidated_ratings,
         'historical_forecasts' : historical_forecasts,
         'unemployment_rate' : unemployment_rate,
         'predicted_yields' : predicted_yields,
@@ -771,13 +771,13 @@ def create_data_availability_summary(country_list, country_code_mapping, yield_l
             
             # Define which features we need for this tenor
             if tenor_name == 'yld_2yr':
-                required_sources = ['policy_rates', 'inflation', 'activity']
+                required_sources = ['policy_rates', 'inflation', 'act_track']
             elif tenor_name == 'yld_5yr':
-                required_sources = ['policy_rates', 'inflation', 'risk_rating']
+                required_sources = ['policy_rates', 'inflation', 'consolidated_ratings']
                 # if 'debt_gdp' in data_sources:
                 #     required_sources.append('debt_gdp')
             else:  # 10yr, 30yr
-                required_sources = ['policy_rates', 'inflation', 'activity', 'risk_rating']
+                required_sources = ['policy_rates', 'inflation', 'act_track', 'consolidated_ratings']
                 # if 'debt_gdp' in data_sources:
                 #     required_sources.append('debt_gdp')
             

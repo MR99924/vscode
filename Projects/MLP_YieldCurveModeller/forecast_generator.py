@@ -574,55 +574,92 @@ def demonstrate_unified_forecasts(
     
     return results
 
-def plot_unified_forecasts(results: Dict[str, Dict[str, Any]]) -> None:
+def plot_unified_forecasts_fixed(results: Dict[str, Dict[str, Any]], 
+                                growth_forecast: pd.DataFrame,
+                                cpi_forecast: pd.DataFrame,
+                                country_code_mapping: Dict[str, str]) -> None:
     """
-    Create plots of the unified forecasts including full historical data.
-    
-    Parameters:
-        results: Dictionary of unified forecasts by country
+    FIXED VERSION: Create plots using actual data dates instead of artificial ranges
     """
     for country, forecasts in results.items():
         if forecasts['growth'] is not None and forecasts['inflation'] is not None:
             # Create figure and subplots
             fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(12, 10))
             
-            # Generate appropriate date range starting from historical data
-            total_periods = max(len(forecasts['growth']), len(forecasts['inflation']))
-            dates = pd.date_range(start=config.HISTORICAL_START_DATE, periods=total_periods, freq='ME')
+            # CHANGE 4: Get actual historical data dates for this country
+            country_code = country_code_mapping[country]
+            growth_col = f"gdp_{country_code}"
+            inflation_col = f"cpi_inf_{country_code}"
             
-            # Log diagnostics
+            # Get historical data to determine actual start dates
+            historical_growth = growth_forecast[growth_col].dropna() if growth_col in growth_forecast.columns else pd.Series()
+            historical_inflation = cpi_forecast[inflation_col].dropna() if inflation_col in cpi_forecast.columns else pd.Series()
+            
+            # Determine the actual start date from historical data
+            start_dates = []
+            if not historical_growth.empty:
+                start_dates.append(historical_growth.index[0])
+            if not historical_inflation.empty:
+                start_dates.append(historical_inflation.index[0])
+            
+            if start_dates:
+                actual_start_date = min(start_dates)
+            else:
+                actual_start_date = pd.Timestamp(config.HISTORICAL_START_DATE)
+            
+            # Create proper date range based on actual data
+            
+            growth_dates = pd.date_range(start=historical_growth.index[0], periods=len(forecasts['growth']), freq='ME')
+            inflation_dates = pd.date_range(start=historical_inflation.index[0], periods=len(forecasts['inflation']), freq='ME')
+            
             logger.info(f"\nPlotting data for {country}:")
+            logger.info(f"Actual start date: {actual_start_date}")
             logger.info(f"Growth data length: {len(forecasts['growth'])}")
             logger.info(f"Inflation data length: {len(forecasts['inflation'])}")
-            logger.info(f"Date range: {dates[0]} to {dates[-1]}")
+            logger.info(f"GDP Date range: {growth_dates[0]} to {growth_dates[-1]}")
+            logger.info(f"CPI Date range: {inflation_dates[0]} to {inflation_dates[-1]}")
             
-            # Plot growth with full historical data
+            # Plot growth with actual historical data alignment
             growth_data = forecasts['growth']
-            growth_dates = dates[:len(growth_data)]
             ax1.plot(growth_dates, growth_data, 'b-', linewidth=1.5)
             ax1.set_title(f"{country}: Unified GDP Growth Forecast")
             ax1.set_ylabel('GDP Growth (%)')
             ax1.set_xlabel('Date')
             ax1.grid(True)
             
-            # Plot inflation with full historical data
+            # Plot inflation with actual historical data alignment
             inflation_data = forecasts['inflation']
-            inflation_dates = dates[:len(inflation_data)]
             ax2.plot(inflation_dates, inflation_data, 'r-', linewidth=1.5)
             ax2.set_title(f"{country}: Unified Inflation Forecast")
             ax2.set_ylabel('Inflation (%)')
             ax2.set_xlabel('Date')
             ax2.grid(True)
             
-            # Add vertical line at transition point
-            transition_date = dates[forecasts['transition_points']['growth_transition_idx']]
-            ax1.axvline(x=transition_date, color='gray', linestyle='--', alpha=0.7)
-            ax1.text(transition_date, ax1.get_ylim()[1] * 0.9, "Forecast start", 
-                    rotation=90, verticalalignment='top')
+            # Add vertical line at transition point (use actual historical data length)
+            if not historical_growth.empty:
+                # Find the transition point based on actual historical data
+                historical_end_date = historical_growth.index[-1]
+                # Find the closest date in our unified forecast dates
+                transition_idx = forecasts['transition_points']['growth_transition_idx']
+                if transition_idx < len(growth_dates):
+                    transition_date = growth_dates[transition_idx]
+                    ax1.axvline(x=transition_date, color='gray', linestyle='--', alpha=0.7)
+                    ax1.text(transition_date, ax1.get_ylim()[1] * 0.9, "Forecast start", 
+                            rotation=90, verticalalignment='top')
             
-            # Format x-axis to show years
+            # Format x-axis to show years appropriately
+            years_span = (growth_dates[-1] - growth_dates[0]).days / 365.25
+            if years_span > 50:
+                ax1.xaxis.set_major_locator(mdates.YearLocator(10))
+                ax2.xaxis.set_major_locator(mdates.YearLocator(10))
+            elif years_span > 20:
+                ax1.xaxis.set_major_locator(mdates.YearLocator(5))
+                ax2.xaxis.set_major_locator(mdates.YearLocator(5))
+            else:
+                ax1.xaxis.set_major_locator(mdates.YearLocator(2))
+                ax2.xaxis.set_major_locator(mdates.YearLocator(2))
+            
             for ax in [ax1, ax2]:
-                ax.xaxis.set_major_locator(mdates.YearLocator(10))  # Show every 10 years
                 ax.xaxis.set_major_formatter(mdates.DateFormatter('%Y'))
                 ax.tick_params(axis='x', rotation=45)
                 
@@ -672,152 +709,188 @@ def calculate_cumulative_growth(series: Union[List[float], np.ndarray], periods:
     logger.debug(f"Calculated cumulative growth over {periods} periods: {cumulative_growth:.2f}%")
     return cumulative_growth
 
-
 def get_forecast_data_for_modelling(
     mb_client: Macrobond,
-    country_list: List[str], 
+    country_list: List[str],
     country_code_mapping: Dict[str, str],
-    cutoff_date: Optional[Union[str, pd.Timestamp]] = None,
-    wind_back_years: int = 5,
-    target_end_date: str = '2060-12-31',
-    forecast_horizon: int = 60,
-    full_forecast_horizon: int = 432,
-    growth_decay_period: int = 60,
-    inflation_decay_period: int = 36
-) -> Dict[str, pd.DataFrame]:
+    cutoff_dates: Optional[List[pd.Timestamp]] = None,
+    wind_back_years: int = config.DEFAULT_WIND_BACK_YEARS,
+    target_end_date: str = config.DEFAULT_FORECAST_END_DATE,
+    forecast_horizon_map: Optional[Dict[str, int]] = None,
+    full_forecast_horizon: int = config.FULL_FORECAST_HORIZON,
+    growth_decay_period: int = config.GROWTH_DECAY_PERIOD,
+    inflation_decay_period: int = config.INFLATION_DECAY_PERIOD,
+    generate_plots: bool = config.GENERATE_PLOTS,
+    export_summary: bool = True,
+    output_dir: str = config.OUTPUT_DIR
+) -> Dict[str, Any]:
     """
-    Main function to generate forecast data for modeling purposes.
-    
-    Parameters:
-        mb_client: Already initialized Macrobond client
-        country_list: List of countries to process
-        country_code_mapping: Mapping from country names to country codes
-        cutoff_date: Date to use as the end of historical data (optional)
-        wind_back_years: Number of years to wind back for transition (default: 5)
-        target_end_date: End date for forecasts (default: '2060-12-31')
-        forecast_horizon: Near-term forecast horizon in months (default: 60)
-        full_forecast_horizon: Full forecast horizon in months (default: 432)
-        growth_decay_period: Transition period for growth in months (default: 60)
-        inflation_decay_period: Transition period for inflation in months (default: 36)
-    
+    Generate point-in-time forecasts for each country and cutoff date.
     Returns:
-        Dictionary containing processed forecast DataFrames
+        {
+            country: {tenor: {cutoff_date: forecast_df}},
+            'historical_df': flattened DataFrame for prepare_data
+        }
     """
-    logger.info("Starting forecast data generation for modeling")
-    
-    try:
-        # Load historical data from Macrobond
-        logger.info("Loading historical growth data from Macrobond")
-        growth_tickers = list(config.gdp_tickers.keys())
-        growth_forecast = mb_client.FetchSeries(growth_tickers)
-        growth_forecast = growth_forecast.rename(columns=config.COLUMN_MAPPINGS['gdp'])
-        growth_forecast = growth_forecast.resample('ME').interpolate('linear')
-        growth_forecast = growth_forecast.pct_change(periods=12) * 100
+    logger.info("Starting point-in-time forecast data generation")
 
-        
-        logger.info("Loading long-term growth data from Macrobond")
-        lt_growth_tickers = list(config.growth_forecast_lt_tickers.keys())
-        growth_forecast_lt = mb_client.FetchSeries(lt_growth_tickers)
-        growth_forecast_lt = growth_forecast_lt.rename(columns=config.COLUMN_MAPPINGS['growth_forecast_lt'])
-        
-        logger.info("Loading historical inflation data from Macrobond")
-        cpi_tickers = list(config.cpi_inf_tickers.keys())
-        cpi_forecast = mb_client.FetchSeries(cpi_tickers)
-        cpi_forecast = cpi_forecast.rename(columns=config.COLUMN_MAPPINGS['cpi_inf'])
-        cpi_forecast = cpi_forecast.pct_change(periods=12) * 100
+    if forecast_horizon_map is None:
+        forecast_horizon_map = {
+            'yld_2yr': config.FORECAST_HORIZON[0],
+            'yld_5yr': config.FORECAST_HORIZON[1],
+            'yld_10yr': config.FORECAST_HORIZON[2],
+            'yld_30yr': config.FORECAST_HORIZON[3]
+        }
 
-        logger.info("Loading inflation target data from Macrobond")
-        target_tickers = list(config.cpi_target_tickers.keys())
-        cpi_target = mb_client.FetchSeries(target_tickers)
-        cpi_target = cpi_target.rename(columns=config.COLUMN_MAPPINGS['cpi_target'])
-        
-        # Apply backfill after first observation to preserve data integrity
-        logger.info("Applying backfill processing to historical data")
-        growth_forecast = apply_backfill_after_first_observation(growth_forecast)
-        growth_forecast_lt = apply_backfill_after_first_observation(growth_forecast_lt)
-        cpi_forecast = apply_backfill_after_first_observation(cpi_forecast)
-        cpi_target = apply_backfill_after_first_observation(cpi_target)
-
-        print(growth_forecast.head())
-        print(growth_forecast_lt.head())
-        print(cpi_forecast.head())
-        print(cpi_target.head())
-
-        print(growth_forecast.tail())
-        print(growth_forecast_lt.tail())
-        print(cpi_forecast.tail())
-        print(cpi_target.tail())
-        
-        # # Forward fill to current date if needed
-        # logger.info("Forward filling data to current date")
-        # growth_forecast = forward_fill_to_current_date(growth_tickers)
-        # cpi_forecast = forward_fill_to_current_date(cpi_forecast)
-        
-        # Generate unified forecasts
-        logger.info("Generating unified forecasts")
-        unified_results = demonstrate_unified_forecasts(
-            mb_client=mb_client,
-            country_list=country_list,
-            country_code_mapping=country_code_mapping,
-            growth_forecast=growth_forecast,
-            growth_forecast_lt=growth_forecast_lt,
-            cpi_forecast=cpi_forecast,
-            cpi_target=cpi_target,
-            cutoff_date=cutoff_date,
-            wind_back_years=wind_back_years,
-            target_end_date=target_end_date,
-            forecast_horizon=forecast_horizon,
-            full_forecast_horizon=full_forecast_horizon,
-            growth_decay_period=growth_decay_period,
-            inflation_decay_period=inflation_decay_period
+    if cutoff_dates is None:
+        cutoff_dates = pd.date_range(
+            start=config.DEFAULT_HISTORICAL_FORECAST_START,
+            end=config.DEFAULT_DATE_TO,
+            freq='MS'
         )
-        
-        # Convert results to DataFrames for easier handling
-        logger.info("Converting results to DataFrames")
-        processed_results = {}
-        
-        for country, forecasts in unified_results.items():
-            if forecasts['growth'] is not None and forecasts['inflation'] is not None:
-                # Create date index
-                total_periods = max(len(forecasts['growth']), len(forecasts['inflation']))
-                if cutoff_date:
-                    start_date = pd.Timestamp(cutoff_date) - pd.DateOffset(years=30)  # Go back 30 years from cutoff
-                else:
-                    start_date = pd.Timestamp(config.HISTORICAL_START_DATE)
-                
-                dates = pd.date_range(start=start_date, periods=total_periods, freq='ME')
-                
-                
-                growth = forecasts['growth']
-                inflation = forecasts['inflation']
 
-                min_len = min(len(dates), len(growth), len(inflation))
-                dates = dates[:min_len]
+    os.makedirs(output_dir, exist_ok=True)
 
-                df_data = {
-                    'growth': growth[:min_len],
-                    'inflation': inflation[:min_len]
-                }
-                
-                country_df = pd.DataFrame(df_data, index=dates)
-                processed_results[country] = country_df
-                
-                logger.info(f"Processed {country}: {len(country_df)} data points from {dates[0]} to {dates[-1]}")
-            else:
-                logger.warning(f"Incomplete data for {country}, skipping")
-        
-        # Generate plots if requested
-        if config.GENERATE_PLOTS:
+    def fetch_series(tickers, start_dates, mapping_key):
+        data = {}
+        for ticker in tickers:
+            start_date = start_dates.get(ticker, config.HISTORICAL_START_DATE)
+            try:
+                series = mb_client.FetchSeries([ticker], start_date=start_date)
+                if not series.empty:
+                    mapped_name = config.COLUMN_MAPPINGS[mapping_key].get(ticker, ticker)
+                    data[mapped_name] = series[ticker]
+                    logger.debug(f"Fetched {ticker} as {mapped_name}")
+            except Exception as e:
+                logger.warning(f"Failed to fetch {ticker}: {e}")
+        return pd.DataFrame(data)
+
+    growth_forecast = fetch_series(config.gdp_tickers.keys(), config.gdp_start_dates, 'gdp')
+    if isinstance(growth_forecast.index, pd.DatetimeIndex):
+        growth_forecast = growth_forecast.resample('ME').interpolate('linear')
+        growth_forecast = growth_forecast.pct_change(periods=12, fill_method=None) * 100
+
+    growth_forecast_lt = mb_client.FetchSeries(list(config.growth_forecast_lt_tickers.keys()))
+    growth_forecast_lt = growth_forecast_lt.rename(columns=config.COLUMN_MAPPINGS['growth_forecast_lt'])
+
+    cpi_forecast = fetch_series(config.cpi_inf_tickers.keys(), config.cpi_inf_start_dates, 'cpi_inf')
+    if isinstance(cpi_forecast.index, pd.DatetimeIndex):
+        cpi_forecast = cpi_forecast.pct_change(periods=12, fill_method=None) * 100
+
+    cpi_target = mb_client.FetchSeries(list(config.cpi_target_tickers.keys()))
+    cpi_target = cpi_target.rename(columns=config.COLUMN_MAPPINGS['cpi_target'])
+
+    for df in [growth_forecast, growth_forecast_lt, cpi_forecast, cpi_target]:
+        df = apply_backfill_after_first_observation(df)
+
+    results = {}
+    summary_data = []
+    flat_records = []
+
+    for country in country_list:
+        country_code = country_code_mapping[country]
+        gdp_col = f"gdp_{country_code}"
+        cpi_col = f"cpi_inf_{country_code}"
+
+        gdp_start = growth_forecast[gdp_col].dropna().index.min() if gdp_col in growth_forecast else None
+        cpi_start = cpi_forecast[cpi_col].dropna().index.min() if cpi_col in cpi_forecast else None
+
+        if gdp_start and cpi_start:
+            earliest_cutoff = max(gdp_start, cpi_start)
+        elif gdp_start:
+            earliest_cutoff = gdp_start
+        elif cpi_start:
+            earliest_cutoff = cpi_start
+        else:
+            logger.warning(f"No usable data for {country}, skipping")
+            continue
+
+        valid_cutoffs = [d for d in cutoff_dates if d >= earliest_cutoff]
+        if not valid_cutoffs:
+            logger.warning(f"No valid cutoff dates for {country} after {earliest_cutoff}")
+            continue
+        results[country] = {}
+
+        for cutoff_date in valid_cutoffs:
+            logger.info(f"Generating forecast for {country} at {cutoff_date}")
+            unified = demonstrate_unified_forecasts(
+                mb_client=mb_client,
+                country_list=[country],
+                country_code_mapping=country_code_mapping,
+                growth_forecast=growth_forecast,
+                growth_forecast_lt=growth_forecast_lt,
+                cpi_forecast=cpi_forecast,
+                cpi_target=cpi_target,
+                cutoff_date=cutoff_date,
+                wind_back_years=wind_back_years,
+                target_end_date=target_end_date,
+                forecast_horizon=max(forecast_horizon_map.values()),
+                full_forecast_horizon=full_forecast_horizon,
+                growth_decay_period=growth_decay_period,
+                inflation_decay_period=inflation_decay_period
+            )
+
+            if country not in unified or unified[country]['growth'] is None:
+                continue
+
+            for tenor, horizon in forecast_horizon_map.items():
+                forecast_start = cutoff_date + pd.DateOffset(months=1)
+                forecast_index = pd.date_range(start=forecast_start, periods=horizon, freq='MS')
+                growth_series = pd.Series(unified[country]['growth'][:horizon], index=forecast_index)
+                inflation_series = pd.Series(unified[country]['inflation'][:horizon], index=forecast_index)
+
+                if tenor not in results[country]:
+                    results[country][tenor] = {}
+
+                forecast_df = pd.DataFrame({
+                    'growth': growth_series,
+                    'inflation': inflation_series
+                })
+
+                results[country][tenor][cutoff_date] = forecast_df
+
+                # Flattened forecast columns
+                period = int(tenor.replace("yld_", "").replace("yr", ""))
+                g_col = f"gdp_forecast_{period}yr_{country_code}"
+                i_col = f"cpi_forecast_{period}yr_{country_code}"
+                flat_df = pd.DataFrame({
+                    g_col: forecast_df['growth'],
+                    i_col: forecast_df['inflation']
+                }, index=forecast_df.index)
+                flat_records.append(flat_df)
+
+                summary_data.append({
+                    'country': country,
+                    'tenor': tenor,
+                    'cutoff_date': cutoff_date,
+                    'forecast_start': forecast_df.index[0],
+                    'forecast_end': forecast_df.index[-1],
+                    'forecast_periods': len(forecast_df),
+                    'avg_growth_forecast': forecast_df['growth'].mean(),
+                    'avg_inflation_forecast': forecast_df['inflation'].mean(),
+                    'growth_forecast_std': forecast_df['growth'].std(),
+                    'inflation_forecast_std': forecast_df['inflation'].std(),
+                    'first_year_growth': forecast_df['growth'].head(12).mean(),
+                    'first_year_inflation': forecast_df['inflation'].head(12).mean()
+                })
+
+        if generate_plots:
             logger.info("Generating forecast plots")
-            plot_unified_forecasts(unified_results)
-        
-        logger.info(f"Successfully generated forecast data for {len(processed_results)} countries")
-        return processed_results
-        
-    except Exception as e:
-        logger.error(f"Error in get_forecast_data_for_modelling: {e}")
-        logger.exception("Full traceback:")
-        raise
+            plot_unified_forecasts_fixed(unified, growth_forecast, cpi_forecast, country_code_mapping)
+
+    if export_summary and summary_data:
+        summary_df = pd.DataFrame(summary_data)
+        summary_path = os.path.join(output_dir, "forecast_summary_report.csv")
+        summary_df.to_csv(summary_path, index=False)
+        logger.info(f"Forecast summary report saved to {summary_path}")
+
+    # Combine all flattened forecast records
+    historical_df = pd.concat(flat_records, axis=1)
+    historical_df = historical_df.loc[:, ~historical_df.columns.duplicated()]
+
+    logger.info("Completed point-in-time forecast generation")
+    results['historical_df'] = historical_df
+    return results
 
 
 def validate_forecast_data(forecast_data: Dict[str, pd.DataFrame]) -> bool:
@@ -931,7 +1004,7 @@ def main():
     
     try:
         # Load configuration
-        country_list = config.COUNTRY_LIST
+        country_list = config.country_list
         country_code_mapping = config.COUNTRY_CODE_MAPPING
         
         logger.info(f"Processing {len(country_list)} countries: {country_list}")

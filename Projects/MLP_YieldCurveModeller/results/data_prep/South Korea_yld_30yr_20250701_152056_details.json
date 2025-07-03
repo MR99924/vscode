@@ -1,0 +1,93 @@
+{
+  "country": "South Korea",
+  "tenor": "yld_30yr",
+  "feature_sources": [
+    "policy_rates",
+    "inflation",
+    "activity",
+    "consolidated_ratings",
+    "unemployment_rate"
+  ],
+  "date_ranges": {
+    "target": {
+      "start": "2012-09-01",
+      "end": "2025-07-01",
+      "count": 155
+    }
+  },
+  "feature_counts": {},
+  "data_quality": {
+    "target": {
+      "missing_pct": 63.70023419203748,
+      "date_range": "2012-09-01 to 2025-07-01",
+      "count": 155
+    },
+    "missing_stats": {
+      "missing_count": {
+        "gdp_forecast_30m_kr": 426,
+        "cpi_forecast_30m_kr": 426
+      },
+      "missing_pct": {
+        "gdp_forecast_30m_kr": 54.19847328244275,
+        "cpi_forecast_30m_kr": 54.19847328244275
+      },
+      "missing_before": {
+        "gdp_forecast_30m_kr": 426,
+        "cpi_forecast_30m_kr": 426
+      },
+      "missing_after": {
+        "gdp_forecast_30m_kr": 0,
+        "cpi_forecast_30m_kr": 0
+      }
+    },
+    "total_missing_before": 852,
+    "total_missing_after": 0,
+    "rows_before": 786,
+    "rows_after": 786
+  },
+  "feature_engineering": {},
+  "target_column": "yld_30yr_kr",
+  "total_features": 2,
+  "feature_columns": [
+    "gdp_forecast_30m_kr",
+    "cpi_forecast_30m_kr"
+  ],
+  "combined_date_range": {
+    "start": "1990-02-01",
+    "end": "2055-07-01",
+    "count": 786
+  },
+  "clean_date_range": {
+    "start": "2012-09-01",
+    "end": "2025-07-01",
+    "count": 155
+  },
+  "overlap_diagnosis": {
+    "target_earliest": "2012-09-01",
+    "target_latest": "2025-07-01",
+    "features_earliest": "1990-02-01",
+    "features_latest": "2055-07-01",
+    "overlapping_earliest": "2012-09-01",
+    "overlapping_latest": "2025-07-01",
+    "target_count": 155,
+    "features_count": 786,
+    "common_count": 155,
+    "issue": "None"
+  },
+  "feature_correlations": {
+    "gdp_forecast_30m_kr": 0.1966,
+    "cpi_forecast_30m_kr": 0.0318
+  },
+  "feature_quality": {
+    "low_variance_features": []
+  },
+  "target_stats": {
+    "min": 1.2414545454545456,
+    "max": 4.140818181818182,
+    "mean": 2.644660777399319,
+    "median": 2.5902857142857143,
+    "std": 0.7312462275500352,
+    "skew": 0.13532825643095178,
+    "kurt": -1.0086562342355259
+  }
+}

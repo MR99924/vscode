@@ -1,0 +1,274 @@
+Model Analysis Summary Report
+==================================================
+
+Analysis Timestamp: 2025-07-02T09:58:10.894756
+Total Models Found: 44
+Successful Analyses: 44
+Failed Analyses: 0
+
+Model Results Summary:
+------------------------------
+
+Italy_30yr:
+ Features: 8
+ Conformity Score: 75.00%
+ Conforming Features: 6
+ Non-Conforming Features: 2
+
+Czechia_10yr:
+ Features: 9
+ Conformity Score: 22.22%
+ Conforming Features: 2
+ Non-Conforming Features: 7
+
+Czechia_2yr:
+ Features: 8
+ Conformity Score: 87.50%
+ Conforming Features: 7
+ Non-Conforming Features: 1
+
+Canada_30yr:
+ Features: 8
+ Conformity Score: 75.00%
+ Conforming Features: 6
+ Non-Conforming Features: 2
+
+South Africa_2yr:
+ Features: 8
+ Conformity Score: 87.50%
+ Conforming Features: 7
+ Non-Conforming Features: 1
+
+Canada_5yr:
+ Features: 7
+ Conformity Score: 57.14%
+ Conforming Features: 4
+ Non-Conforming Features: 3
+
+Hungary_10yr:
+ Features: 9
+ Conformity Score: 55.56%
+ Conforming Features: 5
+ Non-Conforming Features: 4
+
+Poland_2yr:
+ Features: 8
+ Conformity Score: 75.00%
+ Conforming Features: 6
+ Non-Conforming Features: 2
+
+United States_5yr:
+ Features: 6
+ Conformity Score: 33.33%
+ Conforming Features: 2
+ Non-Conforming Features: 4
+
+United States_2yr:
+ Features: 6
+ Conformity Score: 83.33%
+ Conforming Features: 5
+ Non-Conforming Features: 1
+
+France_5yr:
+ Features: 7
+ Conformity Score: 57.14%
+ Conforming Features: 4
+ Non-Conforming Features: 3
+
+Hungary_5yr:
+ Features: 8
+ Conformity Score: 75.00%
+ Conforming Features: 6
+ Non-Conforming Features: 2
+
+United Kingdom_5yr:
+ Features: 7
+ Conformity Score: 57.14%
+ Conforming Features: 4
+ Non-Conforming Features: 3
+
+United States_10yr:
+ Features: 7
+ Conformity Score: 28.57%
+ Conforming Features: 2
+ Non-Conforming Features: 5
+
+France_10yr:
+ Features: 8
+ Conformity Score: 50.00%
+ Conforming Features: 4
+ Non-Conforming Features: 4
+
+Germany_2yr:
+ Features: 7
+ Conformity Score: 85.71%
+ Conforming Features: 6
+ Non-Conforming Features: 1
+
+Australia_2yr:
+ Features: 7
+ Conformity Score: 71.43%
+ Conforming Features: 5
+ Non-Conforming Features: 2
+
+South Korea_2yr:
+ Features: 8
+ Conformity Score: 87.50%
+ Conforming Features: 7
+ Non-Conforming Features: 1
+
+Germany_5yr:
+ Features: 7
+ Conformity Score: 71.43%
+ Conforming Features: 5
+ Non-Conforming Features: 2
+
+Australia_10yr:
+ Features: 8
+ Conformity Score: 75.00%
+ Conforming Features: 6
+ Non-Conforming Features: 2
+
+South Africa_10yr:
+ Features: 9
+ Conformity Score: 66.67%
+ Conforming Features: 6
+ Non-Conforming Features: 3
+
+Italy_10yr:
+ Features: 8
+ Conformity Score: 50.00%
+ Conforming Features: 4
+ Non-Conforming Features: 4
+
+Czechia_5yr:
+ Features: 8
+ Conformity Score: 75.00%
+ Conforming Features: 6
+ Non-Conforming Features: 2
+
+Germany_10yr:
+ Features: 8
+ Conformity Score: 87.50%
+ Conforming Features: 7
+ Non-Conforming Features: 1
+
+France_2yr:
+ Features: 7
+ Conformity Score: 42.86%
+ Conforming Features: 3
+ Non-Conforming Features: 4
+
+South Korea_10yr:
+ Features: 9
+ Conformity Score: 77.78%
+ Conforming Features: 7
+ Non-Conforming Features: 2
+
+France_30yr:
+ Features: 8
+ Conformity Score: 62.50%
+ Conforming Features: 5
+ Non-Conforming Features: 3
+
+Germany_30yr:
+ Features: 8
+ Conformity Score: 62.50%
+ Conforming Features: 5
+ Non-Conforming Features: 3
+
+United Kingdom_2yr:
+ Features: 7
+ Conformity Score: 85.71%
+ Conforming Features: 6
+ Non-Conforming Features: 1
+
+Poland_5yr:
+ Features: 8
+ Conformity Score: 37.50%
+ Conforming Features: 3
+ Non-Conforming Features: 5
+
+United Kingdom_10yr:
+ Features: 8
+ Conformity Score: 75.00%
+ Conforming Features: 6
+ Non-Conforming Features: 2
+
+United Kingdom_30yr:
+ Features: 8
+ Conformity Score: 62.50%
+ Conforming Features: 5
+ Non-Conforming Features: 3
+
+Canada_2yr:
+ Features: 7
+ Conformity Score: 71.43%
+ Conforming Features: 5
+ Non-Conforming Features: 2
+
+South Korea_30yr:
+ Features: 9
+ Conformity Score: 77.78%
+ Conforming Features: 7
+ Non-Conforming Features: 2
+
+South Korea_5yr:
+ Features: 8
+ Conformity Score: 75.00%
+ Conforming Features: 6
+ Non-Conforming Features: 2
+
+Australia_30yr:
+ Features: 8
+ Conformity Score: 50.00%
+ Conforming Features: 4
+ Non-Conforming Features: 4
+
+Australia_5yr:
+ Features: 7
+ Conformity Score: 28.57%
+ Conforming Features: 2
+ Non-Conforming Features: 5
+
+Poland_10yr:
+ Features: 9
+ Conformity Score: 66.67%
+ Conforming Features: 6
+ Non-Conforming Features: 3
+
+United States_30yr:
+ Features: 7
+ Conformity Score: 14.29%
+ Conforming Features: 1
+ Non-Conforming Features: 6
+
+Hungary_2yr:
+ Features: 8
+ Conformity Score: 87.50%
+ Conforming Features: 7
+ Non-Conforming Features: 1
+
+Italy_2yr:
+ Features: 7
+ Conformity Score: 42.86%
+ Conforming Features: 3
+ Non-Conforming Features: 4
+
+Italy_5yr:
+ Features: 7
+ Conformity Score: 57.14%
+ Conforming Features: 4
+ Non-Conforming Features: 3
+
+Canada_10yr:
+ Features: 8
+ Conformity Score: 62.50%
+ Conforming Features: 5
+ Non-Conforming Features: 3
+
+South Africa_5yr:
+ Features: 8
+ Conformity Score: 25.00%
+ Conforming Features: 2
+ Non-Conforming Features: 6

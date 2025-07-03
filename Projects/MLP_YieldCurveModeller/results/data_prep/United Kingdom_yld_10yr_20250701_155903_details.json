@@ -1,0 +1,178 @@
+{
+  "country": "United Kingdom",
+  "tenor": "yld_10yr",
+  "feature_sources": [
+    "policy_rates",
+    "inflation",
+    "act_track",
+    "consolidated_ratings",
+    "unemployment_rate"
+  ],
+  "date_ranges": {
+    "target": {
+      "start": "1992-01-01",
+      "end": "2025-07-01",
+      "count": 403
+    },
+    "policy_rates": {
+      "start": "1990-01-01",
+      "end": "2025-07-01",
+      "count": 427,
+      "columns": [
+        "pol_rat_gb",
+        "pol_rat_us"
+      ]
+    },
+    "inflation": {
+      "start": "1947-01-01",
+      "end": "2025-07-01",
+      "count": 943,
+      "columns": [
+        "cpi_inf_gb"
+      ]
+    },
+    "act_track": {
+      "start": "1990-01-01",
+      "end": "2025-07-01",
+      "count": 427,
+      "columns": [
+        "act_track_gb"
+      ]
+    },
+    "consolidated_ratings": {
+      "start": "1986-01-01",
+      "end": "2025-07-01",
+      "count": 475,
+      "columns": [
+        "rating_gb"
+      ]
+    },
+    "unemployment_rate": {
+      "start": "1948-01-01",
+      "end": "2025-07-01",
+      "count": 931,
+      "columns": [
+        "u_rat_gb"
+      ]
+    }
+  },
+  "feature_counts": {
+    "policy_rates": 2,
+    "inflation": 1,
+    "act_track": 1,
+    "consolidated_ratings": 1,
+    "unemployment_rate": 1
+  },
+  "data_quality": {
+    "target": {
+      "missing_pct": 5.6206088992974195,
+      "date_range": "1992-01-01 to 2025-07-01",
+      "count": 403
+    },
+    "missing_stats": {
+      "missing_count": {
+        "gdp_forecast_10yr_gb": 1183,
+        "cpi_forecast_10yr_gb": 1183,
+        "act_track_gb": 963,
+        "pol_rat_gb": 876,
+        "pol_rat_us": 876,
+        "cpi_inf_gb": 864,
+        "rating_gb": 828,
+        "u_rat_gb": 649
+      },
+      "missing_pct": {
+        "gdp_forecast_10yr_gb": 90.79048349961627,
+        "cpi_forecast_10yr_gb": 90.79048349961627,
+        "act_track_gb": 73.90636991557943,
+        "pol_rat_gb": 67.22947045280124,
+        "pol_rat_us": 67.22947045280124,
+        "cpi_inf_gb": 66.30851880276285,
+        "rating_gb": 63.545663852647735,
+        "u_rat_gb": 49.80813507290867
+      },
+      "missing_before": {
+        "gdp_forecast_10yr_gb": 1183,
+        "cpi_forecast_10yr_gb": 1183,
+        "act_track_gb": 963,
+        "pol_rat_gb": 876,
+        "pol_rat_us": 876,
+        "cpi_inf_gb": 864,
+        "rating_gb": 828,
+        "u_rat_gb": 649
+      },
+      "missing_after": {
+        "gdp_forecast_10yr_gb": 0,
+        "cpi_forecast_10yr_gb": 0,
+        "act_track_gb": 0,
+        "pol_rat_gb": 0,
+        "pol_rat_us": 0,
+        "cpi_inf_gb": 0,
+        "rating_gb": 0,
+        "u_rat_gb": 0
+      }
+    },
+    "total_missing_before": 7422,
+    "total_missing_after": 0,
+    "rows_before": 1303,
+    "rows_after": 1303
+  },
+  "feature_engineering": {},
+  "target_column": "yld_10yr_gb",
+  "total_features": 8,
+  "feature_columns": [
+    "gdp_forecast_10yr_gb",
+    "cpi_forecast_10yr_gb",
+    "pol_rat_gb",
+    "pol_rat_us",
+    "cpi_inf_gb",
+    "act_track_gb",
+    "rating_gb",
+    "u_rat_gb"
+  ],
+  "combined_date_range": {
+    "start": "1947-01-01",
+    "end": "2055-07-01",
+    "count": 1303
+  },
+  "clean_date_range": {
+    "start": "1992-01-01",
+    "end": "2025-07-01",
+    "count": 403
+  },
+  "overlap_diagnosis": {
+    "target_earliest": "1992-01-01",
+    "target_latest": "2025-07-01",
+    "features_earliest": "1947-01-01",
+    "features_latest": "2055-07-01",
+    "overlapping_earliest": "1992-01-01",
+    "overlapping_latest": "2025-07-01",
+    "target_count": 403,
+    "features_count": 1303,
+    "common_count": 403,
+    "issue": "None"
+  },
+  "feature_correlations": {
+    "pol_rat_gb": 0.8865,
+    "pol_rat_us": 0.68,
+    "u_rat_gb": 0.612,
+    "rating_gb": 0.5702,
+    "act_track_gb": 0.4609,
+    "cpi_forecast_10yr_gb": 0.4139,
+    "gdp_forecast_10yr_gb": 0.3896,
+    "cpi_inf_gb": 0.0289
+  },
+  "feature_quality": {
+    "low_variance_features": [
+      "cpi_forecast_10yr_gb"
+    ]
+  },
+  "target_stats": {
+    "min": 0.1494913043478261,
+    "max": 9.671818181818182,
+    "mean": 4.1198131197320675,
+    "median": 4.321304347826087,
+    "std": 2.3320016049966945,
+    "skew": 0.3186901866864439,
+    "kurt": -0.5930459308256322
+  }
+}

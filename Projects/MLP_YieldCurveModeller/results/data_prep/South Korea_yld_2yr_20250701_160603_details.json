@@ -1,0 +1,169 @@
+{
+  "country": "South Korea",
+  "tenor": "yld_2yr",
+  "feature_sources": [
+    "policy_rates",
+    "inflation",
+    "act_track",
+    "unemployment_rate"
+  ],
+  "date_ranges": {
+    "target": {
+      "start": "1999-10-01",
+      "end": "2025-07-01",
+      "count": 310
+    },
+    "policy_rates": {
+      "start": "1990-01-01",
+      "end": "2025-07-01",
+      "count": 427,
+      "columns": [
+        "pol_rat_kr",
+        "pol_rat_us"
+      ]
+    },
+    "inflation": {
+      "start": "1947-01-01",
+      "end": "2025-07-01",
+      "count": 943,
+      "columns": [
+        "cpi_inf_kr"
+      ]
+    },
+    "act_track": {
+      "start": "1990-01-01",
+      "end": "2025-07-01",
+      "count": 427,
+      "columns": [
+        "act_track_kr"
+      ]
+    },
+    "unemployment_rate": {
+      "start": "1948-01-01",
+      "end": "2025-07-01",
+      "count": 931,
+      "columns": [
+        "u_rat_kr"
+      ]
+    }
+  },
+  "feature_counts": {
+    "policy_rates": 2,
+    "inflation": 1,
+    "act_track": 1,
+    "unemployment_rate": 1
+  },
+  "data_quality": {
+    "target": {
+      "missing_pct": 27.400468384074937,
+      "date_range": "1999-10-01 to 2025-07-01",
+      "count": 310
+    },
+    "missing_stats": {
+      "missing_count": {
+        "gdp_forecast_2yr_kr": 1279,
+        "cpi_forecast_2yr_kr": 1279,
+        "act_track_kr": 997,
+        "u_rat_kr": 989,
+        "pol_rat_kr": 988,
+        "pol_rat_us_influence": 876,
+        "pol_rat_us": 876,
+        "cpi_inf_kr": 427
+      },
+      "missing_pct": {
+        "gdp_forecast_2yr_kr": 98.15809669992326,
+        "cpi_forecast_2yr_kr": 98.15809669992326,
+        "act_track_kr": 76.51573292402148,
+        "u_rat_kr": 75.90176515732924,
+        "pol_rat_kr": 75.82501918649271,
+        "pol_rat_us_influence": 67.22947045280124,
+        "pol_rat_us": 67.22947045280124,
+        "cpi_inf_kr": 32.77052954719878
+      },
+      "missing_before": {
+        "gdp_forecast_2yr_kr": 1279,
+        "cpi_forecast_2yr_kr": 1279,
+        "act_track_kr": 997,
+        "u_rat_kr": 989,
+        "pol_rat_kr": 988,
+        "pol_rat_us_influence": 876,
+        "pol_rat_us": 876,
+        "cpi_inf_kr": 427
+      },
+      "missing_after": {
+        "gdp_forecast_2yr_kr": 0,
+        "cpi_forecast_2yr_kr": 0,
+        "act_track_kr": 0,
+        "u_rat_kr": 0,
+        "pol_rat_kr": 0,
+        "pol_rat_us_influence": 0,
+        "pol_rat_us": 0,
+        "cpi_inf_kr": 0
+      }
+    },
+    "total_missing_before": 7711,
+    "total_missing_after": 0,
+    "rows_before": 1303,
+    "rows_after": 1303
+  },
+  "feature_engineering": {},
+  "target_column": "yld_2yr_kr",
+  "total_features": 8,
+  "feature_columns": [
+    "gdp_forecast_2yr_kr",
+    "cpi_forecast_2yr_kr",
+    "pol_rat_us_influence",
+    "pol_rat_kr",
+    "pol_rat_us",
+    "cpi_inf_kr",
+    "act_track_kr",
+    "u_rat_kr"
+  ],
+  "combined_date_range": {
+    "start": "1947-01-01",
+    "end": "2055-07-01",
+    "count": 1303
+  },
+  "clean_date_range": {
+    "start": "1999-10-01",
+    "end": "2025-07-01",
+    "count": 310
+  },
+  "overlap_diagnosis": {
+    "target_earliest": "1999-10-01",
+    "target_latest": "2025-07-01",
+    "features_earliest": "1947-01-01",
+    "features_latest": "2055-07-01",
+    "overlapping_earliest": "1999-10-01",
+    "overlapping_latest": "2025-07-01",
+    "target_count": 310,
+    "features_count": 1303,
+    "common_count": 310,
+    "issue": "None"
+  },
+  "feature_correlations": {
+    "pol_rat_kr": 0.9019,
+    "pol_rat_us_influence": 0.6077,
+    "pol_rat_us": 0.6077,
+    "cpi_inf_kr": 0.4592,
+    "act_track_kr": 0.3216,
+    "u_rat_kr": 0.1929,
+    "gdp_forecast_2yr_kr": 0.0,
+    "cpi_forecast_2yr_kr": 0.0
+  },
+  "feature_quality": {
+    "low_variance_features": [
+      "gdp_forecast_2yr_kr",
+      "cpi_forecast_2yr_kr"
+    ]
+  },
+  "target_stats": {
+    "min": 0.7396190476190476,
+    "max": 8.884649999999999,
+    "mean": 3.5462845592193544,
+    "median": 3.3809718614718616,
+    "std": 1.8284528326002334,
+    "skew": 0.8086071973893535,
+    "kurt": 0.43924968977742074
+  }
+}

@@ -1,0 +1,94 @@
+{
+  "country": "Poland",
+  "tenor": "yld_5yr",
+  "feature_sources": [
+    "policy_rates",
+    "inflation",
+    "consolidated_ratings",
+    "unemployment_rate"
+  ],
+  "date_ranges": {
+    "target": {
+      "start": "1998-11-01",
+      "end": "2025-07-01",
+      "count": 321
+    }
+  },
+  "feature_counts": {},
+  "data_quality": {
+    "target": {
+      "missing_pct": 24.82435597189696,
+      "date_range": "1998-11-01 to 2025-07-01",
+      "count": 321
+    },
+    "missing_stats": {
+      "missing_count": {
+        "gdp_forecast_5m_pl": 726,
+        "cpi_forecast_5m_pl": 726
+      },
+      "missing_pct": {
+        "gdp_forecast_5m_pl": 92.36641221374046,
+        "cpi_forecast_5m_pl": 92.36641221374046
+      },
+      "missing_before": {
+        "gdp_forecast_5m_pl": 726,
+        "cpi_forecast_5m_pl": 726
+      },
+      "missing_after": {
+        "gdp_forecast_5m_pl": 0,
+        "cpi_forecast_5m_pl": 0
+      }
+    },
+    "total_missing_before": 1452,
+    "total_missing_after": 0,
+    "rows_before": 786,
+    "rows_after": 786
+  },
+  "feature_engineering": {},
+  "target_column": "yld_5yr_pl",
+  "total_features": 2,
+  "feature_columns": [
+    "gdp_forecast_5m_pl",
+    "cpi_forecast_5m_pl"
+  ],
+  "combined_date_range": {
+    "start": "1990-02-01",
+    "end": "2055-07-01",
+    "count": 786
+  },
+  "clean_date_range": {
+    "start": "1998-11-01",
+    "end": "2025-07-01",
+    "count": 321
+  },
+  "overlap_diagnosis": {
+    "target_earliest": "1998-11-01",
+    "target_latest": "2025-07-01",
+    "features_earliest": "1990-02-01",
+    "features_latest": "2055-07-01",
+    "overlapping_earliest": "1998-11-01",
+    "overlapping_latest": "2025-07-01",
+    "target_count": 321,
+    "features_count": 786,
+    "common_count": 321,
+    "issue": "None"
+  },
+  "feature_correlations": {
+    "cpi_forecast_5m_pl": 0.3311,
+    "gdp_forecast_5m_pl": 0.0
+  },
+  "feature_quality": {
+    "low_variance_features": [
+      "gdp_forecast_5m_pl"
+    ]
+  },
+  "target_stats": {
+    "min": 0.3953333333333333,
+    "max": 15.484636363636362,
+    "mean": 5.360662951685544,
+    "median": 5.188952380952381,
+    "std": 3.182225250727526,
+    "skew": 1.116039960635014,
+    "kurt": 1.1193378102694993
+  }
+}
